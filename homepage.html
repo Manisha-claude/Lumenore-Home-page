@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenore — Enterprise BI and Analytics Platform Powered By AI Agents</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
+    <link href="assets/css/v2o/index.css" rel="stylesheet">
+
+    <!-- Page-scoped display + spacing refinements (index.html only) -->
+    <style>
+        /* Desktop content width */
+        .container{ max-width: 1500px; padding: 0 40px; }
+
+        /* Hello bar + nav: full-width background, content aligned to the 1500px container.
+           Gutter = centering offset for a 1500px zone + the container's 40px inner padding. */
+        .hello-bar{ padding: 10px max(40px, calc((100% - 1500px) / 2 + 40px)) 11px; }
+        .site-header{ padding: 20px max(40px, calc((100% - 1500px) / 2 + 40px)) 21px; }
+
+        /* Tighter, consistent vertical rhythm between sections */
+        .hero-section{ padding: 96px 0 100px; min-height: 0; }
+        .trusted-section{ padding: 54px 0; }
+        .section-products{ padding: 88px 0; }
+        .section-features{ padding: 100px 0 130px; }
+        .section-personas{ padding: 48px 0 88px; }
+        .section-pricing{ padding: 88px 0 104px; }
+        .section-success{ padding: 88px 0; }
+        .section-testimonial{ padding: 88px 0 128px; }
+        .section-trust{ padding: 76px 0 96px; }
+        .site-footer{ padding: 72px 0 28px; }
+
+        /* Calmer heading-to-content gaps */
+        .trusted-section h2{ margin-bottom: 40px; }
+        .section-products .products-head{ margin-bottom: 52px; }
+        .section-features .features-head{ margin-bottom: 44px; }
+        .section-personas .section-sub{ margin-bottom: 52px; }
+        .section-pricing h2{ margin-bottom: 40px; }
+        .section-success h2{ margin-bottom: 52px; }
+        .section-testimonial h2{ margin-bottom: 48px; }
+
+        /* Slightly tighter testimonial card so it sits balanced on screen */
+        .testimonial-card{ padding: 56px 40px; gap: 48px; }
+
+        /* Keep the big hero/section headings from feeling oversized on laptop displays */
+        .hero-section h1{ font-size: 48px; line-height: 58px; }
+
+        @media (max-width: 991px){
+            .container{ padding: 0 24px; }
+            .hello-bar{ padding: 10px 24px 11px; }
+            .site-header{ padding: 14px 24px; }
+            .hero-section{ padding: 72px 0 80px; }
+            .section-products,
+            .section-success{ padding: 64px 0; }
+            .section-pricing{ padding: 64px 0 80px; }
+            .section-testimonial{ padding: 64px 0 96px; }
+            .hero-section h1{ font-size: 38px; line-height: 46px; }
+        }
+        @media (max-width: 575px){
+            .container{ padding: 0 18px; }
+            .hello-bar{ padding: 8px 18px; }
+            .site-header{ padding: 12px 18px; }
+            .hero-section h1{ font-size: 30px; line-height: 38px; }
+        }
+
+        /* ── Nav logo (SVG) ───────────────────────────────────── */
+        .site-header .brand-mark{ height: 32px; }
+        .site-header .nav-logo-img{
+            height: 30px;
+            width: auto;
+            display: block;
+        }
+        /* Softer, thinner divider below the nav */
+        .site-header{ border-bottom: 1px solid rgba(255, 255, 255, .04); }
+
+        /* ── Hello bar motion ─────────────────────────────────── */
+        /* Gentle pulsing glow on the "Webinar" badge */
+        .hello-bar .hello-badge{
+            animation: badgePulse 2.4s ease-in-out infinite;
+            will-change: transform, box-shadow;
+        }
+        @keyframes badgePulse{
+            0%, 100%{
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(252, 252, 252, .45);
+            }
+            50%{
+                transform: scale(1.06);
+                box-shadow: 0 0 0 6px rgba(252, 252, 252, 0);
+            }
+        }
+        /* Subtle shimmer sweeping across the message text */
+        .hello-bar .hello-message{
+            background: linear-gradient(90deg,
+                rgba(255, 255, 255, .8) 0%,
+                rgba(255, 255, 255, .8) 35%,
+                #ffffff 50%,
+                rgba(255, 255, 255, .8) 65%,
+                rgba(255, 255, 255, .8) 100%);
+            background-size: 220% 100%;
+            -webkit-background-clip: text;
+                    background-clip: text;
+            -webkit-text-fill-color: transparent;
+                    color: transparent;
+            animation: shimmer 4s linear infinite;
+        }
+        @keyframes shimmer{
+            0%{ background-position: 120% 0; }
+            100%{ background-position: -120% 0; }
+        }
+        /* Looping nudge on the Register Now arrow */
+        .hello-bar .hello-cta svg{
+            animation: arrowNudge 1.6s ease-in-out infinite;
+        }
+        @keyframes arrowNudge{
+            0%, 100%{ transform: translateX(0); }
+            50%{ transform: translateX(4px); }
+        }
+        /* Respect reduced-motion preferences */
+        @media (prefers-reduced-motion: reduce){
+            .hello-bar .hello-badge,
+            .hello-bar .hello-message,
+            .hello-bar .hello-cta svg{ animation: none; }
+            .hello-bar .hello-message{
+                -webkit-text-fill-color: rgba(255, 255, 255, .8);
+                color: rgba(255, 255, 255, .8);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== SITE TOP — Hello bar + Nav ===== -->
+<div class="site-top">
+
+    <!-- Hello bar (announcement) -->
+    <div class="hello-bar">
+        <div class="hello-left">
+            <span class="hello-badge">Webinar</span>
+            <span class="hello-message">We are Heading to AAHOACON 2026</span>
+            <a href="#" class="hello-cta">
+                Register Now
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <a href="#" class="hello-login">Log in</a>
+    </div>
+
+    <!-- Main nav bar -->
+    <header class="site-header headerTop">
+        <a href="#" class="brand-mark" aria-label="Lumenore home">
+            <img src="assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="nav-logo-img">
+        </a>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Platform
+                    <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a></li>
+                <li><a href="#">Solutions
+                    <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Resources
+                    <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a></li>
+                <li><a href="#">Company
+                    <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a></li>
+                <li><a href="#">
+                    <svg class="nav-ai-icon" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.5 0l1.6 4.4L13.5 6l-4.4 1.6L7.5 12 5.9 7.6 1.5 6l4.4-1.6L7.5 0z" fill="currentColor"/>
+                    </svg>
+                    AI
+                </a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#" class="btn-demo">Request a Demo</a>
+            <a href="#" class="btn-start">Start for Free</a>
+        </div>
+    </header>
+
+</div>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-section">
+    <div class="hero-arc"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-grain"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h1>
+                Enterprise BI and Analytics Platform<br>
+                Powered By <span class="ai-agents-gradient">AI Agents</span>
+            </h1>
+            <p class="hero-sub">
+                Go from data to decisions, faster with enterprise-grade AI-driven analytics platform
+                built to make complex analysis tasks easier.
+            </p>
+
+            <div class="hero-search-wrap">
+                <div class="hero-search-glow"></div>
+                <div class="hero-search">
+                    <div class="hero-search-inner">
+                        <p class="placeholder-text">How does a customer think about my brand?</p>
+
+                        <div class="input-row">
+                            <button type="button" class="icon-btn" aria-label="Add data source">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                            <button type="button" class="tools-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                Tools
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
+                            <div class="spacer"></div>
+                            <button type="button" class="explore-btn">
+                                Click to explore
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hero-search-tags">
+                        <button type="button" class="hero-search-tag is-active">Brand · Retail</button>
+                        <button type="button" class="hero-search-tag">Operations · Supply</button>
+                        <button type="button" class="hero-search-tag">Product · SaaS</button>
+                    </div>
+
+                    <div class="hero-search-footer">
+                        <span class="src-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                            Connect with 100+ data sources to analyse your data
+                        </span>
+                        <span class="src-stack">
+                            <span class="src-bubble">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8l6 8M15 8l-6 8"/></svg>
+                            </span>
+                            <span class="src-bubble">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9"/><path d="M3 12h18"/></svg>
+                            </span>
+                            <span class="src-bubble">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+                            </span>
+                            <span class="src-bubble">50+</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TRUSTED LOGOS ===== -->
+<section class="trusted-section">
+    <div class="container">
+        <h2>Lumenore is Trusted By 20,000+ Users<br>Across 100+ Enterprise Teams</h2>
+
+        <div class="logo-slider">
+            <div class="logo-track">
+                <div><img src="assets/images/homeV2o/Bayer_Cross_1_.svg" loading="lazy" alt="Bayer"></div>
+                <div><img src="assets/images/homeV2o/logo-siriusxm-vector-logo 1.svg" loading="lazy" alt="SiriusXM"></div>
+                <div><img src="assets/images/homeV2o/national-rural-health-mission-logo-vector 1.svg" loading="lazy" alt="National Rural Health Mission"></div>
+                <div><img src="assets/images/homeV2o/dwihn-logo 1.png" loading="lazy" alt="DWIHN"></div>
+                <div><img src="assets/images/homeV2o/seed-advertising.png" loading="lazy" alt="SEED Advertising"></div>
+                <div><img src="assets/images/homeV2o/L1 1.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/L2 1.png" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/L3 1.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/L4 1.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Group.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/g2317.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Group 1699.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Group 48098351.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Rectangle.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Rectangle.png" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Vector.svg" loading="lazy" alt="Client logo"></div>
+
+                <!-- duplicate for seamless infinite scroll -->
+                <div><img src="assets/images/homeV2o/Bayer_Cross_1_.svg" loading="lazy" alt="Bayer"></div>
+                <div><img src="assets/images/homeV2o/logo-siriusxm-vector-logo 1.svg" loading="lazy" alt="SiriusXM"></div>
+                <div><img src="assets/images/homeV2o/national-rural-health-mission-logo-vector 1.svg" loading="lazy" alt="National Rural Health Mission"></div>
+                <div><img src="assets/images/homeV2o/dwihn-logo 1.png" loading="lazy" alt="DWIHN"></div>
+                <div><img src="assets/images/homeV2o/seed-advertising.png" loading="lazy" alt="SEED Advertising"></div>
+                <div><img src="assets/images/homeV2o/L1 1.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/L2 1.png" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/L3 1.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/L4 1.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Group.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/g2317.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Group 1699.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Group 48098351.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Rectangle.svg" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Rectangle.png" loading="lazy" alt="Client logo"></div>
+                <div><img src="assets/images/homeV2o/Vector.svg" loading="lazy" alt="Client logo"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRODUCT SUITE (Figma 994:29832) ===== -->
+<section class="section-products">
+    <div class="container">
+        <div class="products-head">
+            <h2>Lumenore’s Suite of Products<br>for Every Data Challenge</h2>
+            <p class="section-sub">A connected platform — pick the product that fits your team, scale as you grow.</p>
+        </div>
+
+        <div class="products-layout">
+
+            <!-- Numbered tab list -->
+            <div class="product-tabs" id="productTabs">
+                <button type="button" class="product-tab is-active" data-product="askme">
+                    <span class="pt-number">01</span>
+                    <span class="pt-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
+                            <path d="M11 2.5l1.8 5L18 9l-5.2 1.5L11 16l-1.8-5.5L4 9l5.2-1.5L11 2.5z" fill="currentColor"/>
+                            <circle cx="17" cy="17" r="2" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span class="pt-meta">
+                        <span class="pt-name">Ask me</span>
+                        <span class="pt-sub">Conversational AI</span>
+                    </span>
+                </button>
+
+                <button type="button" class="product-tab" data-product="insights">
+                    <span class="pt-number">02</span>
+                    <span class="pt-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none">
+                            <rect x="2" y="9" width="3" height="6" fill="currentColor"/>
+                            <rect x="7.5" y="5" width="3" height="10" fill="currentColor"/>
+                            <rect x="13" y="2" width="3" height="13" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span class="pt-meta">
+                        <span class="pt-name">Insights</span>
+                        <span class="pt-sub">BI &amp; Dashboards</span>
+                    </span>
+                </button>
+
+                <button type="button" class="product-tab" data-product="datamagnet">
+                    <span class="pt-number">03</span>
+                    <span class="pt-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none">
+                            <path d="M3 4 9 1 15 4v6c0 4-3 7-6 8-3-1-6-4-6-8V4z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <path d="M9 5v8M5 9h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span class="pt-meta">
+                        <span class="pt-name">Data Magnet</span>
+                        <span class="pt-sub">ETL &amp; Pipelines</span>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Active product detail (middle column) -->
+            <div class="product-detail" id="productDetail">
+                <span class="pd-pill" id="pdPill">Ask me</span>
+                <h3 id="pdTitle">Conversational Data</h3>
+                <p id="pdDesc">Stop digging for answers. Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.</p>
+                <div class="pd-chips" id="pdChips">
+                    <span class="pd-chip">Semantic Search</span>
+                    <span class="pd-chip">Contextual Intelligence</span>
+                    <span class="pd-chip">Natural Language Querying</span>
+                </div>
+                <a href="#" class="pd-cta" id="pdCta">See Ask Me in action</a>
+            </div>
+
+            <!-- Dashboard image (right column) -->
+            <div class="product-visual">
+                <img src="assets/images/homeV2o/Dashboard (1).gif" alt="Lumenore product dashboard" id="pdImage" loading="lazy">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== FEATURES AND CAPABILITIES — horizontal scroll (Figma 994:29843) ===== -->
+<section class="section-features">
+    <div class="container">
+        <div class="features-head">
+            <h2>Features and Capabilities<br>That’ll Help 10x Your Business Impact</h2>
+            <div class="features-nav">
+                <button type="button" class="nav-arrow" id="featuresPrev" aria-label="Previous">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="nav-arrow is-primary" id="featuresNext" aria-label="Next">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="features-viewport">
+            <div class="features-track" id="featuresTrack">
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
+                    </span>
+                    <h5>Data Integration</h5>
+                    <p>Connect and bring data from varied sources using in-built ETL tool and multiple data source connectors.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </span>
+                    <h5>Data Quality and Validation</h5>
+                    <p>Monitor and correct inconsistencies, duplicates, and errors in datasets.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </span>
+                    <h5>Data Lakehouse</h5>
+                    <p>Create a single source of truth with our highly scalable and secure data lakehouse.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="11"/><rect x="10" y="3" width="4" height="18"/><rect x="17" y="7" width="4" height="14"/></svg>
+                    </span>
+                    <h5>Data Visualization</h5>
+                    <p>Create interactive dashboards and storyboards using 100+ charts and graphs.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><polyline points="14 7 21 7 21 14"/></svg>
+                    </span>
+                    <h5>Predictive Analytics</h5>
+                    <p>Use historical and real-time data to forecast future trends, risks, and opportunities.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </span>
+                    <h5>Embedded Analytics</h5>
+                    <p>Bring dashboards and insights directly into business applications.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </span>
+                    <h5>AI Agents</h5>
+                    <p>Get a force of AI Agents for assistance in root cause analysis, visualization, predictions, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </span>
+                    <h5>Conversational Analytics</h5>
+                    <p>Ask your data any question in natural language (NLQ) and get actionable insights with context-aware AI.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    </span>
+                    <h5>Real-Time Data Sync</h5>
+                    <p>Connect and bring data from varied sources using in-built ETL tool and multiple data source connectors.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+                    </span>
+                    <h5>RAG-Based Analysis</h5>
+                    <p>Analyze unstructured data like PDFs, reports, and word docs.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+                    </span>
+                    <h5>Local LLM Integration</h5>
+                    <p>Keep sensitive data in-house while enabling natural language querying and analysis.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="fc-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9M12 14v1"/></svg>
+                    </span>
+                    <h5>Low-Code Data Pipeline Builder</h5>
+                    <p>Simplified ETL with a visual interface for building and managing data flows.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PERSONAS — BUILT FOR EVERYONE ===== -->
+<section class="section-personas">
+    <div class="container">
+        <h2>Lumenore is Built for Everyone</h2>
+        <p class="section-sub">Whether you build pipelines, answer business questions, run the company, or just need data without filing a ticket — Lumenore was made for you.</p>
+
+        <div class="persona-tabs" id="personaTabs">
+            <button type="button" class="persona-tab is-active" data-persona="analyst">
+                <span class="ptab-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M6 17V9m6 8V5m6 12v-6"/></svg>
+                </span>
+                <span class="ptab-meta">
+                    <span class="ptab-name">The Analyst</span>
+                    <span class="ptab-role">Data Analysts &amp; Business Users</span>
+                </span>
+            </button>
+
+            <button type="button" class="persona-tab" data-persona="business">
+                <span class="ptab-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </span>
+                <span class="ptab-meta">
+                    <span class="ptab-name">The Business User</span>
+                    <span class="ptab-role">Business Leaders</span>
+                </span>
+            </button>
+
+            <button type="button" class="persona-tab" data-persona="scientist">
+                <span class="ptab-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v6L5 19a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-4-10V3"/><path d="M9 3h6"/></svg>
+                </span>
+                <span class="ptab-meta">
+                    <span class="ptab-name">Data Scientists</span>
+                    <span class="ptab-role">Operator &amp; Manager</span>
+                </span>
+            </button>
+
+            <button type="button" class="persona-tab" data-persona="engineer">
+                <span class="ptab-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </span>
+                <span class="ptab-meta">
+                    <span class="ptab-name">The Engineer</span>
+                    <span class="ptab-role">Data Engineers</span>
+                </span>
+            </button>
+        </div>
+
+        <div class="persona-content">
+            <div class="persona-text">
+                <span class="persona-pill" id="personaPill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M6 17V9m6 8V5m6 12v-6"/></svg>
+                    <span>Data Analysts &amp; Business Users</span>
+                </span>
+
+                <h3 id="personaHeading">
+                    <span class="pquote">“</span><span id="personaHeadingText">Turn questions into insights without waiting on anyone.</span><span class="pquote">”</span>
+                </h3>
+
+                <p id="personaDesc">Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore’s intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.</p>
+
+                <div class="persona-chips" id="personaChips">
+                    <span class="chip">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        Natural language queries
+                    </span>
+                    <span class="chip">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        100+ chart types
+                    </span>
+                    <span class="chip">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                        Self-serve exploration
+                    </span>
+                </div>
+            </div>
+
+            <!-- Dashboard mock (analyst variant) -->
+            <div class="persona-dash" id="personaDash">
+                <div class="pdash-head">
+                    <span class="ws-label" id="dashWsLabel">Lumenore — The Analyst’s workspace</span>
+                    <span class="ws-live">Live</span>
+                </div>
+
+                <div class="pdash-body">
+                    <div class="pdash-chart">
+                        <p class="ch-label">Revenue tracked</p>
+                        <p class="ch-stat" id="dashStat">$4.2M</p>
+                        <p class="ch-delta">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                            <span id="dashDelta">+128K this week</span>
+                        </p>
+                        <div class="ch-bars" id="dashBars">
+                            <i style="height:32px"></i>
+                            <i style="height:52px"></i>
+                            <i style="height:28px"></i>
+                            <i style="height:64px"></i>
+                            <i style="height:44px"></i>
+                            <i style="height:72px"></i>
+                            <i style="height:56px"></i>
+                            <i style="height:80px"></i>
+                            <i style="height:48px"></i>
+                            <i style="height:68px"></i>
+                            <i style="height:58px"></i>
+                            <i style="height:76px"></i>
+                        </div>
+                    </div>
+
+                    <div class="pdash-side">
+                        <div class="pdash-stat">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            <span class="v" id="dashSide1V">128K</span>
+                            <span class="l" id="dashSide1L">Active</span>
+                        </div>
+                        <div class="pdash-stat">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            <span class="v" id="dashSide2V">2.1%</span>
+                            <span class="l" id="dashSide2L">Churn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pdash-chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span id="dashChat">“Show me top 5 quarters by revenue”</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRICING — EXPLORE THE RIGHT WAY ===== -->
+<section class="section-pricing">
+    <div class="container">
+        <h2>Explore the Right Way to Get Started</h2>
+
+        <div class="pricing-tabs" id="pricingTabs">
+            <button type="button" class="pricing-tab is-active" data-plan="freemium">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4M22 2C12 4 4 8 5 18c10-1 14-9 17-16-3 0-7 1-10 2-2 .67-4 2-5 4-2 3-1 6 1 8 4 0 7-2 10-5 1-1 2-3 2-5z"/></svg>
+                <span>Freemium</span>
+                <span class="pt-caption">For Individuals &amp; Small Teams</span>
+            </button>
+            <button type="button" class="pricing-tab" data-plan="enterprise">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
+                <span>Enterprise</span>
+                <span class="pt-caption">For Organizations &amp; Scale</span>
+            </button>
+        </div>
+
+        <div class="pricing-panel" id="pricingPanel">
+            <div class="pricing-left">
+                <div class="pl-head">
+                    <h3 class="pl-title" id="plTitle">Start answering your data questions independently.</h3>
+                    <p class="pl-note" id="plNote">No Credit Card, No Setup.</p>
+                </div>
+
+                <div class="pl-chips" id="plChips">
+                    <span class="pl-chip is-active">Connect necessary data sources with simple daily refresh </span>
+                    <span class="pl-chip">
+                        Analyze important, operational datasets
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    </span>
+                    <span class="pl-chip">
+                        Build basic dashboards quickly
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    </span>
+                    <span class="pl-chip">
+                        Use conversational analytics for light, ad-hoc querying
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    </span>
+                    <span class="pl-chip">
+                        Designed for individual, self-service analytics
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    </span>
+                </div>
+
+                <a href="pricing.html" class="pl-cta">
+                    Compare Freemium vs Enterprise
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="pricing-right" id="pricingRight">
+                <h4 class="pr-title">Bring your data in. Keep it up to date</h4>
+                <ul class="pr-list">
+                    <li>Connect files and databases without complex setup.</li>
+                    <li>Refresh data automatically on a daily schedule.</li>
+                    <li>Work with up-to-date numbers without manual effort.</li>
+                </ul>
+                <div class="pr-stat">
+                    <p class="pr-bignum">60%</p>
+                    <p class="pr-cap">Less time spent managing data updates.</p>
+                </div>
+                <div class="pr-image">
+                    <img src="assets/images/homeV2o/pricing/dashboard-side.webp" loading="lazy" alt="Pricing dashboard preview">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SUCCESS STORIES — carousel (Figma 994:29866) ===== -->
+<section class="section-success">
+    <div class="container">
+        <h2>Proven Track Record: Our Success Stories</h2>
+
+        <div class="stories-carousel">
+            <button type="button" class="stories-arrow is-prev" id="storiesPrev" aria-label="Previous story">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+
+            <div class="stories-viewport">
+                <div class="stories-track" id="storiesTrack">
+                    <a href="case-study-1.html" class="story-card">
+                        <div class="story-image">
+                            <img src="https://placehold.co/368x224/0e48a5/fcfcfc?text=Healthcare+Story+1" alt="Behavioral Healthcare Provider case study">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow">Success Story · Healthcare</p>
+                            <p class="story-title">How a US-based Behavioral Healthcare Provider Reduced Recidivism with Lumenore</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="case-study-2.html" class="story-card">
+                        <div class="story-image">
+                            <img src="https://placehold.co/368x224/55298e/fcfcfc?text=Healthcare+Story+2" alt="Public health program case study">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow">Success Story · Healthcare</p>
+                            <p class="story-title">How a Public Health Service Program Reduced Maternal &amp; Infant Mortality Rates</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="case-study-3.html" class="story-card">
+                        <div class="story-image">
+                            <img src="https://placehold.co/368x224/1ca9c9/fcfcfc?text=Healthcare+Story+3" alt="Healthcare scheduling case study">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow">Success Story · Healthcare</p>
+                            <p class="story-title">How a Global Healthcare Organization Optimized Their Scheduling and Staff Allocation</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="case-study-4.html" class="story-card">
+                        <div class="story-image">
+                            <img src="https://placehold.co/368x224/2863c3/fcfcfc?text=Manufacturing+Story" alt="Manufacturing case study">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow">Success Story · Manufacturing</p>
+                            <p class="story-title">How THK Rhythm Automotive Optimized Production with Lumenore</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="case-study-5.html" class="story-card">
+                        <div class="story-image">
+                            <img src="https://placehold.co/368x224/4075c9/fcfcfc?text=Agriculture+Story" alt="Agriculture case study">
+                        </div>
+                        <div class="story-body">
+                            <p class="story-eyebrow">Success Story · Agriculture</p>
+                            <p class="story-title">Unifying Crop, Channel, and Campaign Data with AI-Powered Analytics</p>
+                            <span class="story-link">
+                                Read case study
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <button type="button" class="stories-arrow is-next" id="storiesNext" aria-label="Next story">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS — tabs + quote (Figma 994:29873) ===== -->
+<section class="section-testimonial">
+    <div class="container">
+        <h2>Hear What Our Customers Have To Say</h2>
+
+        <div class="testimonial-card">
+            <!-- 3 person tabs (Arvind active/left, matches Figma) -->
+            <div class="testimonial-tabs" id="testimonialTabs">
+                <button type="button" class="testimonial-tab is-active" data-slide="0">
+                    <span class="tt-name">Arvind Patkar</span>
+                    <span class="tt-role">Founder &amp; CEO, ARAMSEC Company Limited</span>
+                </button>
+                <button type="button" class="testimonial-tab" data-slide="1">
+                    <span class="tt-name">Vicente Ciampa</span>
+                    <span class="tt-role">CEO, Xonit.net</span>
+                </button>
+                <button type="button" class="testimonial-tab" data-slide="2">
+                    <span class="tt-name">Sara Mohammad Alblooshi</span>
+                    <span class="tt-role">Application Head, Department of Digital Ajman</span>
+                </button>
+            </div>
+
+            <!-- Quote body -->
+            <div class="testimonial-body">
+                <div class="quote-mark" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+                        <path d="M22 12c-7.2 0-13 5.8-13 13 0 7.2 5.8 13 13 13 1.4 0 2.7-.2 4-.6-1.5 6.2-6 11.4-12.2 13.6L18 60c12-3 21-13.4 21-26V25c0-7.2-5.8-13-13-13h-4zm32 0c-7.2 0-13 5.8-13 13 0 7.2 5.8 13 13 13 1.4 0 2.7-.2 4-.6-1.5 6.2-6 11.4-12.2 13.6L50 60c12-3 21-13.4 21-26V25c0-7.2-5.8-13-13-13h-4z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="quote-content">
+                    <p class="quote-text" id="quoteText">Their innovative data analytics and business intelligence solutions have become integral to our operational efficiency and decision-making process. With Lumenore’s customized dashboards and predictive insights, we’ve gained a competitive edge, allowing us to make informed decisions faster and more accurately.
+
+This partnership has enhanced our ability to serve our clients effectively. We look forward to continued success together and highly recommend Lumenore for any organization seeking a reliable partner in business intelligence and digital transformation.</p>
+
+                    <div class="quote-meta">
+                        <div class="quote-stars">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
+                        </div>
+                        <p class="quote-name" id="quoteName">Arvind Patkar</p>
+                        <p class="quote-role" id="quoteRole">Founder &amp; CEO, ARAMSEC Company Limited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PAGE FINALE (gradient: violet → navy) ===== -->
+<div class="page-finale">
+
+<!-- ===== TRUST + BEFORE YOU DECIDE + CTA ===== -->
+<section class="section-trust">
+    <div class="container">
+        <div class="trust-row">
+            <h2>Trusted Standards for<br>Complete Data Security</h2>
+            <div class="trust-badges">
+                <img src="assets/images/homeV2o/Compliance_HIPAA.svg" alt="HIPAA Compliant" loading="lazy">
+                <img src="assets/images/homeV2o/Compliance_GDPR.svg" alt="GDPR Ready" loading="lazy">
+                <img src="assets/images/homeV2o/Compliance_AICPA_SOC2.svg" alt="AICPA SOC 2" loading="lazy">
+            </div>
+        </div>
+
+        <div class="before-decide">
+            <div class="bd-intro">
+                <h3>Before you decide</h3>
+                <p class="lead">Everything your team, IT, and procurement need to move forward with confidence.</p>
+            </div>
+
+            <div class="bd-faq" id="bdFaq">
+                <div class="faq-item is-open">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">01</span>
+                        <span class="faq-text">What is Lumenore and how does it differ from other business intelligence tools?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lumenore is an AI-powered business intelligence and analytics platform that combines data integration, automated insights, conversational analytics, and predictive intelligence. Unlike traditional BI tools, Lumenore offers natural language query, AI agents, and augmented analytics so users get insights instantly — no technical expertise required.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">02</span>
+                        <span class="faq-text">Which industries can benefit from Lumenore’s analytics solutions?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lumenore supports data-driven transformation across industries including healthcare, manufacturing, contact centers, retail, and HR. Its versatility makes it ideal for any enterprise aiming to become analytics-driven.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">03</span>
+                        <span class="faq-text">Can Lumenore integrate data from multiple sources and ETL tools?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Lumenore integrates with 100+ data sources including databases, cloud apps, CRMs, and ERPs. It works smoothly with ETL tools and performs built-in data preparation, letting you unify and transform data without complex engineering.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">04</span>
+                        <span class="faq-text">How does Lumenore support AI-powered data analytics?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lumenore uses AI to automatically detect insights, predict future trends, and allow natural language queries so users can ask questions like “Why did sales drop last month?” and get instant, context-aware answers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-q">
+                        <span class="faq-num">05</span>
+                        <span class="faq-text">Do I need technical experience to use Lumenore’s analytics features?</span>
+                        <span class="faq-toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No technical experience is required. Lumenore is a no-code, self-service analytics platform that lets business users create dashboards, run reports, and ask questions using natural language. All data models, workflows, and insights are fully guided and automated.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-cta">
+            <div class="cta-text">
+                <h3>Got more questions?</h3>
+                <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+            </div>
+            <a href="contact.html" class="cta-button">Get in Touch</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-nav">
+            <div class="brand-col footer-col">
+                <div class="brand-logo">
+                    <img src="assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
+                    <img src="assets/images/homeV2o/GPTW.svg" alt="Great Place to Work — Certified" class="gptw-badge">
+                </div>
+
+                <div class="ask-ai-box">
+                    <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
+                    <div class="ask-ai-icons">
+                        <a href="#" aria-label="ChatGPT"><svg width="16" height="16" viewBox="0 0 24 24" fill="#10a37f" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/></svg></a>
+                        <a href="#" aria-label="Gemini"><svg width="16" height="16" viewBox="0 0 24 24" fill="#4285f4" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 14,10 22,12 14,14 12,22 10,14 2,12 10,10"/></svg></a>
+                        <a href="#" aria-label="Perplexity"><svg width="16" height="16" viewBox="0 0 24 24" fill="#22b8cf" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 22,22 2,22"/></svg></a>
+                        <a href="#" aria-label="Claude"><svg width="16" height="16" viewBox="0 0 24 24" fill="#d97706" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/></svg></a>
+                        <a href="#" aria-label="Copilot"><svg width="16" height="16" viewBox="0 0 24 24" fill="#7c3aed" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="4"/></svg></a>
+                    </div>
+                </div>
+
+                <p class="follow-us-label">Follow Us</p>
+                <div class="social-list">
+                    <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                    <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="why-us.html">Why Us</a></li>
+                    <li><a href="trust-and-security.html">Trust and Security</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="professional-services.html">Professional Services</a></li>
+                    <li><a href="platform.html">Platform</a></li>
+                    <li><a href="release-notes.html">Latest Releases</a></li>
+                    <li><a href="watch-demo.html">Watch Demo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Capabilities</h4>
+                <ul>
+                    <li><a href="data-connectors.html">Data Connectors</a></li>
+                    <li><a href="data-integration.html">Data Integration</a></li>
+                    <li><a href="data-lakehouse.html">Data Lakehouse</a></li>
+                    <li><a href="data-visualization.html">Data Visualization</a></li>
+                    <li><a href="data-universe.html">Data Universe</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="advanced-analytics.html">Advanced Analytics</a></li>
+                    <li><a href="embedded-analytics.html">Embedded Analytics</a></li>
+                    <li><a href="conversational-intelligence.html">Conversational Intelligence</a></li>
+                    <li><a href="decision-intelligence.html">Decision Intelligence</a></li>
+                    <li><a href="self-service-analytics.html">Self-Service Analytics</a></li>
+                    <li><a href="predictive-analytics.html">Predictive Analytics</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="lumenore-insights.html">Lumenore Insights</a></li>
+                    <li><a href="lumenore-ask-me.html">Lumenore Ask Me</a></li>
+                    <li><a href="lumenore-data-magnet.html">Lumenore Data Magnet</a></li>
+                </ul>
+
+                <h4 class="col-spaced">Pricing</h4>
+                <ul>
+                    <li><a href="pricing-insights.html">Lumenore Insights Pricing</a></li>
+                </ul>
+
+                <h4 class="col-spaced">Compare</h4>
+                <ul>
+                    <li><a href="tableau-alternative.html">Tableau Alternative</a></li>
+                    <li><a href="thoughtspot-alternative.html">ThoughtSpot Alternative</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="solutions-by-industry.html">By Industry</a></li>
+                    <li><a href="solutions-by-department.html">By Department</a></li>
+                </ul>
+
+                <h4 class="col-spaced">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact-sales.html">Contact Sales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="request-a-demo.html">Request Demo</a></li>
+                    <li><a href="community-support.html">Community Support</a></li>
+                    <li><a href="news-and-media.html">News &amp; Media</a></li>
+                    <li><a href="ebooks-whitepapers.html">Ebooks &amp; Whitepapers</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="use-cases.html">Use Cases</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="knowledge-base.html">Knowledge Base</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="cookies.html">Cookies Settings</a>
+                <a href="license.html">License Agreement</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+<!-- ===== /PAGE FINALE ===== -->
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+    /* Product tabs — Ask Me ↔ Insights ↔ Data Magnet */
+    const productData = {
+        askme: {
+            pill: 'Ask me',
+            title: 'Conversational Data',
+            desc: 'Stop digging for answers. Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.',
+            chips: ['Semantic Search', 'Contextual Intelligence', 'Natural Language Querying'],
+            cta: 'See Ask Me in action',
+            image: 'assets/images/homeV2o/Dashboard (1).gif',
+            variant: ''
+        },
+        insights: {
+            pill: 'Insights',
+            title: 'Visualize Every Story in Your Data',
+            desc: 'Self-service dashboards, KPI tracking, and shareable storyboards. Build interactive analytics in minutes — no SQL required, no analyst queue.',
+            chips: ['Drag-and-drop builder', '100+ chart types', 'Storyboards & alerts'],
+            cta: 'See Insights in action',
+            image: 'assets/images/homeV2o/Dashboard (1).gif',
+            variant: 'is-insights'
+        },
+        datamagnet: {
+            pill: 'Data Magnet',
+            title: 'Unify Every Source Without the Wrangling',
+            desc: 'Low-code ETL and data pipelines that connect 100+ sources into a single, governed lakehouse with built-in observability and freshness checks.',
+            chips: ['100+ connectors', 'Visual pipeline builder', 'Schema observability'],
+            cta: 'See Data Magnet in action',
+            image: 'assets/images/homeV2o/Data Magnet (1).gif',
+            variant: 'is-datamagnet'
+        }
+    };
+
+    const productTabs = document.querySelectorAll('.product-tab');
+    const pdDetail    = document.getElementById('productDetail');
+    const pdPill      = document.getElementById('pdPill');
+    const pdTitle     = document.getElementById('pdTitle');
+    const pdDesc      = document.getElementById('pdDesc');
+    const pdChips     = document.getElementById('pdChips');
+    const pdCta       = document.getElementById('pdCta');
+    const pdImage     = document.getElementById('pdImage');
+
+    function activateProduct(key) {
+        const d = productData[key];
+        if (!d) return;
+        productTabs.forEach(t => t.classList.toggle('is-active', t.dataset.product === key));
+        pdDetail.classList.remove('is-insights', 'is-datamagnet');
+        if (d.variant) pdDetail.classList.add(d.variant);
+        pdPill.textContent  = d.pill;
+        pdTitle.textContent = d.title;
+        pdDesc.textContent  = d.desc;
+        pdChips.innerHTML   = d.chips.map(c => `<span class="pd-chip">${c}</span>`).join('');
+        pdCta.textContent   = d.cta;
+        pdImage.src         = d.image;
+        pdImage.alt         = d.title + ' preview';
+    }
+    productTabs.forEach(tab => {
+        tab.addEventListener('click', () => activateProduct(tab.dataset.product));
+    });
+</script>
+
+<script>
+    /* Persona tabs — title/desc/chips/dashboard swap */
+    const personaData = {
+        analyst: {
+            pill: 'Data Analysts & Business Users',
+            heading: 'Turn questions into insights without waiting on anyone.',
+            desc: "Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore’s intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.",
+            chips: ['Natural language queries', '100+ chart types', 'Self-serve exploration'],
+            ws: "Lumenore — The Analyst’s workspace",
+            stat: '$4.2M', delta: '+128K this week',
+            s1v: '128K', s1l: 'Active', s2v: '2.1%', s2l: 'Churn',
+            chat: '“Show me top 5 quarters by revenue”',
+            bars: [32, 52, 28, 64, 44, 72, 56, 80, 48, 68, 58, 76]
+        },
+        business: {
+            pill: 'Business Leaders',
+            heading: 'Make smarter decisions, faster — across web, mobile, and embedded.',
+            desc: 'Increase revenue, reduce costs, and stay agile in real time. Empower every team with accessible insights when and where they need them.',
+            chips: ['Real-time KPI tracking', 'Executive dashboards', 'Alerts & narratives'],
+            ws: 'Lumenore — Executive cockpit',
+            stat: '+18.4%', delta: '+3.2 pts vs Q3',
+            s1v: '92%', s1l: 'On track', s2v: '4', s2l: 'At risk',
+            chat: '“What changed in our pipeline this week?”',
+            bars: [40, 56, 48, 72, 60, 78, 64, 84, 56, 76, 68, 80]
+        },
+        scientist: {
+            pill: 'Operator & Manager',
+            heading: 'Build, test, and deploy models without leaving the platform.',
+            desc: 'Use AutoML for no-code development or the Python code studio for custom modeling. Train, test, deploy, and manage models alongside your data.',
+            chips: ['AutoML pipelines', 'Python code studio', 'Model monitoring'],
+            ws: 'Lumenore — Model registry',
+            stat: '0.94', delta: '+0.03 vs baseline',
+            s1v: '11', s1l: 'Models', s2v: '2.3%', s2l: 'Drift',
+            chat: '“Compare last 3 model versions”',
+            bars: [24, 38, 30, 52, 36, 60, 44, 70, 38, 56, 46, 64]
+        },
+        engineer: {
+            pill: 'Data Engineers',
+            heading: 'Ship reliable pipelines without yak-shaving ETL.',
+            desc: 'Simplified ETL with a visual interface for building and managing data flows. Streamlined data preparation and observability for production-grade pipelines.',
+            chips: ['Low-code ETL', 'Lakehouse storage', 'Schema observability'],
+            ws: 'Lumenore — Pipeline observability',
+            stat: '99.98%', delta: '+0.02% vs last week',
+            s1v: '47', s1l: 'Pipelines', s2v: '0', s2l: 'Failures',
+            chat: '“Why is the orders job slow today?”',
+            bars: [44, 60, 52, 76, 64, 82, 68, 88, 60, 80, 72, 84]
+        }
+    };
+
+    const personaTabs    = document.querySelectorAll('.persona-tab');
+    const personaPill    = document.getElementById('personaPill');
+    const personaHeading = document.getElementById('personaHeadingText');
+    const personaDesc    = document.getElementById('personaDesc');
+    const personaChips   = document.getElementById('personaChips');
+    const dashWsLabel    = document.getElementById('dashWsLabel');
+    const dashStat       = document.getElementById('dashStat');
+    const dashDelta      = document.getElementById('dashDelta');
+    const dashSide1V     = document.getElementById('dashSide1V');
+    const dashSide1L     = document.getElementById('dashSide1L');
+    const dashSide2V     = document.getElementById('dashSide2V');
+    const dashSide2L     = document.getElementById('dashSide2L');
+    const dashChat       = document.getElementById('dashChat');
+    const dashBars       = document.getElementById('dashBars');
+
+    function activatePersona(key) {
+        const d = personaData[key];
+        if (!d) return;
+        personaTabs.forEach(t => t.classList.toggle('is-active', t.dataset.persona === key));
+        personaPill.querySelector('span').textContent = d.pill;
+        personaHeading.textContent = d.heading;
+        personaDesc.textContent = d.desc;
+        personaChips.innerHTML = d.chips.map(c => `
+            <span class="chip">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+                ${c}
+            </span>
+        `).join('');
+        dashWsLabel.textContent = d.ws;
+        dashStat.textContent = d.stat;
+        dashDelta.textContent = d.delta;
+        dashSide1V.textContent = d.s1v;
+        dashSide1L.textContent = d.s1l;
+        dashSide2V.textContent = d.s2v;
+        dashSide2L.textContent = d.s2l;
+        dashChat.textContent = d.chat;
+        dashBars.innerHTML = d.bars.map(h => `<i style="height:${h}px"></i>`).join('');
+    }
+
+    personaTabs.forEach(tab => {
+        tab.addEventListener('click', () => activatePersona(tab.dataset.persona));
+    });
+</script>
+
+<script>
+    /* Pricing tabs — Freemium ↔ Enterprise content swap */
+    const pricingTabs = document.querySelectorAll('.pricing-tab');
+    const plTitle = document.getElementById('plTitle');
+    const plNote  = document.getElementById('plNote');
+    const plChips = document.getElementById('plChips');
+    const prRight = document.getElementById('pricingRight');
+
+    const pricingData = {
+        freemium: {
+            title: 'Start answering your data questions independently.',
+            note:  'No Credit Card, No Setup.',
+            chips: [
+                { text: 'Connect necessary data sources with simple daily refresh ', active: true },
+                { text: 'Analyze important, operational datasets', active: false },
+                { text: 'Build basic dashboards quickly', active: false },
+                { text: 'Use conversational analytics for light, ad-hoc querying', active: false },
+                { text: 'Designed for individual, self-service analytics', active: false }
+            ],
+            rightTitle: 'Bring your data in. Keep it up to date',
+            rightList: [
+                'Connect files and databases without complex setup.',
+                'Refresh data automatically on a daily schedule.',
+                'Work with up-to-date numbers without manual effort.'
+            ],
+            stat: '60%',
+            statCap: 'Less time spent managing data updates.'
+        },
+        enterprise: {
+            title: 'Scale analytics across your entire organization.',
+            note:  'Dedicated team. Custom contracts. Enterprise governance.',
+            chips: [
+                { text: 'Unlimited connectors and workspaces', active: true },
+                { text: 'Role-based access, SSO, audit logs', active: false },
+                { text: 'Embedded analytics & white-label dashboards', active: false },
+                { text: 'Predictive analytics and AI Agents', active: false },
+                { text: '24×7 enterprise support with SLAs', active: false }
+            ],
+            rightTitle: 'Govern data without slowing down teams',
+            rightList: [
+                'Centralized governance, lineage, and policy.',
+                'Reusable semantic layer across all products.',
+                'Automated quality and freshness checks.'
+            ],
+            stat: '3×',
+            statCap: 'Faster rollout of new analytics use cases.'
+        }
+    };
+
+    function activatePlan(key) {
+        const d = pricingData[key];
+        if (!d) return;
+        pricingTabs.forEach(t => t.classList.toggle('is-active', t.dataset.plan === key));
+        plTitle.textContent = d.title;
+        plNote.textContent  = d.note;
+        plChips.innerHTML = d.chips.map((c, i) => {
+            const active = c.active ? ' is-active' : '';
+            const arrow = c.active ? '' : '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+            return `<span class="pl-chip${active}">${c.text}${arrow}</span>`;
+        }).join('');
+        prRight.innerHTML = `
+            <h4 class="pr-title">${d.rightTitle}</h4>
+            <ul class="pr-list">
+                ${d.rightList.map(li => `<li>${li}</li>`).join('')}
+            </ul>
+            <div class="pr-stat">
+                <p class="pr-bignum">${d.stat}</p>
+                <p class="pr-cap">${d.statCap}</p>
+            </div>
+            <div class="pr-image">
+                <img src="assets/images/homeV2o/pricing/dashboard-side.webp" loading="lazy" alt="Pricing dashboard preview">
+            </div>
+        `;
+    }
+
+    pricingTabs.forEach(tab => tab.addEventListener('click', () => activatePlan(tab.dataset.plan)));
+</script>
+
+<script>
+    /* Testimonial — click a tab to swap quote text, name, role */
+    const testimonials = [
+        {
+            text: 'Their innovative data analytics and business intelligence solutions have become integral to our operational efficiency and decision-making process. With Lumenore’s customized dashboards and predictive insights, we’ve gained a competitive edge, allowing us to make informed decisions faster and more accurately.\n\nThis partnership has enhanced our ability to serve our clients effectively. We look forward to continued success together and highly recommend Lumenore for any organization seeking a reliable partner in business intelligence and digital transformation.',
+            name: 'Arvind Patkar',
+            role: 'Founder & CEO, ARAMSEC Company Limited'
+        },
+        {
+            text: 'Lumenore surpassed our expectations with its intuitive, no-code platform, democratizing data access across the organization. Our clients can now create interactive dashboards, explore real-time data, and uncover hidden trends more easily and without relying on IT.\n\nLumenore’s commitment to customer success and exceptional support have been invaluable.',
+            name: 'Vicente Ciampa',
+            role: 'CEO, Xonit.net'
+        },
+        {
+            text: 'Lumenore’s unified analytics platform replaced our manual reporting and helped us cut reporting cycles by 30%, with real-time data integration our business users actually trust.\n\nFeatures like customizable interactive reports and real-time data integration proved especially valuable, enabling us to reduce the time spent on reporting and empower business users to make informed decisions without technical bottlenecks.',
+            name: 'Sara Mohammad Alblooshi',
+            role: 'Application Head, Department of Digital Ajman'
+        }
+    ];
+
+    const tTabs  = document.querySelectorAll('.testimonial-tab');
+    const qText  = document.getElementById('quoteText');
+    const qName  = document.getElementById('quoteName');
+    const qRole  = document.getElementById('quoteRole');
+    let tIndex = 0;
+    let tTimer;
+
+    function showTestimonial(i) {
+        tIndex = i;
+        const t = testimonials[i];
+        qText.textContent = t.text;
+        qName.textContent = t.name;
+        qRole.textContent = t.role;
+        tTabs.forEach((tab, ti) => tab.classList.toggle('is-active', ti === i));
+    }
+    function nextTestimonial() { showTestimonial((tIndex + 1) % testimonials.length); }
+    function startAuto() { tTimer = setInterval(nextTestimonial, 7000); }
+    function resetAuto() { clearInterval(tTimer); startAuto(); }
+
+    tTabs.forEach(tab => tab.addEventListener('click', () => {
+        showTestimonial(parseInt(tab.dataset.slide, 10));
+        resetAuto();
+    }));
+    startAuto();
+</script>
+
+<script>
+    /* Features carousel — horizontal scroll with prev/next */
+    (function () {
+        const track = document.getElementById('featuresTrack');
+        const prev  = document.getElementById('featuresPrev');
+        const next  = document.getElementById('featuresNext');
+        if (!track || !prev || !next) return;
+        const cardWidth = 313 + 20; /* card + gap */
+        let offset = 0;
+
+        function maxOffset() {
+            const viewportWidth = track.parentElement.clientWidth;
+            const trackWidth = track.scrollWidth;
+            return Math.max(0, trackWidth - viewportWidth);
+        }
+        function update() {
+            track.style.transform = `translateX(${-offset}px)`;
+        }
+        prev.addEventListener('click', () => {
+            offset = Math.max(0, offset - cardWidth);
+            update();
+        });
+        next.addEventListener('click', () => {
+            offset = Math.min(maxOffset(), offset + cardWidth);
+            update();
+        });
+        window.addEventListener('resize', () => {
+            offset = Math.min(offset, maxOffset());
+            update();
+        });
+    })();
+</script>
+
+<script>
+    /* Stories carousel — same pattern */
+    (function () {
+        const track = document.getElementById('storiesTrack');
+        const prev  = document.getElementById('storiesPrev');
+        const next  = document.getElementById('storiesNext');
+        if (!track || !prev || !next) return;
+        const cardWidth = 368 + 20;
+        let offset = 0;
+
+        function maxOffset() {
+            const viewportWidth = track.parentElement.clientWidth;
+            const trackWidth = track.scrollWidth;
+            return Math.max(0, trackWidth - viewportWidth);
+        }
+        function update() {
+            track.style.transform = `translateX(${-offset}px)`;
+        }
+        prev.addEventListener('click', () => {
+            offset = Math.max(0, offset - cardWidth);
+            update();
+        });
+        next.addEventListener('click', () => {
+            offset = Math.min(maxOffset(), offset + cardWidth);
+            update();
+        });
+        window.addEventListener('resize', () => {
+            offset = Math.min(offset, maxOffset());
+            update();
+        });
+    })();
+</script>
+
+<script>
+    /* Before-you-decide FAQ accordion */
+    (function () {
+        const faq = document.getElementById('bdFaq');
+        if (!faq) return;
+        faq.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('is-open');
+                faq.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+                if (!isOpen) item.classList.add('is-open');
+            });
+        });
+    })();
+</script>
+
+<script>
+    /* Header scroll-to-solid transition (matches existing pattern) */
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+    });
+</script>
+
+</body>
+</html>
