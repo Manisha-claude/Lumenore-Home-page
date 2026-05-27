@@ -17,7 +17,7 @@
     --Royal-Blue-Blue-550: #0c3b87;
     --Royal-Blue-Blue-600: #0a3578;
     --Royal-Blue-Blue-750: #07214b;
-    --Royal-Blue-Blue-850: #04142d;
+    --Royal-Blue-Blue-850: #051A3C;
     --Royal-Blue-Blue-900: #051A3C;
 
     --Penn-Blue:        #001040;
@@ -96,7 +96,7 @@ body{
     -moz-osx-font-smoothing: grayscale;
     position: relative;
     /* Figma full-page background — navy at top, violet glow at bottom.
-       Bottom matches Rectangle 1265: violet-500 #55298e → #031430 → #000d22 */
+       Bottom matches Rectangle 1265: violet-500 #55298e → #031430 → #051A3C */
     background-color: var(--Royal-Blue-Blue-900, #051A3C);
     background-image:
         /* Center-top cyan glow (matches hero's mix-blend-plus-lighter ellipse) */
@@ -120,11 +120,11 @@ body{
         /* Main vertical depth gradient through the full page */
         linear-gradient(180deg,
             var(--Royal-Blue-Blue-900, #051A3C) 0%,
-            var(--Royal-Blue-Blue-850, #04142d) 7%,
+            var(--Royal-Blue-Blue-850, #051A3C) 7%,
             var(--Royal-Blue-Blue-900, #051A3C) 46%,
             var(--Royal-Blue-Blue-900, #051A3C) 74%,
-            var(--Royal-Blue-Blue-850, #04142d) 88%,
-            #000d22 100%);
+            var(--Royal-Blue-Blue-850, #051A3C) 88%,
+            #051A3C 100%);
 }
 /* Unified page-wide grain texture overlay (matches Figma "grain" frames at 6% opacity) */
 body::before{
@@ -3652,7 +3652,7 @@ a{ color: inherit; text-decoration: none; }
        is at fully-saturated solid violet, no top-edge softening. */
     top: -400px;
     /* Stops at page-finale's bottom — no off-screen extension below
-       (the gradient is already at solid #000D22 here, so the blur edge
+       (the gradient is already at solid #051A3C here, so the blur edge
        blends invisibly into the body's dark navy bg). Saves 240px of
        extra scroll height at the bottom of the page. */
     bottom: 0;
@@ -3661,8 +3661,8 @@ a{ color: inherit; text-decoration: none; }
         #55298E 0%,
         #55298E 16.14%,
         #031430 58.228%,
-        #000D22 78.04%,
-        #000D22 100%);
+        #051A3C 78.04%,
+        #051A3C 100%);
     /* Heavy Gaussian blur — matches Figma's filter: blur(100px). */
     filter: blur(100px);
     pointer-events: none;
