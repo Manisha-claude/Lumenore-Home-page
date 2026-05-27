@@ -1566,6 +1566,37 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 </script>
 
 <script>
+    /* Product GIF — mouse parallax on .product-visual.
+       Sets --mx/--my CSS vars so the img + pv-orbs drift opposite each other
+       on hover. Mirrors the setupPersonaParallax() pattern. */
+    (function setupProductParallax(){
+        const visual = document.querySelector('.product-visual');
+        if (!visual) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        let rect = null;
+        let mTicking = false;
+        let pendingX = 0, pendingY = 0;
+        const apply = () => {
+            visual.style.setProperty('--mx', pendingX.toFixed(3));
+            visual.style.setProperty('--my', pendingY.toFixed(3));
+            mTicking = false;
+        };
+        visual.addEventListener('mouseenter', () => { rect = visual.getBoundingClientRect(); });
+        visual.addEventListener('mousemove', (e) => {
+            if (!rect) rect = visual.getBoundingClientRect();
+            pendingX = (e.clientX - rect.left)  / rect.width  - 0.5;
+            pendingY = (e.clientY - rect.top)    / rect.height - 0.5;
+            if (!mTicking) { mTicking = true; requestAnimationFrame(apply); }
+        });
+        visual.addEventListener('mouseleave', () => {
+            pendingX = 0; pendingY = 0;
+            if (!mTicking) { mTicking = true; requestAnimationFrame(apply); }
+            rect = null;
+        });
+    })();
+</script>
+
+<script>
     /* Persona stepper — per-role content + per-persona accent palette.
        Each role rotates the primary/secondary brand colors so the section
        feels richer as you click through. */

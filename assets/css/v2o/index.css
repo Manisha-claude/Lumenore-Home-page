@@ -1117,6 +1117,7 @@ a{ color: inherit; text-decoration: none; }
     width: 65%;
     height: 65%;
     background: radial-gradient(circle, var(--pv-orb-a) 0%, transparent 70%);
+    transform: translate3d(calc(var(--mx, 0) * -8px), calc(var(--my, 0) * -6px), 0);
 }
 .pv-orb-b{
     bottom: -15%;
@@ -1126,19 +1127,25 @@ a{ color: inherit; text-decoration: none; }
     background: radial-gradient(circle, var(--pv-orb-b) 0%, transparent 70%);
     animation-duration: 9s;
     animation-delay: 1.4s;
+    transform: translate3d(calc(var(--mx, 0) * 6px), calc(var(--my, 0) * 5px), 0);
 }
 .product-visual img{
     position: relative;
     z-index: 1;
+    display: block;
     width: 100%;
     height: auto;
     max-height: 52vh;
     object-fit: contain;
     border-radius: 12px;
     mix-blend-mode: lighten;
-    display: block;
+    /* Float + mouse parallax — same pattern as persona scene cards.
+       scFloat1 uses the `translate` independent property so `transform`
+       stays free for the mouse-parallax offset. */
+    animation: scFloat1 6.5s ease-in-out 0.5s infinite alternate;
+    transform: translate3d(calc(var(--mx, 0) * 12px), calc(var(--my, 0) * 8px), 0);
     transition: opacity .4s ease, transform .4s cubic-bezier(.22, .61, .36, 1);
-    will-change: opacity, transform;
+    will-change: opacity, transform, translate;
 }
 .product-visual.is-leaving img{
     opacity: 0;
