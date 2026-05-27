@@ -1083,9 +1083,50 @@ a{ color: inherit; text-decoration: none; }
         transparent 70%);
     filter: blur(40px);
 }
+/* ── Per-product orb colors ─────────────────────────────────── */
+.product-visual{
+    --pv-orb-a: rgba(119, 71, 182, .45);
+    --pv-orb-b: rgba(85, 41, 142, .28);
+}
 .product-detail.is-insights ~ .product-visual,
-.product-stage:has(.is-insights) .product-visual{ --pd-glow: rgba(40, 99, 195, .18); }
-.product-stage:has(.is-datamagnet) .product-visual{ --pd-glow: rgba(28, 169, 201, .18); }
+.product-stage:has(.is-insights) .product-visual{
+    --pd-glow:  rgba(40, 99, 195, .18);
+    --pv-orb-a: rgba(40, 99, 195, .45);
+    --pv-orb-b: rgba(28, 169, 201, .28);
+}
+.product-stage:has(.is-datamagnet) .product-visual{
+    --pd-glow:  rgba(28, 169, 201, .18);
+    --pv-orb-a: rgba(28, 169, 201, .45);
+    --pv-orb-b: rgba(18, 182, 248, .28);
+}
+
+/* ── Animated background orbs behind the GIF ────────────────── */
+.pv-orb{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(72px);
+    pointer-events: none;
+    will-change: opacity, scale;
+    z-index: 0;
+    animation: glowBreathe 7s ease-in-out infinite alternate;
+    transition: background .55s ease;
+}
+.pv-orb-a{
+    top: -15%;
+    left: -8%;
+    width: 65%;
+    height: 65%;
+    background: radial-gradient(circle, var(--pv-orb-a) 0%, transparent 70%);
+}
+.pv-orb-b{
+    bottom: -15%;
+    right: -8%;
+    width: 58%;
+    height: 58%;
+    background: radial-gradient(circle, var(--pv-orb-b) 0%, transparent 70%);
+    animation-duration: 9s;
+    animation-delay: 1.4s;
+}
 .product-visual img{
     position: relative;
     z-index: 1;
