@@ -918,84 +918,78 @@
             <h2>Explore the Right Way <span class="ph-accent">to Get Started</span></h2>
         </div>
 
-        <!-- BIG PLAN TOGGLE — strong active state, unmissable ── -->
-        <div class="pricing-switcher" id="pricingTabs" role="tablist" aria-label="Plans">
-            <button type="button" class="ps-pill is-active" data-plan="freemium" role="tab" aria-selected="true" tabindex="0">
-                <span class="ps-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4M22 2C12 4 4 8 5 18c10-1 14-9 17-16-3 0-7 1-10 2-2 .67-4 2-5 4-2 3-1 6 1 8 4 0 7-2 10-5 1-1 2-3 2-5z"/></svg>
-                </span>
-                <span class="ps-label">
-                    <span class="ps-name">Freemium</span>
-                    <span class="ps-caption">For Individuals &amp; Small Teams</span>
-                </span>
-            </button>
-            <button type="button" class="ps-pill" data-plan="enterprise" role="tab" aria-selected="false" tabindex="-1">
-                <span class="ps-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
-                </span>
-                <span class="ps-label">
-                    <span class="ps-name">Enterprise</span>
-                    <span class="ps-caption">For Organizations &amp; Scale</span>
-                </span>
-            </button>
-        </div>
+        <!-- ASYMMETRIC SPLIT GRID — left main panel + right column of 3 stacked
+             insight cards. The left panel contains a small Freemium/Enterprise
+             switcher at the top and capability cards driven by Figma data;
+             the right cards swap content as the active capability changes. -->
+        <div class="pricing-grid" id="pricingGrid">
 
-        <!-- SHOWCASE PANEL — TWO premium cards, structured left/right split.
-             A tiny "comparison flow" indicator visually links them at the
-             midpoint (the visual cue that pricing here = compression). -->
-        <div class="pricing-showcase" id="pricingShowcase">
-
-            <!-- LEFT card: plan info + CTA (primary decision area) -->
-            <article class="ps-left" id="planLeft">
-                <div class="ps-left-head">
-                    <span class="ps-plan-tag" id="psPlanTag">Freemium</span>
-                </div>
-                <h3 class="ps-title"      id="planTitle">Start answering your data questions independently.</h3>
-                <p  class="ps-note"       id="planNote">No Credit Card, No Setup.</p>
-
-                <div class="ps-bullets"   id="planChips" role="tablist" aria-label="Plan features">
-                    <button type="button" class="psb is-active" data-bullet="1" role="tab" aria-selected="true"  tabindex="0"><span class="psb-text">Connect necessary data sources with simple daily refresh</span><span class="psb-arrow" aria-hidden="true">→</span></button>
-                    <button type="button" class="psb"           data-bullet="2" role="tab" aria-selected="false" tabindex="-1"><span class="psb-text">Analyze important, operational datasets</span><span class="psb-arrow" aria-hidden="true">→</span></button>
-                    <button type="button" class="psb"           data-bullet="3" role="tab" aria-selected="false" tabindex="-1"><span class="psb-text">Build basic dashboards quickly</span><span class="psb-arrow" aria-hidden="true">→</span></button>
-                    <button type="button" class="psb"           data-bullet="4" role="tab" aria-selected="false" tabindex="-1"><span class="psb-text">Use conversational analytics for light, ad-hoc querying</span><span class="psb-arrow" aria-hidden="true">→</span></button>
-                    <button type="button" class="psb"           data-bullet="5" role="tab" aria-selected="false" tabindex="-1"><span class="psb-text">Designed for individual, self-service analytics</span><span class="psb-arrow" aria-hidden="true">→</span></button>
+            <!-- LEFT — main pricing panel -->
+            <article class="pricing-main">
+                <!-- Plan switcher — bigger, more prominent pills with caption -->
+                <div class="pm-switcher" id="pricingTabs" role="tablist" aria-label="Plans">
+                    <button type="button" class="pm-plan is-active" data-plan="freemium" role="tab" aria-selected="true" tabindex="0">
+                        <span class="pm-plan-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4M22 2C12 4 4 8 5 18c10-1 14-9 17-16-3 0-7 1-10 2-2 .67-4 2-5 4-2 3-1 6 1 8 4 0 7-2 10-5 1-1 2-3 2-5z"/></svg>
+                        </span>
+                        <span class="pm-plan-label">
+                            <span class="pm-plan-name">Freemium</span>
+                            <span class="pm-plan-sub">For Individuals &amp; Small Teams</span>
+                        </span>
+                    </button>
+                    <button type="button" class="pm-plan" data-plan="enterprise" role="tab" aria-selected="false" tabindex="-1">
+                        <span class="pm-plan-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
+                        </span>
+                        <span class="pm-plan-label">
+                            <span class="pm-plan-name">Enterprise</span>
+                            <span class="pm-plan-sub">For Organizations &amp; Scale</span>
+                        </span>
+                    </button>
                 </div>
 
-                <a href="pricing.html" class="ps-cta btn-primary">
-                    Compare Freemium vs Enterprise
-                    <span class="ps-cta-arrow" aria-hidden="true">→</span>
+                <span class="pm-tag" id="pmTag">
+                    <span class="pm-tag-dot" aria-hidden="true"></span>
+                    <span id="pmTagText">Freemium · Free Forever</span>
+                </span>
+                <h3 class="pm-title" id="pmTitle">Start answering your data questions independently.</h3>
+                <p class="pm-sub" id="pmSub">No Credit Card, No Setup.</p>
+
+                <div class="pm-cards" id="pmCards" role="tablist" aria-label="Capabilities included">
+                    <!-- Cards rendered by JS — one per bullet in the active plan -->
+                </div>
+
+                <a href="pricing.html" class="pm-cta btn-primary">
+                    Compare Plans
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                 </a>
             </article>
 
-            <!-- RIGHT zone: supporting story for the active bullet.
-                 Order: eyebrow → h4 → 3 sub-bullets → GIF preview → stat row. -->
-            <article class="ps-right" id="planRight" aria-live="polite">
-                <span class="psr-eyebrow"  id="psrEyebrow">Why this matters</span>
-                <h4 class="psr-title"      id="psrTitle">Bring your data in. Keep it up to date</h4>
-                <p class="psr-comp-chip"   id="psrCompChip">Manual updates · Daily refresh</p>
-                <ul class="psr-bullets"    id="psrBullets">
-                    <li>Connect files and databases without complex setup.</li>
-                    <li>Refresh data automatically on a daily schedule.</li>
-                    <li>Work with up-to-date numbers without manual effort.</li>
-                </ul>
-                <div class="psr-stat" id="psrStat">
-                    <p class="psr-stat-num"><span class="psr-stat-value" id="psrStatValue">60</span><small id="psrStatSuffix">%</small></p>
-                    <p class="psr-stat-cap" id="psrStatCap">Less time spent managing data updates</p>
-                </div>
+            <!-- RIGHT — column of 3 stacked insight cards -->
+            <aside class="pricing-aside">
 
-                <!-- Visual hero — GIF on a soft brand-tinted backdrop halo. -->
-                <div class="psr-stage" id="psrStage">
-                    <div class="psr-stage-bg" aria-hidden="true"></div>
-
-                    <div class="psr-media" id="psrMedia">
-                        <img src="assets/images/homeV2o/pricing/Free1.gif"
-                             alt="Freemium feature preview" loading="lazy"
-                             onerror="this.onerror=null; this.src='assets/images/homeV2o/Dashboard (1).gif';">
+                <!-- Card 1 — Value Explanation: GIF preview + h4 + 3 sub-bullets -->
+                <article class="pa-card pa-card--value" id="paValueCard">
+                    <div class="pa-media" id="paMedia">
+                        <img id="paMediaImg" src="assets/images/homeV2o/pricing/Free1.gif" alt="Feature preview" loading="lazy">
                     </div>
-                </div>
-            </article>
-        </div>
+                    <span class="pa-label">Why this matters</span>
+                    <h4 class="pa-title" id="paValueTitle">Bring your data in. Keep it up to date</h4>
+                    <ul class="pa-checklist" id="paChecklist">
+                        <li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Connect files and databases without complex setup.</li>
+                        <li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Refresh data automatically on a daily schedule.</li>
+                        <li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Work with up-to-date numbers without manual effort.</li>
+                    </ul>
+                </article>
 
+                <!-- Card 2 — KPI Highlight -->
+                <article class="pa-card pa-card--kpi">
+                    <p class="pa-kpi-stat"><span id="paKpiNum">60</span><span id="paKpiSfx">%</span></p>
+                    <p class="pa-kpi-cap" id="paKpiCap">Less time spent managing data updates.</p>
+                </article>
+
+            </aside>
+        </div>
     </div>
 </section>
 
@@ -1794,402 +1788,291 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 </script>
 
 <script>
-    /* Pricing Showcase — Figma content per plan + per-bullet.
-       Each plan has:
-         • Plan title + bold note + 5 feature bullets + accent palette
-         • For each bullet (1..5): right-card content = eyebrow + h4 + 3
-           sub-bullets + stat number + stat caption + GIF/video src.
-       Variant 1 (bullet 1) content for each plan is taken verbatim from the
-       Figma component master (401:16954). Variants 2-5 are written to match
-       each bullet's feature theme. Swap them out with exact Figma copy when
-       available. */
-    /* Verbatim Figma content from component-set 401:16953 — all 12 variants:
-       5 Freemium (menu=free, number=1-5)  +  7 Enterprise (menu=enterprise, number=1-7).
-       Bullet text, h4 titles, sub-bullets, stat numbers + captions are all exact.
-       Note: Enterprise has 7 bullets (not 5) and no bold "No Credit Card" note —
-       its plan title is the descriptive sentence shown above bullets in Figma. */
-    const pricingData = {
-        freemium: {
-            tag:   'Freemium',
-            title: 'Start answering your data questions independently.',
-            note:  'No Credit Card, No Setup.',
-            bullets: [
-                'Connect necessary data sources with simple daily refresh',
-                'Analyze important, operational datasets',
-                'Build basic dashboards quickly',
-                'Use conversational analytics for light, ad-hoc querying',
-                'Designed for individual, self-service analytics'
-            ],
-            variants: [
-                {   /* Figma 401:16954 (menu=free, number=1) */
-                    eyebrow: 'Why this matters',
-                    title:   'Bring your data in. Keep it up to date',
-                    subs: [
-                        'Connect files and databases without complex setup.',
-                        'Refresh data automatically on a daily schedule.',
-                        'Work with up-to-date numbers without manual effort.'
-                    ],
-                    compChip: 'Manual updates · Daily refresh',
-                    statNum: '60', statSuffix: '%',
-                    statCap: 'Less time spent managing data updates',
-                    src: 'assets/images/homeV2o/pricing/Free1.gif', type: 'img'
-                },
-                {   /* Figma 401:17759 (menu=free, number=2) */
-                    eyebrow: 'Why this matters',
-                    title:   'Turn small datasets into clear insights',
-                    subs: [
-                        'Analyze limited data volumes without performance overhead.',
-                        'Explore trends and patterns quickly.',
-                        'Focus on understanding the data, not managing scale.'
-                    ],
-                    compChip: 'Manual digging · Quick exploration',
-                    statNum: '65', statSuffix: '%',
-                    statCap: 'Faster insight generation from small datasets',
-                    src: 'assets/images/homeV2o/pricing/Free-2.gif', type: 'img'
-                },
-                {   /* Figma 401:17872 (menu=free, number=3) — Free-3 is an MP4 video */
-                    eyebrow: 'Why this matters',
-                    title:   'Create dashboards without slowing down',
-                    subs: [
-                        'Build simple dashboards in minutes.',
-                        'Track key metrics and performance at a glance.',
-                        'Adjust visuals easily as your needs evolve.'
-                    ],
-                    compChip: 'Weeks of building · Minutes',
-                    statNum: '70', statSuffix: '%',
-                    statCap: 'Reduce time spent building dashboards',
-                    src: 'assets/images/homeV2o/pricing/Free-3.mp4', type: 'video'
-                },
-                {   /* Figma 401:17928 (menu=free, number=4) */
-                    eyebrow: 'Why this matters',
-                    title:   'Ask questions. Get answers instantly',
-                    subs: [
-                        'Use natural language to query your data.',
-                        'Get instant visual responses without writing queries.',
-                        'Ideal for quick checks and exploratory questions.'
-                    ],
-                    compChip: 'SQL queries · Plain English',
-                    statNum: '75', statSuffix: '%',
-                    statCap: 'Faster answers to everyday data questions',
-                    src: 'assets/images/homeV2o/pricing/Free-4.gif', type: 'img'
-                },
-                {   /* Figma 401:17987 (menu=free, number=5) */
-                    eyebrow: 'Why this matters',
-                    title:   'Built for solo analysis and personal use',
-                    subs: [
-                        'Single-user analytics focused on personal workflows.',
-                        'Full control to explore and analyze data independently.',
-                        'Move from question to insight at your own pace.'
-                    ],
-                    compChip: 'IT tickets · Self-serve',
-                    statNum: '70', statSuffix: '%',
-                    statCap: 'Reduce analysis turnaround time',
-                    src: 'assets/images/homeV2o/pricing/Free-5.gif', type: 'img'
-                }
-            ],
-            accent: '#1ca9c9', accentSecondary: '#12b6f8',
-            glowA: 'rgba(28, 169, 201, .55)',
-            glowB: 'rgba(18, 182, 248, .40)',
-            glowC: 'rgba(40, 99, 195, .20)',
-            soft:  'rgba(28, 169, 201, .08)',
-            border: 'rgba(28, 169, 201, .25)'
-        },
-        enterprise: {
-            tag:   'Enterprise',
-            title: 'Standardize metrics. Govern access. Drive decisions across the organization.',
-            note:  '', /* Figma Enterprise has no bold note — the longer title carries it. */
-            bullets: [
-                'Handle very large datasets at scale',
-                'Enable multi-user and team collaboration',
-                'Ensure enterprise-grade security and governance',
-                'Analyze data in near real time',
-                'Integrate across enterprise systems and data sources',
-                'Use governed conversational analytics across teams',
-                'Apply advanced and custom AI models'
-            ],
-            variants: [
-                {   /* Figma 401:17094 (menu=enterprise, number=1) */
-                    eyebrow: 'Why this matters',
-                    title:   'Built to perform at enterprise data volumes',
-                    subs: [
-                        'Analyze millions to billions of rows without performance drops.',
-                        'Maintain fast query response even under heavy workloads.',
-                        'Scale analytics as data grows across teams and systems.'
-                    ],
-                    compChip: 'Bottlenecked queries · Billions of rows',
-                    statNum: '80', statSuffix: '%',
-                    statCap: 'Faster insights from large datasets',
-                    src: 'assets/images/homeV2o/pricing/enterprise-1.gif', type: 'img'
-                },
-                {   /* Figma 401:17241 (menu=enterprise, number=2) */
-                    eyebrow: 'Why this matters',
-                    title:   'Designed for teams and organizations',
-                    subs: [
-                        'Multiple users can explore, analyze, and collaborate simultaneously.',
-                        'Share dashboards, insights, and reports across departments.',
-                        'Support organization-wide analytics adoption.'
-                    ],
-                    compChip: 'Siloed analysis · Org-wide insight',
-                    statNum: '65', statSuffix: '%',
-                    statCap: 'Improvement in cross-team analytics alignment',
-                    src: 'assets/images/homeV2o/pricing/enterprise-2.gif', type: 'img'
-                },
-                {   /* Figma 401:17398 (menu=enterprise, number=3) */
-                    eyebrow: 'Why this matters',
-                    title:   'Protect data with built-in governance controls',
-                    subs: [
-                        'Role-based access and fine-grained data permissions.',
-                        'Enforce security policies across users and teams.',
-                        'Support compliance and audit requirements.'
-                    ],
-                    compChip: 'Manual access reviews · Automated policies',
-                    statNum: '75', statSuffix: '%',
-                    statCap: 'Reduction in data access and compliance risks',
-                    src: 'assets/images/homeV2o/pricing/enterprise-3.gif', type: 'img'
-                },
-                {   /* Figma 401:17465 (menu=enterprise, number=4) */
-                    eyebrow: 'Why this matters',
-                    title:   'Make decisions while data is still relevant',
-                    subs: [
-                        'Ingest and analyze data with high-frequency updates.',
-                        'Monitor operational metrics as they change.',
-                        'Respond quickly to emerging trends and issues.'
-                    ],
-                    compChip: 'Stale reports · Live data',
-                    statNum: '60', statSuffix: '%',
-                    statCap: 'Faster operational decision-making',
-                    src: 'assets/images/homeV2o/pricing/enterprise-4.gif', type: 'img'
-                },
-                {   /* Figma 401:17534 (menu=enterprise, number=5) */
-                    eyebrow: 'Why this matters',
-                    title:   'Unify data from across the enterprise',
-                    subs: [
-                        'Connect to SaaS platforms, APIs, databases, and custom systems.',
-                        'Blend data across multiple sources seamlessly.',
-                        'Reduce silos between operational and analytical data.'
-                    ],
-                    compChip: 'Disconnected sources · One source of truth',
-                    statNum: '70', statSuffix: '%',
-                    statCap: 'Less time spent managing data integration',
-                    src: 'assets/images/homeV2o/pricing/enterprise-5.gif', type: 'img'
-                },
-                {   /* Figma 401:17602 (menu=enterprise, number=6) */
-                    eyebrow: 'Why this matters',
-                    title:   'Enable conversational analytics with control',
-                    subs: [
-                        'Allow teams to ask questions using natural language.',
-                        'Ensure answers respect roles, permissions, and governance rules.',
-                        'Maintain consistency and trust in AI-generated insights.'
-                    ],
-                    compChip: 'Open-ended AI · Governed AI',
-                    statNum: '65', statSuffix: '%',
-                    statCap: 'Faster answers without compromising governance',
-                    src: 'assets/images/homeV2o/pricing/enterprise-6.gif', type: 'img'
-                },
-                {   /* Figma 401:17690 (menu=enterprise, number=7) */
-                    eyebrow: 'Why this matters',
-                    title:   'Tailor AI to enterprise-specific needs',
-                    subs: [
-                        'Use advanced analytics and custom AI models.',
-                        'Apply domain-specific logic and business rules.',
-                        'Support complex analytical and predictive use cases.'
-                    ],
-                    compChip: 'Generic models · Domain-tuned AI',
-                    statNum: '75', statSuffix: '%',
-                    statCap: 'Higher impact from AI-driven analytics',
-                    src: 'assets/images/homeV2o/pricing/enterprise-7.gif', type: 'img'
-                }
-            ],
-            accent: '#0e48a5', accentSecondary: '#7747b6',
-            glowA: 'rgba(14, 72, 165, .55)',
-            glowB: 'rgba(119, 71, 182, .40)',
-            glowC: 'rgba(18, 182, 248, .20)',
-            soft:  'rgba(14, 72, 165, .10)',
-            border: 'rgba(14, 72, 165, .28)'
+    /* Pricing comparison — Freemium ↔ Enterprise plan switch + bullet-driven
+       right-card swap. Content + media URLs pulled verbatim from Figma frame
+       401:16953 (5 Freemium variants + 7 Enterprise variants).
+         · Plan-pill click swaps the plan, renders that plan's bullets in the
+           left card and variant[activeBullet] in the right card
+         · Bullet click swaps the right card to that bullet's variant
+         · Active bullet is remembered per-plan
+       Media URLs are short-lived Figma asset URLs (~7d TTL) — replace with
+       locally-hosted images later if needed. */
+    (function () {
+        const pricingData = {
+            freemium: {
+                title: 'Start answering your data questions independently.',
+                note:  'No Credit Card, No Setup.',
+                bullets: [
+                    'Connect necessary data sources with simple daily refresh',
+                    'Analyze important, operational datasets',
+                    'Build basic dashboards quickly',
+                    'Use conversational analytics for light, ad-hoc querying',
+                    'Designed for individual, self-service analytics'
+                ],
+                variants: [
+                    {
+                        title:  'Bring your data in. Keep it up to date',
+                        subs:   ['Connect files and databases without complex setup.',
+                                 'Refresh data automatically on a daily schedule.',
+                                 'Work with up-to-date numbers without manual effort.'],
+                        statNum: '60', statSuffix: '%',
+                        statCap: 'Less time spent managing data updates.',
+                        media:   'assets/images/homeV2o/pricing/Free1.gif'
+                    },
+                    {
+                        title:  'Turn small datasets into clear insights',
+                        subs:   ['Analyze limited data volumes without performance overhead.',
+                                 'Explore trends and patterns quickly.',
+                                 'Focus on understanding the data, not managing scale.'],
+                        statNum: '65', statSuffix: '%',
+                        statCap: 'Faster insight generation from small datasets.',
+                        media:   'assets/images/homeV2o/pricing/Free-2.gif'
+                    },
+                    {
+                        title:  'Create dashboards without slowing down',
+                        subs:   ['Build simple dashboards in minutes.',
+                                 'Track key metrics and performance at a glance.',
+                                 'Adjust visuals easily as your needs evolve.'],
+                        statNum: '70', statSuffix: '%',
+                        statCap: 'Reduce time spent building dashboards.',
+                        media:   'assets/images/homeV2o/Dashboard (1).gif'
+                    },
+                    {
+                        title:  'Ask questions. Get answers instantly',
+                        subs:   ['Use natural language to query your data.',
+                                 'Get instant visual responses without writing queries.',
+                                 'Ideal for quick checks and exploratory questions.'],
+                        statNum: '75', statSuffix: '%',
+                        statCap: 'Faster answers to everyday data questions.',
+                        media:   'assets/images/homeV2o/pricing/Free-4.gif'
+                    },
+                    {
+                        title:  'Built for solo analysis and personal use',
+                        subs:   ['Single-user analytics focused on personal workflows.',
+                                 'Full control to explore and analyze data independently.',
+                                 'Move from question to insight at your own pace.'],
+                        statNum: '70', statSuffix: '%',
+                        statCap: 'Reduce analysis turnaround time.',
+                        media:   'assets/images/homeV2o/pricing/Free-5.gif'
+                    }
+                ]
+            },
+            enterprise: {
+                title: 'Scale analytics across your entire organization.',
+                note:  '',
+                bullets: [
+                    'Handle very large datasets at scale',
+                    'Enable multi-user and team collaboration',
+                    'Ensure enterprise-grade security and governance',
+                    'Analyze data in near real time',
+                    'Integrate across enterprise systems and data sources',
+                    'Use governed conversational analytics across teams',
+                    'Apply advanced and custom AI models'
+                ],
+                variants: [
+                    {
+                        title:  'Built to perform at enterprise data volumes',
+                        subs:   ['Analyze millions to billions of rows without performance drops.',
+                                 'Maintain fast query response even under heavy workloads.',
+                                 'Scale analytics as data grows across teams and systems.'],
+                        statNum: '80', statSuffix: '%',
+                        statCap: 'Faster insights from large datasets.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-1.gif'
+                    },
+                    {
+                        title:  'Designed for teams and organizations',
+                        subs:   ['Multiple users can explore, analyze, and collaborate simultaneously.',
+                                 'Share dashboards, insights, and reports across departments.',
+                                 'Support organization-wide analytics adoption.'],
+                        statNum: '65', statSuffix: '%',
+                        statCap: 'Improvement in cross-team analytics alignment.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-2.gif'
+                    },
+                    {
+                        title:  'Protect data with built-in governance controls',
+                        subs:   ['Role-based access and fine-grained data permissions.',
+                                 'Enforce security policies across users and teams.',
+                                 'Support compliance and audit requirements.'],
+                        statNum: '75', statSuffix: '%',
+                        statCap: 'Reduction in data access and compliance risks.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-1.gif'
+                    },
+                    {
+                        title:  'Make decisions while data is still relevant',
+                        subs:   ['Ingest and analyze data with high-frequency updates.',
+                                 'Monitor operational metrics as they change.',
+                                 'Respond quickly to emerging trends and issues.'],
+                        statNum: '60', statSuffix: '%',
+                        statCap: 'Faster operational decision-making.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-2.gif'
+                    },
+                    {
+                        title:  'Unify data from across the enterprise',
+                        subs:   ['Connect to SaaS platforms, APIs, databases, and custom systems.',
+                                 'Blend data across multiple sources seamlessly.',
+                                 'Reduce silos between operational and analytical data.'],
+                        statNum: '70', statSuffix: '%',
+                        statCap: 'Less time spent managing data integration.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-1.gif'
+                    },
+                    {
+                        title:  'Enable conversational analytics with control',
+                        subs:   ['Allow teams to ask questions using natural language.',
+                                 'Ensure answers respect roles, permissions, and governance rules.',
+                                 'Maintain consistency and trust in AI-generated insights.'],
+                        statNum: '65', statSuffix: '%',
+                        statCap: 'Faster answers without compromising governance.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-2.gif'
+                    },
+                    {
+                        title:  'Tailor AI to enterprise-specific needs',
+                        subs:   ['Use advanced analytics and custom AI models.',
+                                 'Apply domain-specific logic and business rules.',
+                                 'Support complex analytical and predictive use cases.'],
+                        statNum: '75', statSuffix: '%',
+                        statCap: 'Higher impact from AI-driven analytics.',
+                        media:   'assets/images/homeV2o/pricing/enterprise-1.gif'
+                    }
+                ]
+            }
+        };
+
+        const tabs        = document.querySelectorAll('#pricingTabs .pm-plan');
+        const pmTagText   = document.getElementById('pmTagText');
+        const pmTitle     = document.getElementById('pmTitle');
+        const pmSub       = document.getElementById('pmSub');
+        const pmCards     = document.getElementById('pmCards');
+        const paValueTitle= document.getElementById('paValueTitle');
+        const paChecklist = document.getElementById('paChecklist');
+        const paMediaImg  = document.getElementById('paMediaImg');
+        const paKpiNum    = document.getElementById('paKpiNum');
+        const paKpiSfx    = document.getElementById('paKpiSfx');
+        const paKpiCap    = document.getElementById('paKpiCap');
+        const pricingMain = document.querySelector('.pricing-main');
+        const pricingAside= document.querySelector('.pricing-aside');
+        const pricingSection = document.getElementById('pricingSection');
+        if (!tabs.length || !pmCards) return;
+
+        const tagText = {
+            freemium:   'Freemium · Free Forever',
+            enterprise: 'Enterprise · For Organizations'
+        };
+
+        let currentPlan = 'freemium';
+        const activeCapByPlan = { freemium: 0, enterprise: 0 };
+
+        function renderCards(plan) {
+            const d = pricingData[plan];
+            const active = activeCapByPlan[plan];
+            pmCards.innerHTML = d.bullets.map((b, i) => {
+                const num = String(i + 1).padStart(2, '0');
+                const on = i === active;
+                return '<button type="button" class="pm-card' + (on ? ' is-active' : '') + '"'
+                    + ' data-cap="' + i + '" role="tab"'
+                    + ' aria-selected="' + on + '" tabindex="' + (on ? '0' : '-1') + '">'
+                    + '<span class="pm-card-num">' + num + '</span>'
+                    + '<span class="pm-card-title">' + b + '</span>'
+                    + '<svg class="pm-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>'
+                    + '</button>';
+            }).join('');
+            pmCards.querySelectorAll('.pm-card').forEach(card => {
+                card.addEventListener('click', () => setCapability(parseInt(card.dataset.cap, 10)));
+                card.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setCapability(parseInt(card.dataset.cap, 10));
+                    }
+                });
+            });
         }
-    };
 
-    const pricingSection = document.getElementById('pricingSection');
-    const pricingTabs    = pricingSection.querySelectorAll('.ps-pill');
-    const psPlanTag      = document.getElementById('psPlanTag');
-    const planTitle      = document.getElementById('planTitle');
-    const planNote       = document.getElementById('planNote');
-    const planChips      = document.getElementById('planChips');
-    const planRight      = document.getElementById('planRight');
-    const psrEyebrow     = document.getElementById('psrEyebrow');
-    const psrTitle       = document.getElementById('psrTitle');
-    const psrBullets     = document.getElementById('psrBullets');
-    const psrStat        = document.getElementById('psrStat');
-    const psrMedia       = document.getElementById('psrMedia');
-
-    /* Track active bullet per plan separately so switching plans remembers
-       which feature you were last looking at. */
-    const activeBulletByPlan = { freemium: 1, enterprise: 1 };
-    let currentPlan = 'freemium';
-    let countUpToken = 0;   /* used to invalidate in-flight count-ups when swapping */
-
-    /* Eased number count-up. Parses the numeric portion of a stat (so we can
-       handle "60", "10", "100" etc.) and animates from 0 to the target. Falls
-       through to a plain text set when the stat isn't a clean integer
-       (e.g. "SOC 2", "AI"). */
-    function animateStat(el, raw) {
-        countUpToken += 1;
-        const myToken = countUpToken;
-        const target = parseInt(String(raw).replace(/[^\d]/g, ''), 10);
-        if (!Number.isFinite(target) || /[^0-9.\s]/.test(raw)) {
-            /* Non-numeric stat — just set it. */
-            el.textContent = raw;
-            return;
+        function renderInsights(plan, idx) {
+            const v = pricingData[plan].variants[idx];
+            if (!v) return;
+            paValueTitle.textContent = v.title;
+            paChecklist.innerHTML = v.subs.map(s => (
+                '<li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' + s + '</li>'
+            )).join('');
+            paKpiNum.textContent = v.statNum;
+            paKpiSfx.textContent = v.statSuffix;
+            paKpiCap.textContent = v.statCap;
+            if (paMediaImg && v.media) {
+                paMediaImg.src = v.media;
+                paMediaImg.alt = v.title + ' preview';
+            }
         }
-        const duration = 1100;
-        const t0 = performance.now();
-        function step(now) {
-            if (myToken !== countUpToken) return; /* superseded by a newer swap */
-            const t = Math.min((now - t0) / duration, 1);
-            const eased = 1 - Math.pow(1 - t, 3); /* ease-out cubic */
-            el.textContent = String(Math.round(target * eased));
-            if (t < 1) requestAnimationFrame(step);
+
+        function setCapability(idx) {
+            activeCapByPlan[currentPlan] = idx;
+            pmCards.querySelectorAll('.pm-card').forEach((c, i) => {
+                const on = i === idx;
+                c.classList.toggle('is-active', on);
+                c.setAttribute('aria-selected', on);
+                c.setAttribute('tabindex', on ? '0' : '-1');
+            });
+            if (pricingAside) {
+                pricingAside.classList.add('is-swapping');
+                setTimeout(() => {
+                    renderInsights(currentPlan, idx);
+                    pricingAside.classList.remove('is-swapping');
+                }, 200);
+            } else {
+                renderInsights(currentPlan, idx);
+            }
         }
-        requestAnimationFrame(step);
-    }
 
-    /* Render the right-card content for the active plan + bullet.
-       Comp-chip lives BETWEEN h4 and bullets as a flat supporting line
-       (equal weight to the sub-bullets — no highlight chip). */
-    function renderRight(plan, bullet) {
-        const d = pricingData[plan];
-        const v = d.variants[bullet - 1];
-        if (!v) return;
-        psrEyebrow.textContent  = v.eyebrow;
-        psrTitle.textContent    = v.title;
-        const psrCompChip       = document.getElementById('psrCompChip');
-        if (psrCompChip) psrCompChip.textContent = v.compChip;
-        psrBullets.innerHTML    = v.subs.map(s => `<li>${s}</li>`).join('');
-        psrStat.innerHTML = `
-            <p class="psr-stat-num"><span class="psr-stat-value" id="psrStatValue">${v.statNum}</span><small>${v.statSuffix}</small></p>
-            <p class="psr-stat-cap">${v.statCap}</p>`;
-        /* Kick off count-up on the freshly rendered stat number */
-        const valEl = document.getElementById('psrStatValue');
-        if (valEl) animateStat(valEl, v.statNum);
-
-        const media = (v.type === 'video')
-            ? `<video src="${v.src}" autoplay loop muted playsinline preload="metadata"></video>`
-            : `<img src="${v.src}" alt="${v.title}" loading="lazy" onerror="this.onerror=null; this.src='assets/images/homeV2o/Dashboard (1).gif';">`;
-        psrMedia.innerHTML = media;
-    }
-
-    /* Cross-fade-swap the right card content. */
-    function swapRight(plan, bullet) {
-        planRight.classList.add('is-swapping');
-        setTimeout(() => {
-            renderRight(plan, bullet);
-            planRight.classList.remove('is-swapping');
-        }, 200);
-    }
-
-    function setActiveBullet(bullet) {
-        activeBulletByPlan[currentPlan] = bullet;
-        planChips.querySelectorAll('.psb').forEach(b => {
-            const on = parseInt(b.dataset.bullet, 10) === bullet;
-            b.classList.toggle('is-active', on);
-            b.setAttribute('aria-selected', on ? 'true' : 'false');
-            b.setAttribute('tabindex', on ? '0' : '-1');
-        });
-        swapRight(currentPlan, bullet);
-    }
-
-    function activatePlan(key) {
-        const d = pricingData[key];
-        if (!d) return;
-        currentPlan = key;
-        pricingSection.setAttribute('data-active-plan', key);
-        /* Retune the brand-color palette for the whole section */
-        pricingSection.style.setProperty('--pa-accent', d.accent);
-        pricingSection.style.setProperty('--pa-accent-secondary', d.accentSecondary);
-        pricingSection.style.setProperty('--pa-accent-glow-a', d.glowA);
-        pricingSection.style.setProperty('--pa-accent-glow-b', d.glowB);
-        pricingSection.style.setProperty('--pa-accent-glow-c', d.glowC);
-        pricingSection.style.setProperty('--pa-accent-soft', d.soft);
-        pricingSection.style.setProperty('--pa-accent-border', d.border);
-
-        pricingTabs.forEach(t => {
-            const on = t.dataset.plan === key;
-            t.classList.toggle('is-active', on);
-            t.setAttribute('aria-selected', on ? 'true' : 'false');
-            t.setAttribute('tabindex', on ? '0' : '-1');
-        });
-
-        /* Left column content */
-        if (psPlanTag)  psPlanTag.textContent  = d.tag;
-        planTitle.textContent = d.title;
-        /* Enterprise has no bold note in Figma — hide the element when empty
-           so the title flows directly into the bullets without a stray gap. */
-        if (d.note && d.note.trim()) {
-            planNote.textContent = d.note;
-            planNote.style.display = '';
-        } else {
-            planNote.textContent = '';
-            planNote.style.display = 'none';
+        function setPlan(plan) {
+            currentPlan = plan;
+            const d = pricingData[plan];
+            if (pricingSection) pricingSection.setAttribute('data-active-plan', plan);
+            tabs.forEach(t => {
+                const on = t.dataset.plan === plan;
+                t.classList.toggle('is-active', on);
+                t.setAttribute('aria-selected', on);
+                t.setAttribute('tabindex', on ? '0' : '-1');
+            });
+            if (pricingMain && pricingAside) {
+                pricingMain.classList.add('is-swapping');
+                pricingAside.classList.add('is-swapping');
+                setTimeout(() => {
+                    pmTagText.textContent = tagText[plan];
+                    pmTitle.textContent = d.title;
+                    if (d.note && d.note.trim()) {
+                        pmSub.textContent = d.note;
+                        pmSub.style.display = '';
+                    } else {
+                        pmSub.style.display = 'none';
+                    }
+                    renderCards(plan);
+                    renderInsights(plan, activeCapByPlan[plan]);
+                    pricingMain.classList.remove('is-swapping');
+                    pricingAside.classList.remove('is-swapping');
+                }, 200);
+            } else {
+                pmTagText.textContent = tagText[plan];
+                pmTitle.textContent = d.title;
+                pmSub.textContent = d.note;
+                renderCards(plan);
+                renderInsights(plan, activeCapByPlan[plan]);
+            }
         }
-        const activeBullet = activeBulletByPlan[key] || 1;
-        planChips.innerHTML = d.bullets.map((b, i) => {
-            const n  = i + 1;
-            const on = n === activeBullet;
-            return `<button type="button" class="psb${on ? ' is-active' : ''}" data-bullet="${n}" role="tab" aria-selected="${on}" tabindex="${on ? '0' : '-1'}"><span class="psb-text">${b}</span><span class="psb-arrow" aria-hidden="true">→</span></button>`;
-        }).join('');
-        wireBulletHandlers();
 
-        /* Right card content for active bullet */
-        swapRight(key, activeBullet);
-    }
-
-    function wireBulletHandlers() {
-        planChips.querySelectorAll('.psb').forEach(btn => {
-            btn.addEventListener('click', () => setActiveBullet(parseInt(btn.dataset.bullet, 10)));
-            btn.addEventListener('keydown', e => {
+        tabs.forEach(t => {
+            t.addEventListener('click', () => setPlan(t.dataset.plan));
+            t.addEventListener('keydown', e => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    setActiveBullet(parseInt(btn.dataset.bullet, 10));
+                    setPlan(t.dataset.plan);
                 }
             });
         });
-    }
-    /* Wire the initial set of bullets (rendered statically in HTML). */
-    wireBulletHandlers();
 
-    /* Wire plan-pill clicks + keyboard */
-    pricingTabs.forEach(tab => {
-        tab.addEventListener('click', () => activatePlan(tab.dataset.plan));
-        tab.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                activatePlan(tab.dataset.plan);
-            }
-        });
-    });
+        renderCards('freemium');
+        renderInsights('freemium', 0);
+    })();
 
-    /* Initial count-up — fires once when the showcase enters the viewport so
-       the headline stat animates into view rather than starting on full load. */
-    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        let fired = false;
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting && !fired) {
-                    fired = true;
-                    const v = pricingData[currentPlan].variants[(activeBulletByPlan[currentPlan] || 1) - 1];
-                    const valEl = document.getElementById('psrStatValue');
-                    if (valEl && v) animateStat(valEl, v.statNum);
-                    io.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.35 });
-        io.observe(planRight);
-    }
 
-    /* Mouse-parallax — applied independently to the right-side visual
-       stage AND the left-side chip column. Each target reads --mx/--my
-       in [-0.5, 0.5]; layered children consume them at varied magnitudes.
-       rAF-throttled. Bails on prefers-reduced-motion. */
+    /* Mouse-parallax on pricing aside card + other interactive zones */
     (function wireParallax(){
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         function attach(el){
@@ -2211,16 +2094,13 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 if (!pending) { pending = true; requestAnimationFrame(apply); }
             });
         }
-        attach(document.getElementById('psrStage'));
-        attach(document.getElementById('planLeft'));
+        attach(document.getElementById('paValueCard'));
         attach(document.getElementById('storiesCarousel'));
         attach(document.getElementById('testimonialCard'));
         attach(document.getElementById('heroSearchWrap'));
     })();
 
-    /* Stagger reveal — when the success-stories carousel scrolls into view
-       the first time, add .is-revealed so the cards play their fade+slide
-       animation in sequence (CSS-driven via nth-child delays). */
+    /* Stagger reveal for success-stories carousel */
     (function wireStoriesReveal(){
         const carousel = document.getElementById('storiesCarousel');
         if (!carousel) return;
@@ -3108,241 +2988,3 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 start: '#', learn: '#', pricing: '#'
             },
             askme: {
-                tagline: 'Conversational Data',
-                title:   'Lumenore Ask Me',
-                desc:    'Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.',
-                start: 'lumenore-ask-me.html', learn: 'lumenore-ask-me.html', pricing: '#'
-            },
-            datamagnet: {
-                tagline: 'Enterprise ETL',
-                title:   'Lumenore Data Magnet',
-                desc:    'Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse with secure, cost-effective automation.',
-                start: '#', learn: '#', pricing: '#'
-            }
-        };
-
-        function hideAll() {
-            productPane.hidden = true;
-            if (gridTitle) gridTitle.hidden = true;
-            if (grid)      grid.hidden      = true;
-        }
-        function showProduct(key) {
-            const d = products[key];
-            if (!d) return;
-            productTag.textContent   = d.tagline;
-            productTitle.textContent = d.title;
-            productDesc.textContent  = d.desc;
-            ctaStart.setAttribute('href',   d.start);
-            ctaLearn.setAttribute('href',   d.learn);
-            ctaPricing.setAttribute('href', d.pricing);
-            /* Show ONLY the product pane — capability grid stays hidden */
-            productPane.hidden = false;
-            if (gridTitle) gridTitle.hidden = true;
-            if (grid)      grid.hidden      = true;
-        }
-        function showGrid() {
-            /* Show ONLY the capability grid — product pane stays hidden */
-            productPane.hidden = true;
-            if (gridTitle) gridTitle.hidden = false;
-            if (grid)      grid.hidden      = false;
-        }
-
-        function highlight(key) {
-            navList.forEach(n => n.classList.toggle('is-active', n.dataset.platformItem === key));
-            cards.forEach(c   => c.classList.toggle('is-active', c.dataset.platformCard === key));
-        }
-        function clearHighlight() {
-            navList.forEach(n => n.classList.remove('is-active'));
-            cards.forEach(c   => c.classList.remove('is-active'));
-        }
-
-        /* Nav-list hover → either product detail or capability grid + highlight */
-        navList.forEach(n => {
-            const trigger = () => {
-                const key  = n.dataset.platformItem;
-                const type = n.dataset.platformType;
-                highlight(key);
-                if (type === 'product') showProduct(key);
-                else                    showGrid();
-            };
-            n.addEventListener('mouseenter', trigger);
-            n.addEventListener('focus',      trigger);
-        });
-        /* Grid-card hover → ensure we're in grid view and highlight */
-        cards.forEach(c => {
-            const trigger = () => { showGrid(); highlight(c.dataset.platformCard); };
-            c.addEventListener('mouseenter', trigger);
-            c.addEventListener('focus',      trigger);
-        });
-
-        /* Open default — when the Platform menu first becomes visible
-           (user hovers the trigger), pre-activate Lumenore Insights so
-           Col 2 isn't blank. Listen on the parent .nav-item, which
-           receives mouseenter before the dropdown opens via :hover. */
-        const navItem = mega.closest('.nav-item');
-        function openDefault(){
-            highlight('insights');
-            showProduct('insights');
-        }
-        if (navItem){
-            navItem.addEventListener('mouseenter', openDefault);
-            navItem.addEventListener('focusin',    openDefault);
-        }
-        /* Leave the entire mega → blank Col 2 + clear highlights. The
-           default re-applies the next time the menu opens. */
-        if (navItem){
-            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
-        }
-        mega.addEventListener('mouseleave', () => { /* handled at .nav-item level */ });
-    })();
-
-    /* Wide mega-menus — measure where the visible nav bar ENDS in the
-       viewport and feed that exact pixel into --nav-height. The CSS
-       `top: var(--nav-height)` then places the dropdown flush against
-       the nav's bottom edge — zero gap, no spacing, no margin.
-
-       Using `.site-header.getBoundingClientRect().bottom` is the most
-       reliable measurement: it's the actual rendered bottom edge
-       relative to the viewport, regardless of whether the hello-bar is
-       visible above it or how sticky promotion behaves. */
-    (function () {
-        const header = document.querySelector('.site-header');
-        const wideMegas = document.querySelectorAll(
-            '.nav-mega--platform, .nav-mega--solutions, .nav-mega--resources'
-        );
-        if (!header || !wideMegas.length) return;
-
-        function syncTops() {
-            const bottom = header.getBoundingClientRect().bottom;
-            if (bottom <= 0) return;
-            document.documentElement.style.setProperty('--nav-height', bottom + 'px');
-        }
-
-        syncTops();
-        requestAnimationFrame(syncTops);
-        requestAnimationFrame(() => requestAnimationFrame(syncTops));
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', syncTops);
-        }
-        window.addEventListener('load',   syncTops);
-        window.addEventListener('resize', syncTops, { passive: true });
-        window.addEventListener('scroll', syncTops, { passive: true });
-        if (typeof ResizeObserver === 'function') {
-            new ResizeObserver(syncTops).observe(header);
-        }
-        setTimeout(syncTops, 500);
-
-        /* Re-measure right when a wide dropdown is about to open. */
-        document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
-            if (!item.querySelector('.nav-mega--platform, .nav-mega--solutions, .nav-mega--resources')) return;
-            item.addEventListener('mouseenter', syncTops);
-            item.addEventListener('focusin',    syncTops);
-        });
-    })();
-
-    /* Solutions mega — same pattern as Platform.
-         · Col 1 has two entries: By Industry / By Department
-         · Hovering By Industry shows the 14-card industry grid in Col 2
-         · Hovering By Department shows the 4-card department grid
-         · Col 3 (Recent Blogs) is static
-         · Default open state: By Industry pre-activated */
-    (function () {
-        const mega = document.getElementById('solutionMega');
-        if (!mega) return;
-        const navList     = mega.querySelectorAll('[data-solution-item]');
-        const industryTtl = document.getElementById('solIndustryTitle');
-        const industryGrid= document.getElementById('solIndustryGrid');
-        const deptTtl     = document.getElementById('solDepartmentTitle');
-        const deptGrid    = document.getElementById('solDepartmentGrid');
-
-        function hideAll(){
-            industryTtl.hidden  = true;
-            industryGrid.hidden = true;
-            deptTtl.hidden      = true;
-            deptGrid.hidden     = true;
-        }
-        function showIndustry(){
-            industryTtl.hidden  = false;
-            industryGrid.hidden = false;
-            deptTtl.hidden      = true;
-            deptGrid.hidden     = true;
-        }
-        function showDepartment(){
-            industryTtl.hidden  = true;
-            industryGrid.hidden = true;
-            deptTtl.hidden      = false;
-            deptGrid.hidden     = false;
-        }
-        function highlight(key){
-            navList.forEach(n => n.classList.toggle('is-active', n.dataset.solutionItem === key));
-        }
-        function clearHighlight(){
-            navList.forEach(n => n.classList.remove('is-active'));
-        }
-
-        navList.forEach(n => {
-            const trigger = () => {
-                const key = n.dataset.solutionItem;
-                highlight(key);
-                if (key === 'department') showDepartment();
-                else                       showIndustry();
-            };
-            n.addEventListener('mouseenter', trigger);
-            n.addEventListener('focus',      trigger);
-        });
-
-        const navItem = mega.closest('.nav-item');
-        function openDefault(){ highlight('industry'); showIndustry(); }
-        if (navItem){
-            navItem.addEventListener('mouseenter', openDefault);
-            navItem.addEventListener('focusin',    openDefault);
-            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
-        }
-    })();
-
-    /* Company mega — single grid, no filter splits.
-         · Col 1 has one entry: Company
-         · Col 2 shows all 7 items in one grid (no swap)
-         · Col 3 (Recent Blogs) is static
-         · Default open state: grid pre-shown */
-    (function () {
-        const mega = document.getElementById('companyMega');
-        if (!mega) return;
-        const navList = mega.querySelectorAll('[data-company-item]');
-        const allTtl  = document.getElementById('coAllTitle');
-        const allGrid = document.getElementById('coAllGrid');
-
-        function hideAll(){
-            allTtl.hidden  = true;
-            allGrid.hidden = true;
-        }
-        function showAll(){
-            allTtl.hidden  = false;
-            allGrid.hidden = false;
-        }
-        function highlight(){
-            navList.forEach(n => n.classList.add('is-active'));
-        }
-        function clearHighlight(){
-            navList.forEach(n => n.classList.remove('is-active'));
-        }
-
-        navList.forEach(n => {
-            const trigger = () => { highlight(); showAll(); };
-            n.addEventListener('mouseenter', trigger);
-            n.addEventListener('focus',      trigger);
-        });
-
-        const navItem = mega.closest('.nav-item');
-        function openDefault(){ highlight(); showAll(); }
-        if (navItem){
-            navItem.addEventListener('mouseenter', openDefault);
-            navItem.addEventListener('focusin',    openDefault);
-            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
-        }
-    })();
-
-</script>
-
-</body>
-</html>
