@@ -2002,9 +2002,8 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             paChecklist.innerHTML = v.subs.map(s => (
                 '<li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' + s + '</li>'
             )).join('');
-            const from = parseInt(paKpiNum.textContent, 10) || 0;
-            const to   = parseInt(v.statNum, 10);
-            countUp(paKpiNum, from, to, 700);
+            const to = parseInt(v.statNum, 10);
+            countUp(paKpiNum, 10, to, 700);
             paKpiSfx.textContent = v.statSuffix;
             paKpiCap.textContent = v.statCap;
             if (paMediaImg && v.media) {
