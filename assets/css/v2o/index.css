@@ -131,11 +131,10 @@ body::after{
     content: "";
     position: fixed;
     inset: 0;
-    background: url('../images/homeV2o/page-bg.png') center top / cover no-repeat;
+    background: url('../../images/homeV2o/page-bg.png') center top / cover no-repeat;
     pointer-events: none;
     z-index: 0;
-    opacity: .55;
-    mix-blend-mode: screen;
+    opacity: .45;
 }
 /* Unified page-wide grain texture overlay (matches Figma "grain" frames at 6% opacity) */
 body::before{
