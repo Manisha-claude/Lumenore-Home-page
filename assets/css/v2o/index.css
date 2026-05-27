@@ -813,7 +813,67 @@ a{ color: inherit; text-decoration: none; }
     overflow: visible;
 }
 .products-sticky > .container{
+    position: relative;
+    z-index: 1;
     width: 100%;
+}
+
+/* ── Section-wide ambient background orbs ───────────────────── */
+/* Default palette — Ask Me (violet) */
+.products-sticky{
+    --ps-c1: rgba(119, 71, 182, .40);
+    --ps-c2: rgba(40,  99, 195, .28);
+    --ps-c3: rgba(85,  41, 142, .22);
+}
+/* Insights — blue */
+.products-sticky:has(.is-insights){
+    --ps-c1: rgba(40, 99, 195, .40);
+    --ps-c2: rgba(28, 169, 201, .28);
+    --ps-c3: rgba(119, 71, 182, .22);
+}
+/* Data Magnet — teal */
+.products-sticky:has(.is-datamagnet){
+    --ps-c1: rgba(28, 169, 201, .40);
+    --ps-c2: rgba(18, 182, 248, .28);
+    --ps-c3: rgba(40, 99, 195, .22);
+}
+.ps-orb{
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    transition: background .7s ease;
+    will-change: opacity;
+}
+/* Top-left — primary accent */
+.ps-orb-1{
+    top: -8%;
+    left: -6%;
+    width: 52%;
+    height: 62%;
+    background: radial-gradient(circle, var(--ps-c1) 0%, transparent 65%);
+    filter: blur(90px);
+    animation: glowBreathe 8s ease-in-out infinite alternate;
+}
+/* Bottom-right — secondary accent */
+.ps-orb-2{
+    bottom: -8%;
+    right: -6%;
+    width: 50%;
+    height: 58%;
+    background: radial-gradient(circle, var(--ps-c2) 0%, transparent 65%);
+    filter: blur(90px);
+    animation: glowBreathe 10s ease-in-out 1.6s infinite alternate;
+}
+/* Center — subtle third layer for depth */
+.ps-orb-3{
+    top: 28%;
+    left: 32%;
+    width: 38%;
+    height: 44%;
+    background: radial-gradient(circle, var(--ps-c3) 0%, transparent 65%);
+    filter: blur(80px);
+    animation: glowBreathe 13s ease-in-out 0.9s infinite alternate;
 }
 
 /* ── Scroll progress dots ───────────────────────────────────── */
