@@ -759,7 +759,11 @@ a{ color: inherit; text-decoration: none; }
  * Section: Products — tabbed (Figma 994:29832)
  * ----------------------------------------------------------- */
 .section-products{
-    background: #051A3C;
+    /* Solid at top, fades transparent at bottom so features gradient bleeds through */
+    background: linear-gradient(180deg,
+        #051A3C 0%,
+        #051A3C 65%,
+        transparent 100%);
     /* Scroll track — the inner .products-sticky pins for (height − 100vh) of
        scrolling, split across the 3 products. 300vh ⇒ ~66vh of scroll each,
        giving the 3rd product enough hold time before exiting. */
@@ -7404,7 +7408,7 @@ body.explore-locked{ overflow: hidden; }
     padding: 96px 0 120px;
 }
 .trusted-section{ padding: 80px 0; background: #051A3C; }
-.section-products{ padding: 0; background: #051A3C; }
+.section-products{ padding: 0; }
 .section-features{ padding: 96px 0; }
 .section-personas{ padding: 96px 0; }
 .section-pricing{ padding: 96px 0; }
