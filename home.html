@@ -948,10 +948,6 @@
                     </button>
                 </div>
 
-                <span class="pm-tag" id="pmTag">
-                    <span class="pm-tag-dot" aria-hidden="true"></span>
-                    <span id="pmTagText">Freemium · Free Forever</span>
-                </span>
                 <h3 class="pm-title" id="pmTitle">Start answering your data questions independently.</h3>
                 <p class="pm-sub" id="pmSub">No Credit Card, No Setup.</p>
 
@@ -1938,7 +1934,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         };
 
         const tabs        = document.querySelectorAll('#pricingTabs .pm-plan');
-        const pmTagText   = document.getElementById('pmTagText');
         const pmTitle     = document.getElementById('pmTitle');
         const pmSub       = document.getElementById('pmSub');
         const pmCards     = document.getElementById('pmCards');
@@ -1953,10 +1948,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         const pricingSection = document.getElementById('pricingSection');
         if (!tabs.length || !pmCards) return;
 
-        const tagText = {
-            freemium:   'Freemium · Free Forever',
-            enterprise: 'Enterprise · For Organizations'
-        };
+
 
         let currentPlan = 'freemium';
         const activeCapByPlan = { freemium: 0, enterprise: 0 };
@@ -2035,7 +2027,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 pricingMain.classList.add('is-swapping');
                 pricingAside.classList.add('is-swapping');
                 setTimeout(() => {
-                    pmTagText.textContent = tagText[plan];
                     pmTitle.textContent = d.title;
                     if (d.note && d.note.trim()) {
                         pmSub.textContent = d.note;
@@ -2049,7 +2040,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                     pricingAside.classList.remove('is-swapping');
                 }, 200);
             } else {
-                pmTagText.textContent = tagText[plan];
                 pmTitle.textContent = d.title;
                 pmSub.textContent = d.note;
                 renderCards(plan);
