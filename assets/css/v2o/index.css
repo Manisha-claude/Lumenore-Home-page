@@ -1071,40 +1071,40 @@ a{ color: inherit; text-decoration: none; }
     justify-content: center;
     min-width: 0;
 }
-/* Soft accent glow behind the mock for depth on the dark canvas */
+/* Soft accent wash behind the GIF — wide diffuse base layer */
 .product-visual::before{
     content: "";
     position: absolute;
-    inset: 8% 6%;
+    inset: 4% 4%;
     z-index: 0;
     pointer-events: none;
-    background: radial-gradient(60% 60% at 70% 30%,
-        var(--pd-glow, rgba(119, 71, 182, .18)) 0%,
-        transparent 70%);
-    filter: blur(40px);
+    background: radial-gradient(60% 60% at 55% 45%,
+        var(--pd-glow, rgba(119, 71, 182, .32)) 0%,
+        transparent 72%);
+    filter: blur(48px);
 }
 /* ── Per-product orb colors ─────────────────────────────────── */
 .product-visual{
-    --pv-orb-a: rgba(119, 71, 182, .45);
-    --pv-orb-b: rgba(85, 41, 142, .28);
+    --pv-orb-a: rgba(119, 71, 182, .72);
+    --pv-orb-b: rgba(85,  41, 142, .52);
 }
 .product-detail.is-insights ~ .product-visual,
 .product-stage:has(.is-insights) .product-visual{
-    --pd-glow:  rgba(40, 99, 195, .18);
-    --pv-orb-a: rgba(40, 99, 195, .45);
-    --pv-orb-b: rgba(28, 169, 201, .28);
+    --pd-glow:  rgba(40, 99, 195, .30);
+    --pv-orb-a: rgba(40, 99, 195, .72);
+    --pv-orb-b: rgba(28, 169, 201, .52);
 }
 .product-stage:has(.is-datamagnet) .product-visual{
-    --pd-glow:  rgba(28, 169, 201, .18);
-    --pv-orb-a: rgba(28, 169, 201, .45);
-    --pv-orb-b: rgba(18, 182, 248, .28);
+    --pd-glow:  rgba(28, 169, 201, .30);
+    --pv-orb-a: rgba(28, 169, 201, .72);
+    --pv-orb-b: rgba(18, 182, 248, .52);
 }
 
 /* ── Animated background orbs behind the GIF ────────────────── */
 .pv-orb{
     position: absolute;
     border-radius: 50%;
-    filter: blur(72px);
+    filter: blur(55px);
     pointer-events: none;
     will-change: opacity, scale;
     z-index: 0;
@@ -1112,19 +1112,19 @@ a{ color: inherit; text-decoration: none; }
     transition: background .55s ease;
 }
 .pv-orb-a{
-    top: -15%;
-    left: -8%;
-    width: 65%;
-    height: 65%;
-    background: radial-gradient(circle, var(--pv-orb-a) 0%, transparent 70%);
+    top: 2%;
+    left: 2%;
+    width: 72%;
+    height: 72%;
+    background: radial-gradient(circle, var(--pv-orb-a) 0%, transparent 68%);
     transform: translate3d(calc(var(--mx, 0) * -8px), calc(var(--my, 0) * -6px), 0);
 }
 .pv-orb-b{
-    bottom: -15%;
-    right: -8%;
-    width: 58%;
-    height: 58%;
-    background: radial-gradient(circle, var(--pv-orb-b) 0%, transparent 70%);
+    bottom: 2%;
+    right: 2%;
+    width: 65%;
+    height: 65%;
+    background: radial-gradient(circle, var(--pv-orb-b) 0%, transparent 68%);
     animation-duration: 9s;
     animation-delay: 1.4s;
     transform: translate3d(calc(var(--mx, 0) * 6px), calc(var(--my, 0) * 5px), 0);
