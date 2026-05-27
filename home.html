@@ -1978,6 +1978,23 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             });
         }
 
+        let kpiRaf = null;
+        function countUp(el, from, to, duration) {
+            if (kpiRaf) cancelAnimationFrame(kpiRaf);
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                el.textContent = to; return;
+            }
+            const start = performance.now();
+            const range = to - from;
+            function step(now) {
+                const t = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(from + range * ease);
+                if (t < 1) kpiRaf = requestAnimationFrame(step);
+            }
+            kpiRaf = requestAnimationFrame(step);
+        }
+
         function renderInsights(plan, idx) {
             const v = pricingData[plan].variants[idx];
             if (!v) return;
@@ -1985,7 +2002,9 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             paChecklist.innerHTML = v.subs.map(s => (
                 '<li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' + s + '</li>'
             )).join('');
-            paKpiNum.textContent = v.statNum;
+            const from = parseInt(paKpiNum.textContent, 10) || 0;
+            const to   = parseInt(v.statNum, 10);
+            countUp(paKpiNum, from, to, 700);
             paKpiSfx.textContent = v.statSuffix;
             paKpiCap.textContent = v.statCap;
             if (paMediaImg && v.media) {
