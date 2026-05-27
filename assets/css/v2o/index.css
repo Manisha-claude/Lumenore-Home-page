@@ -126,16 +126,6 @@ body{
             var(--Royal-Blue-Blue-850, #051A3C) 88%,
             #051A3C 100%);
 }
-/* Figma full-page background texture — fixed behind all content */
-body::after{
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: url('../../images/homeV2o/page-bg.png') center top / cover no-repeat;
-    pointer-events: none;
-    z-index: 0;
-    opacity: .45;
-}
 /* Unified page-wide grain texture overlay (matches Figma "grain" frames at 6% opacity) */
 body::before{
     content: "";
