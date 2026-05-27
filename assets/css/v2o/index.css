@@ -709,7 +709,7 @@ a{ color: inherit; text-decoration: none; }
  * Section: Trusted / Logos (dark, matches page background)
  * ----------------------------------------------------------- */
 .trusted-section{
-    background: transparent;
+    background: #071830;
     padding: 65px 0;
     text-align: center;
     position: relative;
@@ -759,7 +759,7 @@ a{ color: inherit; text-decoration: none; }
  * Section: Products — tabbed (Figma 994:29832)
  * ----------------------------------------------------------- */
 .section-products{
-    background: transparent;
+    background: #071830;
     /* Scroll track — the inner .products-sticky pins for (height − 100vh) of
        scrolling, split across the 3 products. 220vh ⇒ ~40vh of scroll each,
        so products switch quickly as you scroll. */
@@ -1146,8 +1146,8 @@ a{ color: inherit; text-decoration: none; }
        Personas fade picks up — no crowded band of light blue near the
        boundary, no visible stripe. */
     background: linear-gradient(180deg,
-        rgba(4, 20, 45, 0) 0%,
-        #04142d 10%,
+        rgba(7, 24, 48, 0) 0%,
+        #071830 10%,
         #55298e 30%,
         #2863c5 50%,
         #5886d0 66%,
