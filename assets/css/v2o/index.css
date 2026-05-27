@@ -1146,11 +1146,12 @@ a{ color: inherit; text-decoration: none; }
        Personas fade picks up — no crowded band of light blue near the
        boundary, no visible stripe. */
     background: linear-gradient(180deg,
-        rgba(7, 24, 48, 0) 0%,
-        #051A3C 10%,
-        #55298e 30%,
-        #2863c5 50%,
-        #5886d0 66%,
+        rgba(5, 26, 60, 0) 0%,
+        #051A3C 8%,
+        #7747b6 22%,
+        #55298e 38%,
+        #2863c5 55%,
+        #5886d0 68%,
         #9fbae4 80%,
         #c8d8ee 90%,
         var(--Royal-Blue-Blue-50, #e7eef8) 100%);
