@@ -761,9 +761,9 @@ a{ color: inherit; text-decoration: none; }
 .section-products{
     background: #051A3C;
     /* Scroll track — the inner .products-sticky pins for (height − 100vh) of
-       scrolling, split across the 3 products. 220vh ⇒ ~40vh of scroll each,
-       so products switch quickly as you scroll. */
-    height: 220vh;
+       scrolling, split across the 3 products. 300vh ⇒ ~66vh of scroll each,
+       giving the 3rd product enough hold time before exiting. */
+    height: 300vh;
     padding: 0;
     position: relative;
     z-index: 2;
