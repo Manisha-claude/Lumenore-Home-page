@@ -227,7 +227,9 @@ a{ color: inherit; text-decoration: none; }
     font-weight: 700;
     font-size: 15px;
     line-height: 25px;
-    padding: 8px 0;
+    padding: 8px 0 8px 16px;
+    margin-left: 8px;
+    border-left: 1px solid rgba(255, 255, 255, .18);
     white-space: nowrap;
 }
 .hello-bar .hello-login:hover{ color: var(--SkyBlue-SkyBlue-500, #12b6f8); }
