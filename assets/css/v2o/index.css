@@ -6062,6 +6062,23 @@ body.explore-locked{ overflow: hidden; }
 .nav-item.has-dropdown:focus-within::after{
     pointer-events: auto;
 }
+/* Wide-mega nav-items must not be positioned ancestors so .site-header
+   becomes the containing block — top:100% on the mega then lands
+   exactly at the header's bottom edge with zero gap. */
+.nav-item--platform,
+.nav-item--solutions,
+.nav-item--resources,
+.nav-item--company {
+    position: static;
+}
+/* No CSS hover bridge needed for wide megas — the mega starts flush
+   at the header bottom; the JS 200ms delay handles traversal. */
+.nav-item--platform.has-dropdown::after,
+.nav-item--solutions.has-dropdown::after,
+.nav-item--resources.has-dropdown::after,
+.nav-item--company.has-dropdown::after {
+    display: none;
+}
 .nav-trigger .caret{
     transition: transform .3s cubic-bezier(.22, .61, .36, 1);
 }
@@ -6236,20 +6253,13 @@ body.explore-locked{ overflow: hidden; }
     display: grid;
     gap: 0;
     padding: 0;
-    /* Span the full container width (1500px max) — same gutter math
-       as .site-header. The `top` is JS-measured from .site-top so
-       the dropdown sits exactly flush with the nav's bottom edge
-       regardless of hello-bar / header height variations. The CSS
-       variable falls back to 120px before JS runs. */
-    position: fixed;
+    /* Wide megas live as direct children of .site-header (position:relative)
+       so top:100% always lands exactly at the header's bottom edge —
+       no JS measurement needed. */
+    position: absolute;
+    top: 100%;
     left:  max(40px, calc((100vw - 1500px) / 2 + 40px));
     right: max(40px, calc((100vw - 1500px) / 2 + 40px));
-    /* Fallback 80px = bare site-header height (no hello-bar).
-       If JS hasn't run yet, worst case dropdown slightly overlaps
-       the header rather than leaving a gap below it.
-       `!important` ensures the base .nav-mega rule's
-       `top: calc(100% + 18px)` can never win. */
-    top: var(--nav-height, 120px) !important;
     min-width: 0;
     width: auto;
     border-top-left-radius: 0;
@@ -6293,16 +6303,27 @@ body.explore-locked{ overflow: hidden; }
 
 /* Re-bind the show/hide transform for the fixed-position panels
    (the base rule used translateX -50% which we no longer want). */
-.nav-item.has-dropdown:hover > .nav-mega--platform,
-.nav-item.has-dropdown:focus-within > .nav-mega--platform,
-.nav-item.has-dropdown.is-open > .nav-mega--platform,
-.nav-item.has-dropdown:hover > .nav-mega--solutions,
-.nav-item.has-dropdown:focus-within > .nav-mega--solutions,
-.nav-item.has-dropdown.is-open > .nav-mega--solutions,
-.nav-item.has-dropdown:hover > .nav-mega--resources,
-.nav-item.has-dropdown:focus-within > .nav-mega--resources,
-.nav-item.has-dropdown.is-open > .nav-mega--resources{
+/* Wide megas are children of .site-header; use :has() to show them */
+.site-header:has(.nav-item--platform:hover)       #platformMega,
+.site-header:has(.nav-item--platform:focus-within) #platformMega,
+.site-header:has(.nav-item--platform.is-open)      #platformMega,
+.site-header:has(.nav-item--solutions:hover)        #solutionMega,
+.site-header:has(.nav-item--solutions:focus-within) #solutionMega,
+.site-header:has(.nav-item--solutions.is-open)      #solutionMega,
+.site-header:has(.nav-item--resources:hover)        #resourcesMega,
+.site-header:has(.nav-item--resources:focus-within) #resourcesMega,
+.site-header:has(.nav-item--resources.is-open)      #resourcesMega,
+.site-header:has(.nav-item--company:hover)          #companyMega,
+.site-header:has(.nav-item--company:focus-within)   #companyMega,
+.site-header:has(.nav-item--company.is-open)        #companyMega{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     transform: translateY(0);
+    transition:
+        opacity .25s cubic-bezier(.22, .61, .36, 1),
+        transform .25s cubic-bezier(.22, .61, .36, 1),
+        visibility 0s;
 }
 /* Tablet step — when the hello-bar is hidden or header tightens,
    the top offset shrinks accordingly. */
@@ -8385,6 +8406,23 @@ body.explore-locked{ overflow: hidden; }
 .nav-item.has-dropdown:focus-within::after{
     pointer-events: auto;
 }
+/* Wide-mega nav-items must not be positioned ancestors so .site-header
+   becomes the containing block — top:100% on the mega then lands
+   exactly at the header's bottom edge with zero gap. */
+.nav-item--platform,
+.nav-item--solutions,
+.nav-item--resources,
+.nav-item--company {
+    position: static;
+}
+/* No CSS hover bridge needed for wide megas — the mega starts flush
+   at the header bottom; the JS 200ms delay handles traversal. */
+.nav-item--platform.has-dropdown::after,
+.nav-item--solutions.has-dropdown::after,
+.nav-item--resources.has-dropdown::after,
+.nav-item--company.has-dropdown::after {
+    display: none;
+}
 .nav-trigger .caret{
     transition: transform .3s cubic-bezier(.22, .61, .36, 1);
 }
@@ -8559,20 +8597,13 @@ body.explore-locked{ overflow: hidden; }
     display: grid;
     gap: 0;
     padding: 0;
-    /* Span the full container width (1500px max) — same gutter math
-       as .site-header. The `top` is JS-measured from .site-top so
-       the dropdown sits exactly flush with the nav's bottom edge
-       regardless of hello-bar / header height variations. The CSS
-       variable falls back to 120px before JS runs. */
-    position: fixed;
+    /* Wide megas live as direct children of .site-header (position:relative)
+       so top:100% always lands exactly at the header's bottom edge —
+       no JS measurement needed. */
+    position: absolute;
+    top: 100%;
     left:  max(40px, calc((100vw - 1500px) / 2 + 40px));
     right: max(40px, calc((100vw - 1500px) / 2 + 40px));
-    /* Fallback 80px = bare site-header height (no hello-bar).
-       If JS hasn't run yet, worst case dropdown slightly overlaps
-       the header rather than leaving a gap below it.
-       `!important` ensures the base .nav-mega rule's
-       `top: calc(100% + 18px)` can never win. */
-    top: var(--nav-height, 120px) !important;
     min-width: 0;
     width: auto;
     border-top-left-radius: 0;
@@ -8616,16 +8647,27 @@ body.explore-locked{ overflow: hidden; }
 
 /* Re-bind the show/hide transform for the fixed-position panels
    (the base rule used translateX -50% which we no longer want). */
-.nav-item.has-dropdown:hover > .nav-mega--platform,
-.nav-item.has-dropdown:focus-within > .nav-mega--platform,
-.nav-item.has-dropdown.is-open > .nav-mega--platform,
-.nav-item.has-dropdown:hover > .nav-mega--solutions,
-.nav-item.has-dropdown:focus-within > .nav-mega--solutions,
-.nav-item.has-dropdown.is-open > .nav-mega--solutions,
-.nav-item.has-dropdown:hover > .nav-mega--resources,
-.nav-item.has-dropdown:focus-within > .nav-mega--resources,
-.nav-item.has-dropdown.is-open > .nav-mega--resources{
+/* Wide megas are children of .site-header; use :has() to show them */
+.site-header:has(.nav-item--platform:hover)       #platformMega,
+.site-header:has(.nav-item--platform:focus-within) #platformMega,
+.site-header:has(.nav-item--platform.is-open)      #platformMega,
+.site-header:has(.nav-item--solutions:hover)        #solutionMega,
+.site-header:has(.nav-item--solutions:focus-within) #solutionMega,
+.site-header:has(.nav-item--solutions.is-open)      #solutionMega,
+.site-header:has(.nav-item--resources:hover)        #resourcesMega,
+.site-header:has(.nav-item--resources:focus-within) #resourcesMega,
+.site-header:has(.nav-item--resources.is-open)      #resourcesMega,
+.site-header:has(.nav-item--company:hover)          #companyMega,
+.site-header:has(.nav-item--company:focus-within)   #companyMega,
+.site-header:has(.nav-item--company.is-open)        #companyMega{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     transform: translateY(0);
+    transition:
+        opacity .25s cubic-bezier(.22, .61, .36, 1),
+        transform .25s cubic-bezier(.22, .61, .36, 1),
+        visibility 0s;
 }
 /* Tablet step — when the hello-bar is hidden or header tightens,
    the top offset shrinks accordingly. */
