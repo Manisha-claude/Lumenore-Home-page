@@ -5989,8 +5989,7 @@ body.explore-locked{ overflow: hidden; }
    equal-specificity `background: #051A3C` solid fill.
    ════════════════════════════════════════════════════════════════ */
 .site-top.site-top{
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 60;
     background: transparent;
     border-bottom: none;
@@ -8336,8 +8335,7 @@ body.explore-locked{ overflow: hidden; }
    equal-specificity `background: #051A3C` solid fill.
    ════════════════════════════════════════════════════════════════ */
 .site-top.site-top{
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 60;
     background: transparent;
     border-bottom: none;
