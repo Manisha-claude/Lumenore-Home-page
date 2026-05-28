@@ -6118,7 +6118,8 @@ body.explore-locked{ overflow: hidden; }
     pointer-events: none;
 }
 .nav-item.has-dropdown:hover > .nav-mega,
-.nav-item.has-dropdown:focus-within > .nav-mega{
+.nav-item.has-dropdown:focus-within > .nav-mega,
+.nav-item.has-dropdown.is-open > .nav-mega{
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -6294,10 +6295,13 @@ body.explore-locked{ overflow: hidden; }
    (the base rule used translateX -50% which we no longer want). */
 .nav-item.has-dropdown:hover > .nav-mega--platform,
 .nav-item.has-dropdown:focus-within > .nav-mega--platform,
+.nav-item.has-dropdown.is-open > .nav-mega--platform,
 .nav-item.has-dropdown:hover > .nav-mega--solutions,
 .nav-item.has-dropdown:focus-within > .nav-mega--solutions,
+.nav-item.has-dropdown.is-open > .nav-mega--solutions,
 .nav-item.has-dropdown:hover > .nav-mega--resources,
-.nav-item.has-dropdown:focus-within > .nav-mega--resources{
+.nav-item.has-dropdown:focus-within > .nav-mega--resources,
+.nav-item.has-dropdown.is-open > .nav-mega--resources{
     transform: translateY(0);
 }
 /* Tablet step — when the hello-bar is hidden or header tightens,
@@ -8437,7 +8441,8 @@ body.explore-locked{ overflow: hidden; }
     pointer-events: none;
 }
 .nav-item.has-dropdown:hover > .nav-mega,
-.nav-item.has-dropdown:focus-within > .nav-mega{
+.nav-item.has-dropdown:focus-within > .nav-mega,
+.nav-item.has-dropdown.is-open > .nav-mega{
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -8613,10 +8618,13 @@ body.explore-locked{ overflow: hidden; }
    (the base rule used translateX -50% which we no longer want). */
 .nav-item.has-dropdown:hover > .nav-mega--platform,
 .nav-item.has-dropdown:focus-within > .nav-mega--platform,
+.nav-item.has-dropdown.is-open > .nav-mega--platform,
 .nav-item.has-dropdown:hover > .nav-mega--solutions,
 .nav-item.has-dropdown:focus-within > .nav-mega--solutions,
+.nav-item.has-dropdown.is-open > .nav-mega--solutions,
 .nav-item.has-dropdown:hover > .nav-mega--resources,
-.nav-item.has-dropdown:focus-within > .nav-mega--resources{
+.nav-item.has-dropdown:focus-within > .nav-mega--resources,
+.nav-item.has-dropdown.is-open > .nav-mega--resources{
     transform: translateY(0);
 }
 /* Tablet step — when the hello-bar is hidden or header tightens,

@@ -3191,6 +3191,22 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         }
     })();
 
+    /* Hover-gap bridge — keeps mega menus open while cursor crosses
+       the gap between the nav trigger and the dropdown panel */
+    (function () {
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(function (item) {
+            const mega = item.querySelector('.nav-mega');
+            if (!mega) return;
+            let closeTimer = null;
+            function open() { clearTimeout(closeTimer); item.classList.add('is-open'); }
+            function scheduleClose() { closeTimer = setTimeout(function () { item.classList.remove('is-open'); }, 200); }
+            item.addEventListener('mouseenter', open);
+            item.addEventListener('mouseleave', scheduleClose);
+            mega.addEventListener('mouseenter', open);
+            mega.addEventListener('mouseleave', scheduleClose);
+        });
+    })();
+
 </script>
 
 </body>
