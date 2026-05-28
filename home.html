@@ -2996,3 +2996,79 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 start: '#', learn: '#', pricing: '#'
             },
             askme: {
+                tagline: 'Conversational Data',
+                title:   'Lumenore Ask Me',
+                desc:    'Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.',
+                start: 'lumenore-ask-me.html', learn: 'lumenore-ask-me.html', pricing: '#'
+            },
+            datamagnet: {
+                tagline: 'Enterprise ETL',
+                title:   'Lumenore Data Magnet',
+                desc:    'Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse with secure, cost-effective automation.',
+                start: '#', learn: '#', pricing: '#'
+            }
+        };
+
+        function hideAll() {
+            productPane.hidden = true;
+            if (gridTitle) gridTitle.hidden = true;
+            if (grid)      grid.hidden      = true;
+        }
+        function showProduct(key) {
+            const d = products[key];
+            if (!d) return;
+            productTag.textContent   = d.tagline;
+            productTitle.textContent = d.title;
+            productDesc.textContent  = d.desc;
+            ctaStart.setAttribute('href',   d.start);
+            ctaLearn.setAttribute('href',   d.learn);
+            ctaPricing.setAttribute('href', d.pricing);
+            productPane.hidden = false;
+            if (gridTitle) gridTitle.hidden = true;
+            if (grid)      grid.hidden      = true;
+        }
+        function showGrid() {
+            productPane.hidden = true;
+            if (gridTitle) gridTitle.hidden = false;
+            if (grid)      grid.hidden      = false;
+        }
+        function highlight(key) {
+            navList.forEach(n => n.classList.toggle('is-active', n.dataset.platformItem === key));
+            cards.forEach(c   => c.classList.toggle('is-active', c.dataset.platformCard === key));
+        }
+        function clearHighlight() {
+            navList.forEach(n => n.classList.remove('is-active'));
+            cards.forEach(c   => c.classList.remove('is-active'));
+        }
+
+        navList.forEach(n => {
+            const trigger = () => {
+                const key  = n.dataset.platformItem;
+                const type = n.dataset.platformType;
+                highlight(key);
+                if (type === 'product') showProduct(key);
+                else                    showGrid();
+            };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        cards.forEach(c => {
+            const trigger = () => { showGrid(); highlight(c.dataset.platformCard); };
+            c.addEventListener('mouseenter', trigger);
+            c.addEventListener('focus',      trigger);
+        });
+
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){
+            highlight('insights');
+            showProduct('insights');
+        }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+        }
+        if (navItem){
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+        mega.addEventListener('mouseleave', () => { });
+    })();
