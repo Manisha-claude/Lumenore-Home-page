@@ -3072,3 +3072,126 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         }
         mega.addEventListener('mouseleave', () => { });
     })();
+
+    /* Wide mega-menus — sync dropdown top to nav bottom edge */
+    (function () {
+        const header = document.querySelector('.site-header');
+        const wideMegas = document.querySelectorAll(
+            '.nav-mega--platform, .nav-mega--solutions, .nav-mega--resources'
+        );
+        if (!header || !wideMegas.length) return;
+        function syncTops() {
+            const bottom = header.getBoundingClientRect().bottom;
+            if (bottom <= 0) return;
+            document.documentElement.style.setProperty('--nav-height', bottom + 'px');
+        }
+        syncTops();
+        requestAnimationFrame(syncTops);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', syncTops);
+        }
+        window.addEventListener('load',   syncTops);
+        window.addEventListener('resize', syncTops, { passive: true });
+        window.addEventListener('scroll', syncTops, { passive: true });
+        if (typeof ResizeObserver === 'function') {
+            new ResizeObserver(syncTops).observe(header);
+        }
+        setTimeout(syncTops, 500);
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+            if (!item.querySelector('.nav-mega--platform, .nav-mega--solutions, .nav-mega--resources')) return;
+            item.addEventListener('mouseenter', syncTops);
+            item.addEventListener('focusin',    syncTops);
+        });
+    })();
+
+    /* Solutions mega */
+    (function () {
+        const mega = document.getElementById('solutionMega');
+        if (!mega) return;
+        const navList     = mega.querySelectorAll('[data-solution-item]');
+        const industryTtl = document.getElementById('solIndustryTitle');
+        const industryGrid= document.getElementById('solIndustryGrid');
+        const deptTtl     = document.getElementById('solDepartmentTitle');
+        const deptGrid    = document.getElementById('solDepartmentGrid');
+        function hideAll(){
+            industryTtl.hidden  = true;
+            industryGrid.hidden = true;
+            deptTtl.hidden      = true;
+            deptGrid.hidden     = true;
+        }
+        function showIndustry(){
+            industryTtl.hidden  = false;
+            industryGrid.hidden = false;
+            deptTtl.hidden      = true;
+            deptGrid.hidden     = true;
+        }
+        function showDepartment(){
+            industryTtl.hidden  = true;
+            industryGrid.hidden = true;
+            deptTtl.hidden      = false;
+            deptGrid.hidden     = false;
+        }
+        function highlight(key){
+            navList.forEach(n => n.classList.toggle('is-active', n.dataset.solutionItem === key));
+        }
+        function clearHighlight(){
+            navList.forEach(n => n.classList.remove('is-active'));
+        }
+        navList.forEach(n => {
+            const trigger = () => {
+                const key = n.dataset.solutionItem;
+                highlight(key);
+                if (key === 'department') showDepartment();
+                else                       showIndustry();
+            };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){ highlight('industry'); showIndustry(); }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+    })();
+
+    /* Company mega */
+    (function () {
+        const mega = document.getElementById('companyMega');
+        if (!mega) return;
+        const navList = mega.querySelectorAll('[data-company-item]');
+        const allTtl  = document.getElementById('coAllTitle');
+        const allGrid = document.getElementById('coAllGrid');
+        function hideAll(){
+            if (allTtl)  allTtl.hidden  = true;
+            if (allGrid) allGrid.hidden = true;
+        }
+        function showAll(){
+            if (allTtl)  allTtl.hidden  = false;
+            if (allGrid) allGrid.hidden = false;
+        }
+        function highlight(){
+            navList.forEach(n => n.classList.add('is-active'));
+        }
+        function clearHighlight(){
+            navList.forEach(n => n.classList.remove('is-active'));
+        }
+        navList.forEach(n => {
+            const trigger = () => { highlight(); showAll(); };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){ highlight(); showAll(); }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+    })();
+
+</script>
+
+</body>
+</html>

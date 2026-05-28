@@ -2996,3 +2996,202 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 start: '#', learn: '#', pricing: '#'
             },
             askme: {
+                tagline: 'Conversational Data',
+                title:   'Lumenore Ask Me',
+                desc:    'Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.',
+                start: 'lumenore-ask-me.html', learn: 'lumenore-ask-me.html', pricing: '#'
+            },
+            datamagnet: {
+                tagline: 'Enterprise ETL',
+                title:   'Lumenore Data Magnet',
+                desc:    'Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse with secure, cost-effective automation.',
+                start: '#', learn: '#', pricing: '#'
+            }
+        };
+
+        function hideAll() {
+            productPane.hidden = true;
+            if (gridTitle) gridTitle.hidden = true;
+            if (grid)      grid.hidden      = true;
+        }
+        function showProduct(key) {
+            const d = products[key];
+            if (!d) return;
+            productTag.textContent   = d.tagline;
+            productTitle.textContent = d.title;
+            productDesc.textContent  = d.desc;
+            ctaStart.setAttribute('href',   d.start);
+            ctaLearn.setAttribute('href',   d.learn);
+            ctaPricing.setAttribute('href', d.pricing);
+            productPane.hidden = false;
+            if (gridTitle) gridTitle.hidden = true;
+            if (grid)      grid.hidden      = true;
+        }
+        function showGrid() {
+            productPane.hidden = true;
+            if (gridTitle) gridTitle.hidden = false;
+            if (grid)      grid.hidden      = false;
+        }
+        function highlight(key) {
+            navList.forEach(n => n.classList.toggle('is-active', n.dataset.platformItem === key));
+            cards.forEach(c   => c.classList.toggle('is-active', c.dataset.platformCard === key));
+        }
+        function clearHighlight() {
+            navList.forEach(n => n.classList.remove('is-active'));
+            cards.forEach(c   => c.classList.remove('is-active'));
+        }
+
+        navList.forEach(n => {
+            const trigger = () => {
+                const key  = n.dataset.platformItem;
+                const type = n.dataset.platformType;
+                highlight(key);
+                if (type === 'product') showProduct(key);
+                else                    showGrid();
+            };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        cards.forEach(c => {
+            const trigger = () => { showGrid(); highlight(c.dataset.platformCard); };
+            c.addEventListener('mouseenter', trigger);
+            c.addEventListener('focus',      trigger);
+        });
+
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){
+            highlight('insights');
+            showProduct('insights');
+        }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+        }
+        if (navItem){
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+        mega.addEventListener('mouseleave', () => { });
+    })();
+
+    /* Wide mega-menus — sync dropdown top to nav bottom edge */
+    (function () {
+        const header = document.querySelector('.site-header');
+        const wideMegas = document.querySelectorAll(
+            '.nav-mega--platform, .nav-mega--solutions, .nav-mega--resources'
+        );
+        if (!header || !wideMegas.length) return;
+        function syncTops() {
+            const bottom = header.getBoundingClientRect().bottom;
+            if (bottom <= 0) return;
+            document.documentElement.style.setProperty('--nav-height', bottom + 'px');
+        }
+        syncTops();
+        requestAnimationFrame(syncTops);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', syncTops);
+        }
+        window.addEventListener('load',   syncTops);
+        window.addEventListener('resize', syncTops, { passive: true });
+        window.addEventListener('scroll', syncTops, { passive: true });
+        if (typeof ResizeObserver === 'function') {
+            new ResizeObserver(syncTops).observe(header);
+        }
+        setTimeout(syncTops, 500);
+        document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+            if (!item.querySelector('.nav-mega--platform, .nav-mega--solutions, .nav-mega--resources')) return;
+            item.addEventListener('mouseenter', syncTops);
+            item.addEventListener('focusin',    syncTops);
+        });
+    })();
+
+    /* Solutions mega */
+    (function () {
+        const mega = document.getElementById('solutionMega');
+        if (!mega) return;
+        const navList     = mega.querySelectorAll('[data-solution-item]');
+        const industryTtl = document.getElementById('solIndustryTitle');
+        const industryGrid= document.getElementById('solIndustryGrid');
+        const deptTtl     = document.getElementById('solDepartmentTitle');
+        const deptGrid    = document.getElementById('solDepartmentGrid');
+        function hideAll(){
+            industryTtl.hidden  = true;
+            industryGrid.hidden = true;
+            deptTtl.hidden      = true;
+            deptGrid.hidden     = true;
+        }
+        function showIndustry(){
+            industryTtl.hidden  = false;
+            industryGrid.hidden = false;
+            deptTtl.hidden      = true;
+            deptGrid.hidden     = true;
+        }
+        function showDepartment(){
+            industryTtl.hidden  = true;
+            industryGrid.hidden = true;
+            deptTtl.hidden      = false;
+            deptGrid.hidden     = false;
+        }
+        function highlight(key){
+            navList.forEach(n => n.classList.toggle('is-active', n.dataset.solutionItem === key));
+        }
+        function clearHighlight(){
+            navList.forEach(n => n.classList.remove('is-active'));
+        }
+        navList.forEach(n => {
+            const trigger = () => {
+                const key = n.dataset.solutionItem;
+                highlight(key);
+                if (key === 'department') showDepartment();
+                else                       showIndustry();
+            };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){ highlight('industry'); showIndustry(); }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+    })();
+
+    /* Company mega */
+    (function () {
+        const mega = document.getElementById('companyMega');
+        if (!mega) return;
+        const navList = mega.querySelectorAll('[data-company-item]');
+        const allTtl  = document.getElementById('coAllTitle');
+        const allGrid = document.getElementById('coAllGrid');
+        function hideAll(){
+            if (allTtl)  allTtl.hidden  = true;
+            if (allGrid) allGrid.hidden = true;
+        }
+        function showAll(){
+            if (allTtl)  allTtl.hidden  = false;
+            if (allGrid) allGrid.hidden = false;
+        }
+        function highlight(){
+            navList.forEach(n => n.classList.add('is-active'));
+        }
+        function clearHighlight(){
+            navList.forEach(n => n.classList.remove('is-active'));
+        }
+        navList.forEach(n => {
+            const trigger = () => { highlight(); showAll(); };
+            n.addEventListener('mouseenter', trigger);
+            n.addEventListener('focus',      trigger);
+        });
+        const navItem = mega.closest('.nav-item');
+        function openDefault(){ highlight(); showAll(); }
+        if (navItem){
+            navItem.addEventListener('mouseenter', openDefault);
+            navItem.addEventListener('focusin',    openDefault);
+            navItem.addEventListener('mouseleave', () => { clearHighlight(); hideAll(); });
+        }
+    })();
+
+</script>
+
+</body>
+</html>
