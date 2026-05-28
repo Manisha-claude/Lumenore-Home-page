@@ -6249,7 +6249,7 @@ body.explore-locked{ overflow: hidden; }
        the header rather than leaving a gap below it.
        `!important` ensures the base .nav-mega rule's
        `top: calc(100% + 18px)` can never win. */
-    top: var(--nav-height, 80px) !important;
+    top: var(--nav-height, 120px) !important;
     min-width: 0;
     width: auto;
     border-top-left-radius: 0;
@@ -8572,7 +8572,7 @@ body.explore-locked{ overflow: hidden; }
        the header rather than leaving a gap below it.
        `!important` ensures the base .nav-mega rule's
        `top: calc(100% + 18px)` can never win. */
-    top: var(--nav-height, 80px) !important;
+    top: var(--nav-height, 120px) !important;
     min-width: 0;
     width: auto;
     border-top-left-radius: 0;

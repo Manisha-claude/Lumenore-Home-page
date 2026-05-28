@@ -3075,13 +3075,17 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 
     /* Wide mega-menus — sync dropdown top to nav bottom edge */
     (function () {
-        const header = document.querySelector('.site-header');
-        const wideMegas = document.querySelectorAll(
+        const siteTop    = document.querySelector('.site-top');
+        const siteHeader = document.querySelector('.site-header');
+        const wideMegas  = document.querySelectorAll(
             '.nav-mega--platform, .nav-mega--solutions, .nav-mega--resources'
         );
-        if (!header || !wideMegas.length) return;
+        if ((!siteTop && !siteHeader) || !wideMegas.length) return;
         function syncTops() {
-            const bottom = header.getBoundingClientRect().bottom;
+            /* Measure the full sticky wrapper (.site-top includes hello-bar +
+               nav bar). Falls back to .site-header if wrapper is absent. */
+            const el     = siteTop || siteHeader;
+            const bottom = el.getBoundingClientRect().bottom;
             if (bottom <= 0) return;
             document.documentElement.style.setProperty('--nav-height', bottom + 'px');
         }
@@ -3094,8 +3098,15 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         window.addEventListener('resize', syncTops, { passive: true });
         window.addEventListener('scroll', syncTops, { passive: true });
         if (typeof ResizeObserver === 'function') {
-            new ResizeObserver(syncTops).observe(header);
+            /* Observe both the outer wrapper and the hello-bar so any
+               height change (hello-bar dismiss, font load, etc.) is caught. */
+            const ro = new ResizeObserver(syncTops);
+            if (siteTop)    ro.observe(siteTop);
+            if (siteHeader) ro.observe(siteHeader);
+            const helloBar = document.querySelector('.hello-bar');
+            if (helloBar) ro.observe(helloBar);
         }
+        setTimeout(syncTops, 200);
         setTimeout(syncTops, 500);
         document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
             if (!item.querySelector('.nav-mega--platform, .nav-mega--solutions, .nav-mega--resources')) return;
