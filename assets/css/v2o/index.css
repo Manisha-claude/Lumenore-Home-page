@@ -331,21 +331,23 @@ a{ color: inherit; text-decoration: none; }
     gap: 12px;
 }
 .site-header .btn-demo{
-    border: 2px solid var(--Violet-Violet-450, #7747b6);
-    background: transparent;
+    background:
+        linear-gradient(var(--Royal-Blue-Blue-900, #051A3C), var(--Royal-Blue-Blue-900, #051A3C)) padding-box,
+        var(--Explore-Button) border-box;
+    border: 2px solid transparent;
     color: var(--Base-White, #fcfcfc);
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 15px;
     line-height: 25px;
     padding: 6px 16px;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background .25s ease, border-color .25s ease;
+    transition: filter .25s ease;
     white-space: nowrap;
 }
 .site-header .btn-demo:hover{
-    background: rgba(119, 71, 182, .15);
+    filter: brightness(1.15);
 }
 .site-header .btn-start{
     background: var(--Explore-Button);
