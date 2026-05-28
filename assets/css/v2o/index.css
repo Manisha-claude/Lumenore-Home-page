@@ -6044,6 +6044,9 @@ body.explore-locked{ overflow: hidden; }
    CSS columns for dense link sets (Capabilities, Industries).
    ════════════════════════════════════════════════════════════════ */
 .nav-links{ position: relative; }
+/* Wide megas need .site-header as their containing block, so override
+   .nav-links back to static inside the header. */
+.site-header .nav-links{ position: static; }
 .nav-item{
     position: relative;
 }
@@ -8388,6 +8391,9 @@ body.explore-locked{ overflow: hidden; }
    CSS columns for dense link sets (Capabilities, Industries).
    ════════════════════════════════════════════════════════════════ */
 .nav-links{ position: relative; }
+/* Wide megas need .site-header as their containing block, so override
+   .nav-links back to static inside the header. */
+.site-header .nav-links{ position: static; }
 .nav-item{
     position: relative;
 }
