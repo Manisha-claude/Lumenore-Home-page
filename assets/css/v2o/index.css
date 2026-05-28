@@ -6072,7 +6072,7 @@ body.explore-locked{ overflow: hidden; }
 
 .nav-mega{
     position: absolute;
-    top: calc(100% + 18px);
+    top: calc(100% + 2px);
     left: 50%;
     transform: translateX(-50%) translateY(-6px);
     min-width: 280px;
@@ -6099,6 +6099,8 @@ body.explore-locked{ overflow: hidden; }
         visibility 0s linear .25s;
     overflow: hidden;
 }
+/* Transparent bridge fills the gap between trigger and menu */
+.nav-mega::after{ content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 12px; background: transparent; }
 /* Subtle brand-gradient accent on the top edge — same violet→royal-blue→turquoise
    sweep as .btn-primary. Ties the dropdown visually to the site's primary
    CTA language without overwhelming the menu. */
@@ -8389,7 +8391,7 @@ body.explore-locked{ overflow: hidden; }
 
 .nav-mega{
     position: absolute;
-    top: calc(100% + 18px);
+    top: calc(100% + 2px);
     left: 50%;
     transform: translateX(-50%) translateY(-6px);
     min-width: 280px;
@@ -8416,6 +8418,8 @@ body.explore-locked{ overflow: hidden; }
         visibility 0s linear .25s;
     overflow: hidden;
 }
+/* Transparent bridge fills the gap between trigger and menu */
+.nav-mega::after{ content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 12px; background: transparent; }
 /* Subtle brand-gradient accent on the top edge — same violet→royal-blue→turquoise
    sweep as .btn-primary. Ties the dropdown visually to the site's primary
    CTA language without overwhelming the menu. */
