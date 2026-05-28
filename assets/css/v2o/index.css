@@ -5527,7 +5527,7 @@ body.explore-locked{ overflow: hidden; }
    Bars and hero go transparent so the grid/orbs/particles flow through. */
 .hero-stage{
     position: relative;
-    overflow: hidden;
+    overflow-x: clip;
     background: transparent;
     /* Full-screen: nav + hero together fill exactly one viewport */
     min-height: 100vh;
@@ -7844,7 +7844,7 @@ body.explore-locked{ overflow: hidden; }
    Bars and hero go transparent so the grid/orbs/particles flow through. */
 .hero-stage{
     position: relative;
-    overflow: hidden;
+    overflow-x: clip;
     background: transparent;
     /* Full-screen: nav + hero together fill exactly one viewport */
     min-height: 100vh;
