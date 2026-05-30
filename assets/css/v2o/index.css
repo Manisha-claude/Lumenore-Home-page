@@ -841,64 +841,6 @@ a{ color: inherit; text-decoration: none; }
     width: 100%;
 }
 
-/* ── Section-wide ambient background orbs ───────────────────── */
-/* Default palette — Ask Me (violet) */
-.products-sticky{
-    --ps-c1: rgba(119, 71, 182, .55);
-    --ps-c2: rgba(40,  99, 195, .42);
-    --ps-c3: rgba(28, 169, 201, .30);
-}
-/* Insights — blue */
-.products-sticky:has(.is-insights){
-    --ps-c1: rgba(40, 99, 195, .55);
-    --ps-c2: rgba(28, 169, 201, .42);
-    --ps-c3: rgba(119, 71, 182, .30);
-}
-/* Data Magnet — teal */
-.products-sticky:has(.is-datamagnet){
-    --ps-c1: rgba(28, 169, 201, .55);
-    --ps-c2: rgba(18, 182, 248, .42);
-    --ps-c3: rgba(40, 99, 195, .30);
-}
-.ps-orb{
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    transition: background .8s ease;
-    will-change: transform, opacity;
-}
-/* Top-left — dominant primary orb */
-.ps-orb-1{
-    top: -15%;
-    left: -10%;
-    width: 65%;
-    height: 80%;
-    background: radial-gradient(circle at 50% 50%, var(--ps-c1) 0%, transparent 65%);
-    filter: blur(100px);
-    animation: orbFloat 11s ease-in-out infinite;
-}
-/* Bottom-right — secondary accent */
-.ps-orb-2{
-    bottom: -15%;
-    right: -8%;
-    width: 58%;
-    height: 70%;
-    background: radial-gradient(circle at 50% 50%, var(--ps-c2) 0%, transparent 65%);
-    filter: blur(90px);
-    animation: orbFloat 13s ease-in-out 1.6s infinite;
-}
-/* Center — subtle third layer for depth */
-.ps-orb-3{
-    top: 20%;
-    left: 30%;
-    width: 45%;
-    height: 55%;
-    background: radial-gradient(circle at 50% 50%, var(--ps-c3) 0%, transparent 65%);
-    filter: blur(110px);
-    animation: orbFloat 15s ease-in-out 0.8s infinite;
-}
-
 /* ── Scroll progress dots ───────────────────────────────────── */
 .product-progress{
     display: flex;
