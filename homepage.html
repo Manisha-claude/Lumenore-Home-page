@@ -1691,9 +1691,9 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             s.setAttribute('aria-hidden', on ? 'false' : 'true');
         });
         if (personaRoleLabel) personaRoleLabel.textContent = d.pill;
-        personaHeading.textContent = d.heading;
-        personaDesc.textContent = d.desc;
-        personaChips.innerHTML = d.chips.map(c => `
+        if (personaHeading) personaHeading.textContent = d.heading;
+        if (personaDesc)    personaDesc.textContent    = d.desc;
+        if (personaChips)   personaChips.innerHTML = d.chips.map(c => `
             <span class="chip">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
                 ${c}
@@ -1701,11 +1701,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         `).join('');
     }
 
-    /* Prime state on page load so CSS variables and aria attrs are correct */
-    activatePersona(
-        (personaSection && personaSection.dataset.activePersona) || 'business'
-    );
-
+    /* Attach click handlers first so they always work even if init throws */
     personaTabs.forEach(tab => {
         tab.addEventListener('click', () => activatePersona(tab.dataset.persona));
         tab.addEventListener('keydown', e => {
@@ -1715,6 +1711,13 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             }
         });
     });
+
+    /* Prime CSS variables and aria state on page load */
+    try {
+        activatePersona(
+            (personaSection && personaSection.dataset.activePersona) || 'business'
+        );
+    } catch(e) { console.warn('persona init:', e); }
 
     /* ── Subtle parallax on scene glows + mouse parallax on cards ──
        Two independent motion layers:

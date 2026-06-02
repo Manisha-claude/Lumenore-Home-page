@@ -1657,16 +1657,16 @@ a{ color: inherit; text-decoration: none; }
     gap: 6px;
     padding: 7px 13px;
     border-radius: 50px;
-    background: rgba(255, 255, 255, .8);
-    border: 1px solid var(--pa-accent-border);
-    color: var(--pa-accent);
+    background: var(--pa-accent-soft, rgba(40, 99, 195, .10));
+    border: 1px solid var(--pa-accent-border, rgba(40, 99, 195, .30));
+    color: var(--pa-accent, #0e48a5);
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 12.5px;
     line-height: 16px;
     transition: background .25s ease, border-color .25s ease, color .35s ease;
 }
-.persona-chips .chip:hover{ background: rgba(255, 255, 255, 1); }
+.persona-chips .chip:hover{ background: var(--pa-accent-soft, rgba(40,99,195,.15)); }
 .persona-chips .chip svg{ width: 12px; height: 12px; }
 
 /* RIGHT column ─────────────────────────────────────────────── */
