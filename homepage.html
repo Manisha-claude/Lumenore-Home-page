@@ -1701,6 +1701,11 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         `).join('');
     }
 
+    /* Prime state on page load so CSS variables and aria attrs are correct */
+    activatePersona(
+        (personaSection && personaSection.dataset.activePersona) || 'business'
+    );
+
     personaTabs.forEach(tab => {
         tab.addEventListener('click', () => activatePersona(tab.dataset.persona));
         tab.addEventListener('keydown', e => {
