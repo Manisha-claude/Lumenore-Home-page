@@ -1547,15 +1547,18 @@ a{ color: inherit; text-decoration: none; }
     flex-wrap: wrap;
     gap: 4px;
     padding: 5px;
-    background: rgba(40, 99, 195, .05);
-    border: 1px solid rgba(40, 99, 195, .10);
+    background: #f1f5f9;
+    border: none;
+    box-shadow:
+        inset 0 1px 2px rgba(16, 24, 40, .05),
+        0 1px 3px rgba(16, 24, 40, .04);
     border-radius: 50px;
     margin-bottom: 32px;
 }
 .px-tab{
     border: none;
     background: transparent;
-    color: var(--cool-99a1af, #99a1af);
+    color: #475467;
     padding: 9px 17px;
     border-radius: 50px;
     font-family: 'Inter', sans-serif;
