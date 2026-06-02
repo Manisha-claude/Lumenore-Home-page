@@ -701,7 +701,7 @@
 </section>
 
 <!-- ===== PERSONAS — BUILT FOR EVERY ROLE ===== -->
-<section class="section-personas" id="personaSection" data-active-persona="business">
+<section class="section-personas" id="personaSection" data-active-persona="analyst">
     <!-- Subtle entry fade — smooths the visual flow from the gradient bridge above
          into the white canvas without harsh edges. No standalone background orbs;
          the glow lives integrated behind the dashboard image instead. -->
@@ -722,22 +722,22 @@
             <!-- LEFT: persona selector (top) + active-persona content -->
             <div class="pex-content">
                 <div class="pex-selector" id="personaTabs" role="tablist" aria-label="Roles">
-                    <button type="button" class="px-tab is-active" data-persona="business"  role="tab" aria-selected="true"  tabindex="0">Leader</button>
+                    <button type="button" class="px-tab is-active" data-persona="analyst"  role="tab" aria-selected="true"  tabindex="0">Analyst</button>
+                    <button type="button" class="px-tab"           data-persona="business" role="tab" aria-selected="false" tabindex="-1">Leader</button>
                     <button type="button" class="px-tab"           data-persona="scientist" role="tab" aria-selected="false" tabindex="-1">Scientist</button>
-                    <button type="button" class="px-tab"           data-persona="engineer"  role="tab" aria-selected="false" tabindex="-1">Engineer</button>
-                    <button type="button" class="px-tab"           data-persona="analyst"   role="tab" aria-selected="false" tabindex="-1">Analyst</button>
+                    <button type="button" class="px-tab"           data-persona="engineer" role="tab" aria-selected="false" tabindex="-1">Engineer</button>
                 </div>
 
                 <div class="pex-text">
-                    <span class=”pex-role-label” id=”personaRoleLabel”>Business Leaders</span>
-                    <h3 id=”personaHeading”>
-                        <span class=”pquote”>”</span><span id=”personaHeadingText”>Make smarter decisions, faster — across web, mobile, and embedded.</span><span class=”pquote”>”</span>
+                    <span class="pex-role-label" id="personaRoleLabel">Data Analysts &amp; Business Users</span>
+                    <h3 id="personaHeading">
+                        <span class="pquote">“</span><span id="personaHeadingText">Turn questions into insights without waiting on anyone.</span><span class="pquote">”</span>
                     </h3>
-                    <p id=”personaDesc”>Increase revenue, reduce costs, and stay agile in real time. Empower every team with accessible insights when and where they need them.</p>
-                    <div class=”persona-chips” id=”personaChips”>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Real-time KPI tracking</span>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Executive dashboards</span>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Alerts &amp; narratives</span>
+                    <p id="personaDesc">Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore’s intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.</p>
+                    <div class="persona-chips" id="personaChips">
+                        <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>Natural language queries</span>
+                        <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>100+ chart types</span>
+                        <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>Self-serve exploration</span>
                     </div>
                 </div>
             </div>
@@ -746,8 +746,52 @@
                  of layered cards; on persona change, the active scene fades & slides
                  in while its cards stagger up sequentially — Lemni-style storytelling. -->
             <div class="pex-stage">
+                <!-- ── Analyst scene ─────────────────────────────────── -->
+                <div class="persona-scene is-on" data-scene="analyst" aria-hidden="false">
+                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
+                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
+
+                    <div class="scene-card sc-1 sc-trend" data-parallax="-0.10">
+                        <div class="sc-hd">
+                            <span class="sc-eyebrow">Revenue trend</span>
+                            <span class="sc-pill">FY 2026</span>
+                        </div>
+                        <div class="sc-stat-row">
+                            <span class="sc-num">$4.2M</span>
+                            <span class="sc-delta sc-delta-up">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                                +18.4%
+                            </span>
+                        </div>
+                        <svg class="sc-spark" viewBox="0 0 220 60" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%"  stop-color="currentColor" stop-opacity=".22"/>
+                                    <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M0,46 Q30,38 55,40 T110,28 T170,12 L220,6 L220,60 L0,60 Z" fill="url(#sparkFill)"/>
+                            <path class="draw-line" d="M0,46 Q30,38 55,40 T110,28 T170,12 L220,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <div class="scene-card sc-2 sc-rows-card" data-parallax="0.06">
+                        <span class="sc-eyebrow">Top quarters</span>
+                        <ul class="sc-rows">
+                            <li><span class="sc-rl">Q4 2026</span><span class="sc-bar"><i style="width:92%"></i></span><span class="sc-rv">$1.4M</span></li>
+                            <li><span class="sc-rl">Q3 2026</span><span class="sc-bar"><i style="width:72%"></i></span><span class="sc-rv">$1.1M</span></li>
+                            <li><span class="sc-rl">Q2 2026</span><span class="sc-bar"><i style="width:58%"></i></span><span class="sc-rv">$0.9M</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="scene-card sc-3 sc-insight" data-parallax="-0.04">
+                        <span class="sc-pulse"></span>
+                        <p class="sc-text">Q4 saw a <strong>+24% YoY</strong> uplift, led by enterprise-tier expansion.</p>
+                    </div>
+                </div>
+
                 <!-- ── Business Leader scene ─────────────────────────── -->
-                <div class="persona-scene is-on" data-scene="business" aria-hidden="false">
+                <div class="persona-scene" data-scene="business" aria-hidden="true">
                     <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
                     <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
 
@@ -835,50 +879,6 @@
                         <span class="sc-eyebrow">Latency p95</span>
                         <span class="sc-metric-num">47<small>ms</small></span>
                         <span class="sc-metric-foot">Last hour · all pipelines</span>
-                    </div>
-                </div>
-
-                <!-- ── Analyst scene ─────────────────────────────────── -->
-                <div class="persona-scene" data-scene="analyst" aria-hidden="true">
-                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
-                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
-
-                    <div class="scene-card sc-1 sc-trend" data-parallax="-0.10">
-                        <div class="sc-hd">
-                            <span class="sc-eyebrow">Revenue trend</span>
-                            <span class="sc-pill">FY 2026</span>
-                        </div>
-                        <div class="sc-stat-row">
-                            <span class="sc-num">$4.2M</span>
-                            <span class="sc-delta sc-delta-up">
-                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                                +18.4%
-                            </span>
-                        </div>
-                        <svg class="sc-spark" viewBox="0 0 220 60" preserveAspectRatio="none">
-                            <defs>
-                                <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%"  stop-color="currentColor" stop-opacity=".22"/>
-                                    <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
-                                </linearGradient>
-                            </defs>
-                            <path d="M0,46 Q30,38 55,40 T110,28 T170,12 L220,6 L220,60 L0,60 Z" fill="url(#sparkFill)"/>
-                            <path class="draw-line" d="M0,46 Q30,38 55,40 T110,28 T170,12 L220,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-
-                    <div class="scene-card sc-2 sc-rows-card" data-parallax="0.06">
-                        <span class="sc-eyebrow">Top quarters</span>
-                        <ul class="sc-rows">
-                            <li><span class="sc-rl">Q4 2026</span><span class="sc-bar"><i style="width:92%"></i></span><span class="sc-rv">$1.4M</span></li>
-                            <li><span class="sc-rl">Q3 2026</span><span class="sc-bar"><i style="width:72%"></i></span><span class="sc-rv">$1.1M</span></li>
-                            <li><span class="sc-rl">Q2 2026</span><span class="sc-bar"><i style="width:58%"></i></span><span class="sc-rv">$0.9M</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="scene-card sc-3 sc-insight" data-parallax="-0.04">
-                        <span class="sc-pulse"></span>
-                        <p class="sc-text">Q4 saw a <strong>+24% YoY</strong> uplift, led by enterprise-tier expansion.</p>
                     </div>
                 </div>
             </div>
@@ -1691,9 +1691,9 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             s.setAttribute('aria-hidden', on ? 'false' : 'true');
         });
         if (personaRoleLabel) personaRoleLabel.textContent = d.pill;
-        if (personaHeading) personaHeading.textContent = d.heading;
-        if (personaDesc)    personaDesc.textContent    = d.desc;
-        if (personaChips)   personaChips.innerHTML = d.chips.map(c => `
+        personaHeading.textContent = d.heading;
+        personaDesc.textContent = d.desc;
+        personaChips.innerHTML = d.chips.map(c => `
             <span class="chip">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
                 ${c}
@@ -1701,7 +1701,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         `).join('');
     }
 
-    /* Attach click handlers first so they always work even if init throws */
     personaTabs.forEach(tab => {
         tab.addEventListener('click', () => activatePersona(tab.dataset.persona));
         tab.addEventListener('keydown', e => {
@@ -1711,13 +1710,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             }
         });
     });
-
-    /* Prime CSS variables and aria state on page load */
-    try {
-        activatePersona(
-            (personaSection && personaSection.dataset.activePersona) || 'business'
-        );
-    } catch(e) { console.warn('persona init:', e); }
 
     /* ── Subtle parallax on scene glows + mouse parallax on cards ──
        Two independent motion layers:
