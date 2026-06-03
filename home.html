@@ -772,10 +772,10 @@
             <!-- LEFT: persona selector (top) + active-persona content -->
             <div class="pex-content">
                 <div class="pex-selector" id="personaTabs" role="tablist" aria-label="Roles">
-                    <button type="button" class="px-tab is-active" data-persona="analyst"  role="tab" aria-selected="true"  tabindex="0">Leader</button>
-                    <button type="button" class="px-tab"           data-persona="business" role="tab" aria-selected="false" tabindex="-1">Scientist</button>
-                    <button type="button" class="px-tab"           data-persona="scientist" role="tab" aria-selected="false" tabindex="-1">Engineer</button>
-                    <button type="button" class="px-tab"           data-persona="engineer" role="tab" aria-selected="false" tabindex="-1">Analyst</button>
+                    <button type="button" class="px-tab is-active" data-persona="analyst"  role="tab" aria-selected="true"  tabindex="0">Analyst</button>
+                    <button type="button" class="px-tab"           data-persona="business" role="tab" aria-selected="false" tabindex="-1">Leader</button>
+                    <button type="button" class="px-tab"           data-persona="scientist" role="tab" aria-selected="false" tabindex="-1">Scientist</button>
+                    <button type="button" class="px-tab"           data-persona="engineer" role="tab" aria-selected="false" tabindex="-1">Engineer</button>
                 </div>
 
                 <div class="pex-text">
@@ -1620,8 +1620,8 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     const personaData = {
         analyst: {
             pill: 'Data Analysts & Business Users',
-            heading: 'Turn questions into insights without waiting on anyone.',
-            desc: "Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore's intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.",
+            heading: 'Ask & Investigate',
+            desc: 'Get more than reports; get answers. With intelligence that helps you identify what matters most, you can investigate business questions, find hidden trends, and surface significant insights more quickly.',
             chips: ['Natural language queries', '100+ chart types', 'Self-serve exploration'],
             accent: '#0e48a5', accentSecondary: '#7747b6',
             glowA: 'rgba(40, 99, 195, .55)', glowB: 'rgba(119, 71, 182, .40)', glowC: 'rgba(28, 169, 201, .25)',
@@ -1638,8 +1638,8 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         },
         scientist: {
             pill: 'Operator & Manager',
-            heading: 'Build, test, and deploy models without leaving the platform.',
-            desc: 'Use AutoML for no-code development or the Python code studio for custom modeling. Train, test, deploy, and manage models alongside your data.',
+            heading: 'Build & Innovate',
+            desc: 'Turn ideas into intelligent solutions faster. Work with trusted enterprise data that helps you spend less time preparing and more time building models, predictions, and AI-driven solutions.',
             chips: ['AutoML pipelines', 'Python code studio', 'Model monitoring'],
             accent: '#1ca9c9', accentSecondary: '#0e48a5',
             glowA: 'rgba(28, 169, 201, .55)', glowB: 'rgba(40, 99, 195, .40)', glowC: 'rgba(119, 71, 182, .25)',
@@ -1647,8 +1647,8 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         },
         engineer: {
             pill: 'Data Engineers',
-            heading: 'Ship reliable pipelines without yak-shaving ETL.',
-            desc: 'Simplified ETL with a visual interface for building and managing data flows. Streamlined data preparation and observability for production-grade pipelines.',
+            heading: 'Connect & Orchestrate',
+            desc: 'Eliminate pipeline management and manual data preparation. Automate data operations, link enterprise systems, and make sure dependable, trustworthy data is constantly available for analytics, artificial intelligence, and business decision-making.',
             chips: ['Low-code ETL', 'Lakehouse storage', 'Schema observability'],
             accent: '#12b6f8', accentSecondary: '#1ca9c9',
             glowA: 'rgba(18, 182, 248, .55)', glowB: 'rgba(28, 169, 201, .40)', glowC: 'rgba(40, 99, 195, .25)',
