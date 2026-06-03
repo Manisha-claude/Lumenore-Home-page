@@ -447,7 +447,7 @@
                 <div class="hero-search-glow"></div>
                 <div class="hero-search">
                     <div class="hero-search-inner">
-                        <p class="placeholder-text" id="heroPlaceholder">How does a customer think about my brand?</p>
+                        <p class="placeholder-text" id="heroPlaceholder">Ask a Question</p>
 
                         <div class="input-row">
                             <button type="button" class="icon-btn" aria-label="Add data source">
@@ -2307,133 +2307,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
        they no longer drift upward as the page scrolls. */
 </script>
 
-<script>
-    /* Hero chatbox — typewriter prompt + auto-cycling tag chips (Figma 628:27607).
-       Three chips drive three placeholder questions; each question types itself
-       out character-by-character with a blinking caret to read as a person live-
-       typing into the AI search box, then auto-advances to the next chip:
-
-         Brand · Retail        → "How does a customer think about my brand?"
-         Operations · Supply   → "Which products will run out of stock next week?"
-         Product · SaaS        → "Why were sales low in Q4 2024 in Brazil?"
-
-       Behavior:
-       • On load: types the first chip's prompt, holds, advances to the next,
-         loops indefinitely (Brand → Operations → Product → Brand → …)
-       • On manual chip click: cancels the current animation, jumps to that
-         chip and resumes the cycle from there
-       • Auto-cycle pauses on mouseenter over the chatbox and resumes on leave
-       • Per-character delay 30–55ms (slight variance for a natural feel)
-       • Punctuation pauses 240ms after `?`, `.`, `!`
-       • prefers-reduced-motion → skip the animation, show full text, no cycle */
-    (function () {
-        const tags = Array.from(document.querySelectorAll('#heroSearchTags .hero-search-tag'));
-        const placeholder = document.getElementById('heroPlaceholder');
-        const hostCard = document.querySelector('.hero-search');
-        if (!tags.length || !placeholder) return;
-
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const TYPE_MIN = 30;     /* ms — fastest gap between characters */
-        const TYPE_MAX = 55;     /* ms — slowest */
-        const ERASE_MS = 18;     /* ms per character on erase (faster than typing) */
-        const HOLD_AFTER_TYPE = 2400; /* ms — dwell on the finished question before advancing */
-        const KICKOFF_DELAY  = 350;   /* ms — initial pause before typing the first question */
-
-        let cancelToken = 0;     /* incremented on each new run; checked in async loops */
-        let cycleTimer = null;   /* setTimeout handle for the next auto-advance */
-        let paused = false;      /* true while user is hovering the chatbox */
-
-        function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
-        function jitter() { return TYPE_MIN + Math.random() * (TYPE_MAX - TYPE_MIN); }
-
-        async function eraseTo(token) {
-            placeholder.classList.add('is-typing');
-            placeholder.classList.remove('is-done');
-            while (placeholder.textContent.length > 0) {
-                if (token !== cancelToken) return;
-                placeholder.textContent = placeholder.textContent.slice(0, -1);
-                await delay(ERASE_MS);
-            }
-        }
-        async function typeOut(text, token) {
-            placeholder.classList.add('is-typing');
-            placeholder.classList.remove('is-done');
-            for (let i = 0; i < text.length; i++) {
-                if (token !== cancelToken) return;
-                placeholder.textContent += text[i];
-                const ch = text[i];
-                const punct = (ch === '?' || ch === '.' || ch === '!') ? 240 : 0;
-                await delay(jitter() + punct);
-            }
-            if (token !== cancelToken) return;
-            placeholder.classList.remove('is-typing');
-            placeholder.classList.add('is-done');
-        }
-
-        function setActiveChip(idx) {
-            tags.forEach((t, i) => t.classList.toggle('is-active', i === idx));
-        }
-
-        async function showIndex(idx, { initial = false } = {}) {
-            const token = ++cancelToken;
-            clearTimeout(cycleTimer);
-            setActiveChip(idx);
-            const text = tags[idx].dataset.prompt || '';
-
-            if (reduceMotion) {
-                placeholder.textContent = text;
-                placeholder.classList.remove('is-typing');
-                placeholder.classList.add('is-done');
-                return;
-            }
-
-            if (!initial) await eraseTo(token);
-            if (token !== cancelToken) return;
-            await typeOut(text, token);
-            if (token !== cancelToken) return;
-
-            /* Schedule the next chip — but only if no newer run has started
-               and the user isn't hovering. If hovering, leave will resume. */
-            scheduleNext(idx, token);
-        }
-        function scheduleNext(currentIdx, token) {
-            clearTimeout(cycleTimer);
-            if (paused) return;
-            cycleTimer = setTimeout(() => {
-                if (token !== cancelToken) return;
-                const next = (currentIdx + 1) % tags.length;
-                showIndex(next);
-            }, HOLD_AFTER_TYPE);
-        }
-
-        /* ---- Manual chip clicks ---- */
-        tags.forEach((chip, i) => {
-            chip.addEventListener('click', () => showIndex(i));
-        });
-
-        /* ---- Pause on hover so users can read uninterrupted ---- */
-        if (hostCard) {
-            hostCard.addEventListener('mouseenter', () => {
-                paused = true;
-                clearTimeout(cycleTimer);
-            });
-            hostCard.addEventListener('mouseleave', () => {
-                paused = false;
-                /* Resume from whichever chip is currently active */
-                const activeIdx = Math.max(0, tags.findIndex(t => t.classList.contains('is-active')));
-                /* Only auto-advance if typing has finished (is-done state) */
-                if (placeholder.classList.contains('is-done')) {
-                    scheduleNext(activeIdx, cancelToken);
-                }
-            });
-        }
-
-        /* ---- Kick off on load ---- */
-        const initialIdx = Math.max(0, tags.findIndex(t => t.classList.contains('is-active')));
-        placeholder.textContent = '';
-        setTimeout(() => showIndex(initialIdx, { initial: true }), KICKOFF_DELAY);
-    })();
-</script>
 
 <!-- ===== EXPLORE OVERLAY (Ask Me demo) — opens when hero "Click to explore" is pressed ===== -->
 <div class="explore-overlay" id="exploreOverlay" aria-hidden="true" role="dialog" aria-label="Lumenore Ask Me demo">
