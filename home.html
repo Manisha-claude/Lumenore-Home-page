@@ -38,14 +38,17 @@
             display: grid !important;
             grid-template-columns: minmax(320px, .95fr) minmax(0, 1.15fr) !important;
             gap: 80px;
-            align-items: center;
+            align-items: stretch;
             position: relative;
+        }
+        #personaSection .pex-content{
+            height: 100%;
         }
         #personaSection .pex-stage{
             position: relative !important;
             width: 100%;
+            height: 100%;
             min-height: 380px;
-            aspect-ratio: 4 / 3;
             isolation: isolate;
         }
         #personaSection .persona-scene{
@@ -69,9 +72,12 @@
             flex-wrap: wrap;
             gap: 8px;
         }
+        #personaSection .scene-card.sc-1{ top: 0;   left: 0;   width: 70%; }
+        #personaSection .scene-card.sc-2{ top: 20%;  right: 0;  width: 44%; }
+        #personaSection .scene-card.sc-3{ top: 42%; left: 18%; width: 56%; }
         @media (max-width: 991px){
             #personaSection .persona-explorer{ grid-template-columns: 1fr !important; gap: 48px; }
-            #personaSection .pex-stage{ min-height: 380px; aspect-ratio: auto; }
+            #personaSection .pex-stage{ min-height: 380px; }
         }
         @media (max-width: 575px){
             #personaSection .pex-stage{ min-height: 360px; }
