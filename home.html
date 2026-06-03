@@ -143,7 +143,7 @@
     </div>
 
     <!-- Main nav bar -->
-    <header class="site-header headerTop">
+    <header class="site-header headerTop is-scrolled">
         <a href="#" class="brand-mark" aria-label="Lumenore home">
             <img src="assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="nav-logo-img">
         </a>
@@ -2273,14 +2273,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     })();
 </script>
 
-<script>
-    /* Header scroll-to-solid transition (matches existing pattern) */
-    const header = document.querySelector('.site-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) header.classList.add('is-scrolled');
-        else header.classList.remove('is-scrolled');
-    });
-</script>
 
 <script>
     /* Hero orbs — scroll-driven parallax removed per request.
