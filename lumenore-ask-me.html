@@ -40,8 +40,8 @@
         .trust-row h2{ font-size: 44px; line-height: 54px; letter-spacing: -.01em; }
         .site-footer{ padding: 64px 0 24px; }
 
-        /* Trusted/logo section — white background to match the light middle band */
-        .trusted-section{ background: #ffffff; }
+        /* Trusted/logo section — light brand-tinted bg gives contrast for light/grey logos */
+        .trusted-section{ background: #EEF2F8; }
         .trusted-section h2{
             font-size: 44px; line-height: 54px;
             letter-spacing: -.01em; margin-bottom: 40px;
@@ -643,31 +643,20 @@
             .ja-phase-title{ font-size: 24px; line-height: 32px; }
         }
 
-        /* ════════════ FEATURES — dark navy canvas matching brand theme ════════════ */
+        /* ════════════ FEATURES — light theme background ════════════ */
         .section-features{
             position: relative;
-            background:
-                radial-gradient(ellipse 70% 60% at 78% 50%, rgba(119,71,182,.14) 0%, transparent 65%),
-                radial-gradient(ellipse 55% 50% at 22% 50%, rgba(18,182,248,.09) 0%, transparent 65%),
-                #051A3C;
+            background: linear-gradient(160deg, #eef5fb 0%, #f0f7fa 50%, #edf3f9 100%);
         }
         /* Keep the index.css gradient bridge suppressed — it's tuned for home.html */
         .section-features::before{ display: none; }
-        /* Subtle dot grid overlay for depth */
-        .section-features::after{
-            content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-            background-image:
-                linear-gradient(to right, rgba(159,186,228,.055) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(159,186,228,.055) 1px, transparent 1px);
-            background-size: 56px 56px;
-            -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-                    mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-        }
+        /* Remove dark dot grid — not needed on light bg */
+        .section-features::after{ display: none; }
         .section-features .container{ position: relative; z-index: 1; }
         .section-features .features-head{ display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 44px; }
         .section-features .features-head h2{
             font-family: 'Fraunces', serif; font-weight: 300;
-            font-size: 44px; line-height: 54px; color: #fcfcfc;
+            font-size: 44px; line-height: 54px; color: var(--cool-101828, #101828);
             margin: 0; letter-spacing: -.01em; text-align: center;
         }
         /* Continuous marquee — same auto-scroll pattern as `.logo-track`. Cards are
@@ -1032,6 +1021,7 @@
                 </a>
             </div>
         </div>
+        <a href="#" class="hello-consult">Free Consultation</a>
         <a href="#" class="hello-login">Log in</a>
     </div>
 
@@ -1044,7 +1034,7 @@
         <nav>
             <ul class="nav-links">
                 <!-- PLATFORM — 3-column mega menu: Products + Capabilities | grid/detail | releases -->
-                <li class="nav-item has-dropdown">
+                <li class="nav-item has-dropdown nav-item--platform" data-mega-id="platformMega">
                     <a href="#" class="nav-trigger">Platform
                         <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
@@ -1174,7 +1164,7 @@
                 </li>
 
                 <!-- SOLUTIONS — 3-column mega: 2 nav entries | grid | recent blogs -->
-                <li class="nav-item has-dropdown">
+                <li class="nav-item has-dropdown nav-item--solutions" data-mega-id="solutionMega">
                     <a href="#" class="nav-trigger">Solutions
                         <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
@@ -1252,26 +1242,16 @@
                 </li>
 
                 <!-- PRICING -->
-                <li class="nav-item has-dropdown">
-                    <a href="#" class="nav-trigger">Pricing
-                        <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <div class="nav-mega nav-mega--1col" role="menu">
-                        <div class="nav-mega-col">
-                            <ul class="nav-mega-list">
-                                <li><a href="#">Lumenore Insights Pricing</a></li>
-                                <li><a href="#">Lumenore Ask Me Pricing</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <li class="nav-item">
+                    <a href="#" class="nav-trigger">Pricing</a>
                 </li>
 
                 <!-- RESOURCES — 2-col: all text links | Recent Blogs sidebar -->
-                <li class="nav-item has-dropdown">
+                <li class="nav-item has-dropdown nav-item--resources" data-mega-id="resourcesMega">
                     <a href="#" class="nav-trigger">Resources
                         <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
-                    <div class="nav-mega nav-mega--resources" role="menu">
+                    <div class="nav-mega nav-mega--resources" role="menu" id="resourcesMega">
 
                         <!-- COL 1 — All resource link groups -->
                         <div class="np-nav np-nav--wide">
@@ -1328,7 +1308,7 @@
                 </li>
 
                 <!-- COMPANY — 3-col mega: single nav entry | full item grid | recent blogs -->
-                <li class="nav-item has-dropdown">
+                <li class="nav-item has-dropdown nav-item--company" data-mega-id="companyMega">
                     <a href="#" class="nav-trigger">Company
                         <svg class="caret" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
@@ -1382,12 +1362,6 @@
                     </div>
                 </li>
 
-                <li class="nav-item"><a href="#" class="nav-trigger">
-                    <svg class="nav-ai-icon" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.5 0l1.6 4.4L13.5 6l-4.4 1.6L7.5 12 5.9 7.6 1.5 6l4.4-1.6L7.5 0z" fill="currentColor"/>
-                    </svg>
-                    AI
-                </a></li>
             </ul>
         </nav>
 
@@ -1401,6 +1375,9 @@
 
 <!-- ═══════════ HERO — Lumenore Ask Me (product-specific design on common dark canvas) ═══════════ -->
 <section class="hero-section">
+    <div class="hero-arc"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-grain"></div>
     <div class="container">
         <div class="hero-content reveal">
             <span class="hero-eyebrow">
@@ -1854,7 +1831,7 @@
 <section class="section-trust">
     <div class="container">
         <div class="trust-row">
-            <h2>Trusted Standards for<br><span class="ah-accent">Complete Data Security</span></h2>
+            <h2>Trusted Standards for<br>Complete Data Security</h2>
             <div class="trust-badges">
                 <img src="assets/images/homeV2o/Compliance_HIPAA.svg" alt="HIPAA Compliant" loading="lazy">
                 <img src="assets/images/homeV2o/Compliance_GDPR.svg" alt="GDPR Ready" loading="lazy">
@@ -2076,9 +2053,7 @@
 <!-- ═══════════ /PAGE FINALE ═══════════ -->
 
 <!-- ═══════════ SCRIPTS ═══════════ -->
-<script>
 <!-- Just Ask: no JS needed — the 3 phase panels are always visible. -->
-
 
 <script>
     /* FAQ accordion */
@@ -2094,6 +2069,15 @@
             });
         });
     })();
+</script>
+
+<script>
+    /* Header scroll-to-solid transition (matches home.html) */
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+    });
 </script>
 
 <script>
