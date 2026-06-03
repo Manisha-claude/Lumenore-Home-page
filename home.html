@@ -3,11 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Lumenore — Enterprise BI and Analytics Platform Powered By AI Agents</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
-    <link href="assets/css/v2o/index.css" rel="stylesheet">
+    <link href="assets/css/v2o/index.css?v=3" rel="stylesheet">
 
+    <style>
+        /* ══════════════════════════════════════════════════════════════
+           PERSONA SECTION — fully self-contained, ID-prefixed rules.
+           #personaSection specificity (1,0,0) beats every class rule
+           in the external stylesheet so layout is guaranteed.
+        ══════════════════════════════════════════════════════════════ */
+
+        /* Section: white canvas */
+        #personaSection{
+            background: #fcfcfc !important;
+            color: #101828;
+            padding: 96px 0 132px;
+            position: relative !important;
+            z-index: 2;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        /* Gradient bridge at top (pale-blue → transparent) */
+        #personaSection .personas-fade{
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 560px;
+            background: linear-gradient(180deg,
+                #e7eef8 0%,
+                rgba(231,238,248,.92) 16%,
+                rgba(231,238,248,.46) 52%,
+                transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        #personaSection .container{ position: relative; z-index: 1; }
+
+        /* Two-column explorer grid */
+        #personaSection .persona-explorer{
+            display: grid !important;
+            grid-template-columns: minmax(320px, .95fr) minmax(0, 1.15fr) !important;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Scene stage */
+        #personaSection .pex-stage{
+            position: relative !important;
+            width: 100%;
+            min-height: 380px;
+            aspect-ratio: 4 / 3;
+            isolation: isolate;
+        }
+
+        /* All scenes: hidden + stacked */
+        #personaSection .persona-scene{
+            position: absolute !important;
+            inset: 0 !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            transform: translateY(12px);
+            transition: opacity .45s ease, transform .55s cubic-bezier(.22,.61,.36,1), visibility 0s linear .55s;
+        }
+        /* Active scene: visible */
+        #personaSection .persona-scene.is-on{
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            transform: none;
+            transition: opacity .45s ease, transform .55s cubic-bezier(.22,.61,.36,1), visibility 0s linear 0s;
+        }
+
+        /* Chips row */
+        #personaSection .persona-chips{
+            display: flex !important;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px){
+            #personaSection .persona-explorer{
+                grid-template-columns: 1fr !important;
+                gap: 48px;
+            }
+            #personaSection .pex-stage{ min-height: 380px; aspect-ratio: auto; }
+        }
+        @media (max-width: 575px){
+            #personaSection .pex-stage{ min-height: 360px; }
+        }
+    </style>
 
 </head>
 <body>
@@ -427,17 +519,11 @@
 
     <div class="container">
         <div class="hero-content">
-            <h1>
-                Enterprise BI and Analytics Platform<br>
-                Powered By <span class="ai-agents-gradient">AI Agents</span>
-            </h1>
-            <p class="hero-sub">
-                Go from data to decisions, faster with enterprise-grade AI-driven analytics platform
-                built to make complex analysis tasks easier.
-            </p>
+            <h1>Agentic Analytics Platform for Enterprise</h1>
+            <p class="hero-sub">Modern analytics platform with specialised agents that monitor data pipelines, automate insight discovery, investigate anomalies, and empower decisions with intelligent workflows.</p>
 
             <div class="hero-search-wrap" id="heroSearchWrap">
-                <div class="hero-search-glow"></div>
+              <div class="hero-search-glow"></div>
                 <div class="hero-search">
                     <div class="hero-search-inner">
                         <p class="placeholder-text" id="heroPlaceholder">Ask a Question</p>
@@ -534,8 +620,8 @@
     <div class="container">
         <!-- Centered heading + subheading — pinned above the products (Figma 994:29829) -->
         <div class="products-intro" id="productsIntro">
-            <h2 class="products-title">Lumenore’s Suite of Products for Every Data Challenge</h2>
-            <p class="products-subtitle">Most teams pay 5 vendors to pass data between each other.<br>Lumenore replaces three of them — in a single platform.</p>
+            <h2 class="products-title">Lumenore&rsquo;s Suite of Products for Every Data Challenge</h2>
+          <p class="products-subtitle">Most teams pay 5 vendors to pass data between each other.<br>Lumenore replaces three of them — in a single platform.</p>
         </div>
 
         <!-- Header row: eyebrow + segmented product switcher -->
@@ -553,7 +639,7 @@
 
             <!-- Active product detail (left column) -->
             <div class="product-detail" id="productDetail">
-                <span class="pd-pill" id="pdPill">Ask Me</span>
+                <span class="pd-pill" id="pdPill">Lumenore Ask Me</span>
                 <h3 id="pdTitle">Conversational Data</h3>
                 <p id="pdDesc">Stop digging for answers. Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.</p>
                 <div class="pd-chips" id="pdChips">
@@ -683,10 +769,7 @@
 </section>
 
 <!-- ===== PERSONAS — BUILT FOR EVERY ROLE ===== -->
-<section class=”section-personas” id=”personaSection” data-active-persona=”business”>
-    <!-- Subtle entry fade — smooths the visual flow from the gradient bridge above
-         into the white canvas without harsh edges. No standalone background orbs;
-         the glow lives integrated behind the dashboard image instead. -->
+<section class=”section-personas” id=”personaSection” data-active-persona=”analyst”>
     <div class=”personas-fade” aria-hidden=”true”></div>
 
     <div class=”container”>
@@ -701,38 +784,36 @@
 
         <div class=”persona-explorer”>
 
-            <!-- LEFT: persona selector (top) + active-persona content -->
+            <!-- LEFT column -->
             <div class=”pex-content”>
                 <div class=”pex-selector” id=”personaTabs” role=”tablist” aria-label=”Roles”>
-                    <button type=”button” class=”px-tab is-active” data-persona=”business”  role=”tab” aria-selected=”true”  tabindex=”0”>Leader</button>
+                    <button type=”button” class=”px-tab is-active” data-persona=”analyst”   role=”tab” aria-selected=”true”  tabindex=”0”>Analyst</button>
+                    <button type=”button” class=”px-tab”           data-persona=”business”  role=”tab” aria-selected=”false” tabindex=”-1”>Leader</button>
                     <button type=”button” class=”px-tab”           data-persona=”scientist” role=”tab” aria-selected=”false” tabindex=”-1”>Scientist</button>
                     <button type=”button” class=”px-tab”           data-persona=”engineer”  role=”tab” aria-selected=”false” tabindex=”-1”>Engineer</button>
-                    <button type=”button” class=”px-tab”           data-persona=”analyst”   role=”tab” aria-selected=”false” tabindex=”-1”>Analyst</button>
                 </div>
 
                 <div class=”pex-text”>
-                    <span class=”pex-role-label” id=”personaRoleLabel”>Business Leaders</span>
+                    <span class=”pex-role-label” id=”personaRoleLabel”>Data Analysts &amp; Business Users</span>
                     <h3 id=”personaHeading”>
-                        <span class=”pquote”>”</span><span id=”personaHeadingText”>Make smarter decisions, faster — across web, mobile, and embedded.</span><span class=”pquote”>”</span>
+                        <span class=”pquote”>”</span><span id=”personaHeadingText”>Turn questions into insights without waiting on anyone.</span><span class=”pquote”>”</span>
                     </h3>
-                    <p id=”personaDesc”>Increase revenue, reduce costs, and stay agile in real time. Empower every team with accessible insights when and where they need them.</p>
+                    <p id=”personaDesc”>Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore's intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.</p>
                     <div class=”persona-chips” id=”personaChips”>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Real-time KPI tracking</span>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Executive dashboards</span>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Alerts &amp; narratives</span>
+                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Natural language queries</span>
+                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>100+ chart types</span>
+                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Self-serve exploration</span>
                     </div>
                 </div>
             </div>
 
-            <!-- RIGHT: animated scene stage. Each persona has its OWN scene composed
-                 of layered cards; on persona change, the active scene fades & slides
-                 in while its cards stagger up sequentially — Lemni-style storytelling. -->
+            <!-- RIGHT column: scene stage -->
             <div class=”pex-stage”>
-                <!-- ── Analyst scene ─────────────────────────────────── -->
-                <div class=”persona-scene” data-scene=”analyst” aria-hidden=”true”>
+
+                <!-- Analyst scene (default active) -->
+                <div class=”persona-scene is-on” data-scene=”analyst” aria-hidden=”false”>
                     <span class=”scene-glow scene-glow-a” data-parallax=”-0.14”></span>
                     <span class=”scene-glow scene-glow-b” data-parallax=”0.08”></span>
-
                     <div class=”scene-card sc-1 sc-trend” data-parallax=”-0.10”>
                         <div class=”sc-hd”>
                             <span class=”sc-eyebrow”>Revenue trend</span>
@@ -756,7 +837,6 @@
                             <path class=”draw-line” d=”M0,46 Q30,38 55,40 T110,28 T170,12 L220,6” fill=”none” stroke=”currentColor” stroke-width=”2” stroke-linecap=”round”/>
                         </svg>
                     </div>
-
                     <div class=”scene-card sc-2 sc-rows-card” data-parallax=”0.06”>
                         <span class=”sc-eyebrow”>Top quarters</span>
                         <ul class=”sc-rows”>
@@ -765,18 +845,16 @@
                             <li><span class=”sc-rl”>Q2 2026</span><span class=”sc-bar”><i style=”width:58%”></i></span><span class=”sc-rv”>$0.9M</span></li>
                         </ul>
                     </div>
-
                     <div class=”scene-card sc-3 sc-insight” data-parallax=”-0.04”>
                         <span class=”sc-pulse”></span>
                         <p class=”sc-text”>Q4 saw a <strong>+24% YoY</strong> uplift, led by enterprise-tier expansion.</p>
                     </div>
                 </div>
 
-                <!-- ── Business Leader scene ─────────────────────────── -->
-                <div class=”persona-scene is-on” data-scene=”business” aria-hidden=”false”>
+                <!-- Leader scene -->
+                <div class=”persona-scene” data-scene=”business” aria-hidden=”true”>
                     <span class=”scene-glow scene-glow-a” data-parallax=”-0.14”></span>
                     <span class=”scene-glow scene-glow-b” data-parallax=”0.08”></span>
-
                     <div class=”scene-card sc-1 sc-kpis” data-parallax=”-0.10”>
                         <span class=”sc-eyebrow”>Executive pulse</span>
                         <div class=”sc-grid”>
@@ -786,13 +864,11 @@
                             <div class=”sc-kpi”><span class=”sc-num sc-num-sm”>+18%</span><span class=”sc-lbl”>Pipeline</span></div>
                         </div>
                     </div>
-
                     <div class=”scene-card sc-2 sc-goal” data-parallax=”0.06”>
                         <div class=”sc-hd”><span class=”sc-eyebrow”>Quarterly goal</span><span class=”sc-meta-r”>78%</span></div>
                         <div class=”sc-progress”><i style=”width:78%”></i></div>
                         <span class=”sc-meta”>$3.27M / $4.20M</span>
                     </div>
-
                     <div class=”scene-card sc-3 sc-checks-card” data-parallax=”-0.04”>
                         <span class=”sc-eyebrow”>This week's focus</span>
                         <ul class=”sc-checks”>
@@ -803,11 +879,10 @@
                     </div>
                 </div>
 
-                <!-- ── Data Scientist scene ──────────────────────────── -->
+                <!-- Scientist scene -->
                 <div class=”persona-scene” data-scene=”scientist” aria-hidden=”true”>
                     <span class=”scene-glow scene-glow-a” data-parallax=”-0.14”></span>
                     <span class=”scene-glow scene-glow-b” data-parallax=”0.08”></span>
-
                     <div class=”scene-card sc-1 sc-pipeline” data-parallax=”-0.10”>
                         <span class=”sc-eyebrow”>Model pipeline</span>
                         <div class=”sc-nodes”>
@@ -817,7 +892,6 @@
                             <div class=”sc-node sc-node-active”>Deploy</div>
                         </div>
                     </div>
-
                     <div class=”scene-card sc-2 sc-rows-card” data-parallax=”0.06”>
                         <span class=”sc-eyebrow”>Models</span>
                         <ul class=”sc-rows”>
@@ -826,18 +900,16 @@
                             <li><span class=”sc-rl”>propensity_v1</span><span class=”sc-badge sc-good”>0.91</span></li>
                         </ul>
                     </div>
-
                     <div class=”scene-card sc-3 sc-alert” data-parallax=”-0.04”>
                         <span class=”sc-pulse sc-pulse-warn”></span>
                         <p class=”sc-text”><strong>Drift detected</strong> in churn_v2 (2.3%). Retrain scheduled for Friday.</p>
                     </div>
                 </div>
 
-                <!-- ── Engineer scene ────────────────────────────────── -->
+                <!-- Engineer scene -->
                 <div class=”persona-scene” data-scene=”engineer” aria-hidden=”true”>
                     <span class=”scene-glow scene-glow-a” data-parallax=”-0.14”></span>
                     <span class=”scene-glow scene-glow-b” data-parallax=”0.08”></span>
-
                     <div class=”scene-card sc-1 sc-pipeline” data-parallax=”-0.10”>
                         <span class=”sc-eyebrow”>ETL pipeline</span>
                         <div class=”sc-nodes”>
@@ -846,7 +918,6 @@
                             <div class=”sc-node sc-node-active”>Lakehouse</div>
                         </div>
                     </div>
-
                     <div class=”scene-card sc-2 sc-rows-card” data-parallax=”0.06”>
                         <span class=”sc-eyebrow”>Job health</span>
                         <ul class=”sc-rows”>
@@ -856,17 +927,16 @@
                             <li><span class=”sc-rl”>audit_dq</span><span class=”sc-status sc-ok”>ok</span></li>
                         </ul>
                     </div>
-
                     <div class=”scene-card sc-3 sc-metric” data-parallax=”-0.04”>
                         <span class=”sc-eyebrow”>Latency p95</span>
                         <span class=”sc-metric-num”>47<small>ms</small></span>
                         <span class=”sc-metric-foot”>Last hour · all pipelines</span>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </div>
+            </div><!-- /pex-stage -->
+        </div><!-- /persona-explorer -->
+    </div><!-- /container -->
 </section>
 
 <!-- ===== PRICING — Faithful to Figma content, fresh layout =====
@@ -1718,7 +1788,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         });
     });
 
-    activatePersona('business', true);
+    activatePersona('analyst', true);
 
     /* ── Subtle parallax on scene glows + mouse parallax on cards ──
        Two independent motion layers:
