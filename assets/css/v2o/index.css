@@ -1411,6 +1411,7 @@ a{ color: inherit; text-decoration: none; }
     --pa-accent-border: rgba(40, 99, 195, .22);
 
     background: var(--Base-White, #fcfcfc);
+    color: var(--cool-101828, #101828);
     padding: 96px 0 132px;
     position: relative;
     z-index: 2;
@@ -1605,7 +1606,7 @@ a{ color: inherit; text-decoration: none; }
     line-height: 16px;
     letter-spacing: 1.4px;
     text-transform: uppercase;
-    color: var(--pa-accent);
+    color: var(--pa-accent, #0e48a5);
     margin-bottom: 18px;
     transition: color .35s ease;
 }
@@ -1658,8 +1659,8 @@ a{ color: inherit; text-decoration: none; }
     padding: 7px 13px;
     border-radius: 50px;
     background: rgba(255, 255, 255, .8);
-    border: 1px solid var(--pa-accent-border);
-    color: var(--pa-accent);
+    border: 1px solid var(--pa-accent-border, rgba(40, 99, 195, .22));
+    color: var(--pa-accent, #0e48a5);
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 12.5px;
