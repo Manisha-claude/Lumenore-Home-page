@@ -754,7 +754,7 @@
 
 
 <!-- ===== PERSONAS — BUILT FOR EVERY ROLE ===== -->
-<section class="section-personas" id="personaSection" data-active-persona="analyst">
+<section class="section-personas" id="personaSection" data-active-persona="business">
     <div class="personas-fade" aria-hidden="true"></div>
 
     <div class="container">
@@ -772,10 +772,10 @@
             <!-- LEFT: persona selector (top) + active-persona content -->
             <div class="pex-content">
                 <div class="pex-selector" id="personaTabs" role="tablist" aria-label="Roles">
-                    <button type="button" class="px-tab"           data-persona="business"  role="tab" aria-selected="false" tabindex="-1">Leader</button>
+                    <button type="button" class="px-tab is-active" data-persona="business"  role="tab" aria-selected="true"  tabindex="0">Leader</button>
                     <button type="button" class="px-tab"           data-persona="scientist" role="tab" aria-selected="false" tabindex="-1">Scientist</button>
                     <button type="button" class="px-tab"           data-persona="engineer"  role="tab" aria-selected="false" tabindex="-1">Data Engineer</button>
-                    <button type="button" class="px-tab is-active" data-persona="analyst"   role="tab" aria-selected="true"  tabindex="0">Analyst</button>
+                    <button type="button" class="px-tab"           data-persona="analyst"   role="tab" aria-selected="false" tabindex="-1">Analyst</button>
                 </div>
 
                 <div class="pex-text">
@@ -795,7 +795,7 @@
             <!-- RIGHT: animated scene stage -->
             <div class="pex-stage">
                 <!-- ── Analyst scene ─────────────────────────────────── -->
-                <div class="persona-scene is-on" data-scene="analyst" aria-hidden="false">
+                <div class="persona-scene" data-scene="analyst" aria-hidden="true">
                     <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
                     <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
                     <div class="scene-card sc-1 sc-trend" data-parallax="-0.10">
@@ -836,7 +836,7 @@
                 </div>
 
                 <!-- ── Business Leader scene ─────────────────────────── -->
-                <div class="persona-scene" data-scene="business" aria-hidden="true">
+                <div class="persona-scene is-on" data-scene="business" aria-hidden="false">
                     <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
                     <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
                     <div class="scene-card sc-1 sc-kpis" data-parallax="-0.10">
@@ -1706,7 +1706,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         });
     });
 
-    activatePersona('analyst');
+    activatePersona('business');
 
     (function setupPersonaParallax(){
         const section = document.getElementById('personaSection');
