@@ -1594,18 +1594,6 @@ a{ color: inherit; text-decoration: none; }
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transition: opacity .18s ease, transform .18s ease;
-}
-.pex-text--exit{
-    opacity: 0;
-    transform: translateY(6px);
-}
-.pex-text--enter{
-    animation: pexEnter .35s cubic-bezier(.22,.61,.36,1) both;
-}
-@keyframes pexEnter{
-    from{ opacity: 0; transform: translateY(-6px); }
-    to{   opacity: 1; transform: none; }
 }
 .pex-role-label{
     display: inline-flex;

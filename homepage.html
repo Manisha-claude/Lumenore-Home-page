@@ -1685,16 +1685,30 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             `).join('');
         }
 
-        if (instant || !pexText) {
+        if (!pexText) {
+            swapText();
+        } else if (instant) {
+            pexText.style.transition = '';
+            pexText.style.opacity    = '';
+            pexText.style.transform  = '';
             swapText();
         } else {
-            pexText.classList.add('pex-text--exit');
+            pexText.style.transition = 'opacity .16s ease, transform .16s ease';
+            pexText.style.opacity    = '0';
+            pexText.style.transform  = 'translateY(6px)';
             setTimeout(() => {
                 swapText();
-                pexText.classList.remove('pex-text--exit');
-                pexText.classList.add('pex-text--enter');
-                setTimeout(() => pexText.classList.remove('pex-text--enter'), 350);
-            }, 180);
+                pexText.style.transform  = 'translateY(-6px)';
+                void pexText.offsetHeight; /* flush */
+                pexText.style.transition = 'opacity .32s ease, transform .32s ease';
+                pexText.style.opacity    = '1';
+                pexText.style.transform  = 'none';
+                setTimeout(() => {
+                    pexText.style.transition = '';
+                    pexText.style.opacity    = '';
+                    pexText.style.transform  = '';
+                }, 360);
+            }, 170);
         }
     }
 
@@ -1708,7 +1722,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         });
     });
 
-    /* Prime the initial state immediately (no animation on load) */
+    /* Prime the initial state immediately — no animation on load */
     activatePersona('business', true);
 
     /* ── Subtle parallax on scene glows + mouse parallax on cards ──
