@@ -1929,12 +1929,10 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             const d = pricingData[plan];
             const active = activeCapByPlan[plan];
             pmCards.innerHTML = d.bullets.map((b, i) => {
-                const num = String(i + 1).padStart(2, '0');
                 const on = i === active;
                 return '<button type="button" class="pm-card' + (on ? ' is-active' : '') + '"'
                     + ' data-cap="' + i + '" role="tab"'
                     + ' aria-selected="' + on + '" tabindex="' + (on ? '0' : '-1') + '">'
-                    + '<span class="pm-card-num">' + num + '</span>'
                     + '<span class="pm-card-title">' + b + '</span>'
                     + '<svg class="pm-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>'
                     + '</button>';
