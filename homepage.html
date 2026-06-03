@@ -683,7 +683,7 @@
 </section>
 
 <!-- ===== PERSONAS — BUILT FOR EVERY ROLE ===== -->
-<section class="section-personas" id="personaSection" data-active-persona="analyst">
+<section class="section-personas" id="personaSection" data-active-persona="business">
     <!-- Subtle entry fade — smooths the visual flow from the gradient bridge above
          into the white canvas without harsh edges. No standalone background orbs;
          the glow lives integrated behind the dashboard image instead. -->
@@ -704,22 +704,22 @@
             <!-- LEFT: persona selector (top) + active-persona content -->
             <div class="pex-content">
                 <div class="pex-selector" id="personaTabs" role="tablist" aria-label="Roles">
-                    <button type="button" class="px-tab is-active" data-persona="analyst"   role="tab" aria-selected="true"  tabindex="0">Analyst</button>
-                    <button type="button" class="px-tab"           data-persona="business"  role="tab" aria-selected="false" tabindex="-1">Leader</button>
+                    <button type="button" class="px-tab is-active" data-persona="business"  role="tab" aria-selected="true"  tabindex="0">Leader</button>
                     <button type="button" class="px-tab"           data-persona="scientist" role="tab" aria-selected="false" tabindex="-1">Scientist</button>
                     <button type="button" class="px-tab"           data-persona="engineer"  role="tab" aria-selected="false" tabindex="-1">Engineer</button>
+                    <button type="button" class="px-tab"           data-persona="analyst"   role="tab" aria-selected="false" tabindex="-1">Analyst</button>
                 </div>
 
                 <div class=”pex-text”>
-                    <span class=”pex-role-label” id=”personaRoleLabel”>Data Analysts &amp; Business Users</span>
+                    <span class=”pex-role-label” id=”personaRoleLabel”>Business Leaders</span>
                     <h3 id=”personaHeading”>
-                        <span class=”pquote”>”</span><span id=”personaHeadingText”>Turn questions into insights without waiting on anyone.</span><span class=”pquote”>”</span>
+                        <span class=”pquote”>”</span><span id=”personaHeadingText”>Make smarter decisions, faster — across web, mobile, and embedded.</span><span class=”pquote”>”</span>
                     </h3>
-                    <p id=”personaDesc”>Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore's intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.</p>
+                    <p id=”personaDesc”>Increase revenue, reduce costs, and stay agile in real time. Empower every team with accessible insights when and where they need them.</p>
                     <div class=”persona-chips” id=”personaChips”>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Natural language queries</span>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>100+ chart types</span>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Self-serve exploration</span>
+                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Real-time KPI tracking</span>
+                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Executive dashboards</span>
+                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Alerts &amp; narratives</span>
                     </div>
                 </div>
             </div>
@@ -729,7 +729,7 @@
                  in while its cards stagger up sequentially — Lemni-style storytelling. -->
             <div class="pex-stage">
                 <!-- ── Business Leader scene ─────────────────────────── -->
-                <div class="persona-scene" data-scene="business" aria-hidden="true">
+                <div class="persona-scene is-on" data-scene="business" aria-hidden="false">
                     <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
                     <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
 
@@ -821,7 +821,7 @@
                 </div>
 
                 <!-- ── Analyst scene ─────────────────────────────────── -->
-                <div class="persona-scene is-on" data-scene="analyst" aria-hidden="false">
+                <div class="persona-scene" data-scene="analyst" aria-hidden="true">
                     <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
                     <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
 
@@ -1723,7 +1723,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     });
 
     /* Prime the initial state immediately — no animation on load */
-    activatePersona('analyst', true);
+    activatePersona('business', true);
 
     /* ── Subtle parallax on scene glows + mouse parallax on cards ──
        Two independent motion layers:
