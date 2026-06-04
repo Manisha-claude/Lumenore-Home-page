@@ -1575,14 +1575,21 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     const deskQuery      = window.matchMedia('(min-width: 992px)');
 
     /* ── Desktop: scroll-pinned switching ──────────────────────────
-       The section is a tall track; while .products-sticky is pinned,
-       map scroll progress (0→1) across the pinned range to the 3 products. */
+       Cache section geometry — offsetHeight and top never change during
+       scroll, only on resize. Reading them inside the scroll handler
+       forces synchronous reflow every frame and causes jank. */
+    let cachedSectionTop = 0;
+    let cachedRange      = 0;
+    function cacheLayout() {
+        cachedSectionTop = window.scrollY + productSection.getBoundingClientRect().top;
+        cachedRange      = productSection.offsetHeight - window.innerHeight;
+    }
+    cacheLayout();
+
     let ticking = false;
     function updateByScroll() {
-        const rect  = productSection.getBoundingClientRect();
-        const range = productSection.offsetHeight - window.innerHeight;
-        if (range <= 0) return;
-        let progress = (-rect.top) / range;
+        if (cachedRange <= 0) return;
+        let progress = (window.scrollY - cachedSectionTop) / cachedRange;
         progress = Math.max(0, Math.min(0.999, progress));
         const idx = Math.floor(progress * productOrder.length);
         const key = productOrder[idx];
@@ -1596,11 +1603,9 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 
     /* Clicking a tab scrolls to that product's segment of the pinned range */
     function scrollToProduct(key) {
-        const idx     = productOrder.indexOf(key);
-        const range   = productSection.offsetHeight - window.innerHeight;
-        const seg     = range / productOrder.length;
-        const topAbs  = window.scrollY + productSection.getBoundingClientRect().top;
-        window.scrollTo({ top: topAbs + seg * idx + seg * 0.5, behavior: 'smooth' });
+        const idx = productOrder.indexOf(key);
+        const seg = cachedRange / productOrder.length;
+        window.scrollTo({ top: cachedSectionTop + seg * idx + seg * 0.5, behavior: 'smooth' });
     }
 
     /* ── Mobile: un-pinned, auto-rotate ────────────────────────── */
@@ -1637,7 +1642,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         });
     });
     deskQuery.addEventListener('change', setupMode);
-    window.addEventListener('resize', () => { if (deskQuery.matches) updateByScroll(); });
+    window.addEventListener('resize', () => { cacheLayout(); if (deskQuery.matches) updateByScroll(); });
     setupMode();
 </script>
 
