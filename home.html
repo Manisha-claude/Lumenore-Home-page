@@ -48,6 +48,20 @@
             pointer-events: none;
             z-index: 0;
         }
+        /* Thin bottom overlay — covers only the glow-orb clip edge, not the content */
+        #personaSection::after{
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                rgba(252,252,252,.55) 40%,
+                rgba(252,252,252,.90) 72%,
+                #fcfcfc 100%);
+            pointer-events: none;
+            z-index: 10;
+        }
         #personaSection .container{ position: relative; z-index: 1; }
         #personaSection .personas-intro{ margin-bottom: 96px !important; }
         #personaSection .persona-explorer{
