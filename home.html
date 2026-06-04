@@ -10,6 +10,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
     <link href="assets/css/v2o/index.css?v=3" rel="stylesheet">
+    <!-- Preload first product GIF so it's ready when page renders -->
+    <link rel="preload" href="assets/images/GIf/Askme_Gif 1.gif" as="image" fetchpriority="high">
 
     <style>
         #personaSection{
@@ -50,11 +52,15 @@
             content: '';
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            height: 220px;
+            height: 440px;
             background: linear-gradient(to bottom,
                 transparent 0%,
-                rgba(252,252,252,.60) 40%,
-                rgba(252,252,252,.92) 70%,
+                rgba(252,252,252,.12) 18%,
+                rgba(252,252,252,.32) 32%,
+                rgba(252,252,252,.58) 48%,
+                rgba(252,252,252,.78) 62%,
+                rgba(252,252,252,.92) 76%,
+                rgba(252,252,252,.98) 88%,
                 #fcfcfc 100%);
             pointer-events: none;
             z-index: 10;
@@ -638,7 +644,7 @@
 <!-- ===== TRUSTED LOGOS ===== -->
 <section class="trusted-section">
     <div class="container">
-        <h2>Lumenore is Trusted By 20,000+ Users<br>Across 100+ Enterprise Teams</h2>
+        <h2>Trusted by <span class="ah-accent">100+ Teams</span> Across Global Enterprises</h2>
 
         <div class="logo-slider">
             <div class="logo-track">
@@ -729,7 +735,7 @@
             <div class="product-visual">
                 <span class="pv-orb pv-orb-a" aria-hidden="true"></span>
                 <span class="pv-orb pv-orb-b" aria-hidden="true"></span>
-                <img src="assets/images/GIf/Askme_Gif 1.gif" alt="Lumenore Ask Me preview" id="pdImage" loading="lazy">
+                <img src="assets/images/GIf/Askme_Gif 1.gif" alt="Lumenore Ask Me preview" id="pdImage" loading="eager" fetchpriority="high">
             </div>
 
         </div>
@@ -1550,6 +1556,14 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     const pdDots       = document.querySelectorAll('.product-progress .pp-dot');
 
     let currentProduct = 'askme';
+
+    /* Preload the other product GIFs in the background so switching is instant */
+    window.addEventListener('load', () => {
+        ['assets/images/homeV2o/Dashboard (1).gif', 'assets/images/homeV2o/Data Magnet (1).gif'].forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+    });
 
     function renderProduct(key) {
         const d = productData[key];
