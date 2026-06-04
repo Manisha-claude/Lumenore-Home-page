@@ -85,6 +85,36 @@
         }
         .section-products .products-head{ justify-content: flex-end !important; }
         .section-products .products-intro{ margin-bottom: 56px !important; }
+
+        /* Product section — bottom-to-top slide transition (fast + smooth) */
+        .product-detail > *{
+            transition: opacity .12s ease, transform .12s cubic-bezier(.16, 1, .3, 1);
+            will-change: opacity, transform;
+        }
+        .product-detail.is-leaving > *{
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity .05s ease-in, transform .05s ease-in;
+            transition-delay: 0s !important;
+        }
+        .product-detail.is-entering > *{
+            opacity: 0;
+            transform: translateY(10px);
+            transition: none !important;
+        }
+        .product-visual img{
+            transition: opacity .12s ease, transform .12s cubic-bezier(.16, 1, .3, 1);
+        }
+        .product-visual.is-leaving img{
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity .05s ease-in, transform .05s ease-in;
+        }
+        .product-visual.is-entering img{
+            opacity: 0;
+            transform: translateY(10px);
+            transition: none !important;
+        }
     </style>
 
 
@@ -770,8 +800,8 @@
                 <span class="pe-dot" aria-hidden="true"></span>
                 The People Behind the Insights
             </span>
-            <h2>Built for every role <span class="ph-accent">on your data team</span></h2>
-            <p class="section-sub">Whether you build pipelines, answer business questions, run the company, or just need data without filing a ticket — Lumenore was made for you.</p>
+            <h2>Built for Every Role in the <span class="ph-accent">Data-to-Decision Journey</span></h2>
+            <p class="section-sub">From business users to data teams, Lumenore helps organizations reduce complexity, accelerate decisions, and turn data into meaningful business outcomes.</p>
         </div>
 
         <div class="persona-explorer">
@@ -1517,7 +1547,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 pdDetail.classList.remove('is-entering');
                 pdVisual.classList.remove('is-entering');
             }));
-        }, 60);
+        }, 55);
     }
 
     const productSection = document.querySelector('.section-products');
