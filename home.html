@@ -24,14 +24,40 @@
         #personaSection .personas-fade{
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 560px;
+            height: 640px;
             background: linear-gradient(180deg,
-                #e7eef8 0%,
-                rgba(231,238,248,.92) 16%,
-                rgba(231,238,248,.46) 52%,
+                rgba(231,238,248,1) 0%,
+                rgba(231,238,248,.85) 20%,
+                rgba(231,238,248,.40) 55%,
                 transparent 100%);
             pointer-events: none;
             z-index: 0;
+        }
+        #personaSection .personas-fade-bottom{
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 320px;
+            background: linear-gradient(0deg,
+                rgba(252,252,252,1) 0%,
+                rgba(252,252,252,.90) 25%,
+                rgba(252,252,252,.50) 60%,
+                transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        /* Bottom overlay above all section content to smoothly fade glows into the next section */
+        #personaSection::after{
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 220px;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                rgba(252,252,252,.60) 40%,
+                rgba(252,252,252,.92) 70%,
+                #fcfcfc 100%);
+            pointer-events: none;
+            z-index: 10;
         }
         #personaSection .container{ position: relative; z-index: 1; }
         #personaSection .personas-intro{ margin-bottom: 96px !important; }
@@ -813,6 +839,7 @@
 <!-- ===== PERSONAS — BUILT FOR EVERY ROLE ===== -->
 <section class="section-personas" id="personaSection" data-active-persona="business">
     <div class="personas-fade" aria-hidden="true"></div>
+    <div class="personas-fade-bottom" aria-hidden="true"></div>
 
     <div class="container">
         <div class="personas-intro">
