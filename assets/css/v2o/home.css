@@ -4,6 +4,31 @@
     padding-bottom: 1px !important;
 }
 
+/* ── Hero stage — full viewport height across all devices ── */
+.hero-stage{
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+.hero-stage .hero-section{
+    flex: 1;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex;
+    align-items: center;
+}
+.hero-stage .hero-section .container{
+    width: 100%;
+}
+
+/* Null out all breakpoint padding overrides so flex-fill stays intact */
+@media (max-width: 1199px){ .hero-stage .hero-section{ padding: 0 !important; } }
+@media (max-width: 991px) { .hero-stage .hero-section{ padding: 0 !important; } }
+@media (max-width: 767px) { .hero-stage .hero-section{ padding: 0 !important; } }
+@media (max-width: 575px) { .hero-stage .hero-section{ padding: 0 !important; } }
+
 #personaSection{
     background: #fcfcfc !important;
     color: #101828;
