@@ -733,6 +733,12 @@
     }
 }
 
+/* ── Hello bar — reduced height ── */
+.hello-bar{
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
 /* ── Hero browser frame ── */
 .hero-browser-wrap{
     position: relative;
