@@ -1,3 +1,9 @@
+/* ── Hello bar — reduced height only ── */
+.hello-bar{
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
 #personaSection{
     background: #fcfcfc !important;
     color: #101828;
