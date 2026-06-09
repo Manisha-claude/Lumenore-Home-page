@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -10,96 +11,12 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
     <link href="assets/css/v2o/index.css?v=3" rel="stylesheet">
+    <link href="assets/css/v2o/homepage.css?v=2" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script src="assets/images/Json/Askme-animation-1-.js" async></script>
+    <script src="assets/images/Json/Dashboard-Animation-1.js" async></script>
+    <script src="assets/images/Json/Data-Magnet_Animation-1.js" async></script>
 
-    <style>
-        /* ══════════════════════════════════════════════════════════════
-           PERSONA SECTION — fully self-contained, ID-prefixed rules.
-           #personaSection specificity (1,0,0) beats every class rule
-           in the external stylesheet so layout is guaranteed.
-        ══════════════════════════════════════════════════════════════ */
-
-        /* Section: white canvas */
-        #personaSection{
-            background: #fcfcfc !important;
-            color: #101828;
-            padding: 96px 0 132px;
-            position: relative !important;
-            z-index: 2;
-            overflow: hidden;
-            isolation: isolate;
-        }
-
-        /* Gradient bridge at top (pale-blue → transparent) */
-        #personaSection .personas-fade{
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 560px;
-            background: linear-gradient(180deg,
-                #e7eef8 0%,
-                rgba(231,238,248,.92) 16%,
-                rgba(231,238,248,.46) 52%,
-                transparent 100%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        #personaSection .container{ position: relative; z-index: 1; }
-
-        /* Two-column explorer grid */
-        #personaSection .persona-explorer{
-            display: grid !important;
-            grid-template-columns: minmax(320px, .95fr) minmax(0, 1.15fr) !important;
-            gap: 80px;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Scene stage */
-        #personaSection .pex-stage{
-            position: relative !important;
-            width: 100%;
-            min-height: 380px;
-            aspect-ratio: 4 / 3;
-            isolation: isolate;
-        }
-
-        /* All scenes: hidden + stacked */
-        #personaSection .persona-scene{
-            position: absolute !important;
-            inset: 0 !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-            transform: translateY(12px);
-            transition: opacity .45s ease, transform .55s cubic-bezier(.22,.61,.36,1), visibility 0s linear .55s;
-        }
-        /* Active scene: visible */
-        #personaSection .persona-scene.is-on{
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: auto !important;
-            transform: none;
-            transition: opacity .45s ease, transform .55s cubic-bezier(.22,.61,.36,1), visibility 0s linear 0s;
-        }
-
-        /* Chips row */
-        #personaSection .persona-chips{
-            display: flex !important;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        /* Responsive */
-        @media (max-width: 991px){
-            #personaSection .persona-explorer{
-                grid-template-columns: 1fr !important;
-                gap: 48px;
-            }
-            #personaSection .pex-stage{ min-height: 380px; aspect-ratio: auto; }
-        }
-        @media (max-width: 575px){
-            #personaSection .pex-stage{ min-height: 360px; }
-        }
-    </style>
 
 </head>
 <body>
@@ -522,6 +439,11 @@
             <h1>Agentic Analytics Platform for Enterprise</h1>
             <p class="hero-sub">Modern analytics platform with specialised agents that monitor data pipelines, automate insight discovery, investigate anomalies, and empower decisions with intelligent workflows.</p>
 
+            <button type="button" class="explore-btn btn-primary">
+                Click to explore
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+
             <div class="hero-search-wrap" id="heroSearchWrap">
               <div class="hero-search-glow"></div>
                 <div class="hero-search">
@@ -570,9 +492,9 @@
 <!-- ===== TRUSTED LOGOS ===== -->
 <section class="trusted-section">
     <div class="container">
-        <h2>Lumenore is Trusted By 20,000+ Users<br>Across 100+ Enterprise Teams</h2>
+        <h3 class="reveal-block">Trusted by <span class="ah-accent">100+ Teams</span> Across Global Enterprises</h3>
 
-        <div class="logo-slider">
+        <div class="logo-slider reveal-block" style="--reveal-delay:.22s">
             <div class="logo-track">
                 <div><img src="assets/images/homeV2o/Logo section/Bayer_Cross_1_.svg" loading="lazy" alt="Bayer"></div>
                 <div><img src="assets/images/homeV2o/Logo section/logo-siriusxm-vector-logo 1.svg" loading="lazy" alt="SiriusXM"></div>
@@ -615,22 +537,32 @@
 
 <!-- ===== PRODUCT SUITE (Figma 994:29832) ===== -->
 <section class="section-products" id="productSection">
-  <!-- Sticky pin: heading + switcher + stage stay fixed while the track scrolls -->
+
+  <!-- Sticky pin: heading + tabs + stage all stay fixed while the track scrolls -->
   <div class="products-sticky">
     <div class="container">
-        <!-- Centered heading + subheading — pinned above the products (Figma 994:29829) -->
+        <!-- Section intro — sticky with the rest of the panel -->
         <div class="products-intro" id="productsIntro">
-            <h2 class="products-title">Lumenore&rsquo;s Suite of Products for Every Data Challenge</h2>
-          <p class="products-subtitle">Most teams pay 5 vendors to pass data between each other.<br>Lumenore replaces three of them — in a single platform.</p>
+            <span class="personas-eyebrow reveal-block">
+                <span class="pe-dot" aria-hidden="true"></span>
+                CORE MODULES
+            </span>
+            <h2 class="products-title reveal-block" style="--reveal-delay:.18s">Lumenore&rsquo;s Suite of Products for Every Data Challenge</h2>
+            <p class="products-subtitle reveal-block" style="--reveal-delay:.36s">Most teams pay 5 vendors to pass data between each other.<br>Lumenore replaces three of them — in a single platform.</p>
         </div>
 
-        <!-- Header row: eyebrow + segmented product switcher -->
-        <div class="products-head">
-            <span class="ph-eyebrow">The Platform</span>
-            <div class="product-tabs" id="productTabs" role="tablist" aria-label="Product suite">
-                <button type="button" class="product-tab is-active" data-product="askme" role="tab" aria-selected="true">Lumenore Ask Me</button>
-                <button type="button" class="product-tab" data-product="insights" role="tab" aria-selected="false">Lumenore Insights</button>
-                <button type="button" class="product-tab" data-product="datamagnet" role="tab" aria-selected="false">Lumenore Data Magnet</button>
+        <!-- Header row: product name (left) + progress steps (right) -->
+        <div class="products-head reveal-block" style="--reveal-delay:.44s">
+            <h2 class="pd-name" id="pdPill"><span class="pd-num">01</span><span class="pd-sep" aria-hidden="true">&middot;</span>Lumenore Ask Me</h2>
+            <div class="pd-prog" id="productTabs" role="tablist" aria-label="Product suite">
+                <div class="pd-prog-track" aria-hidden="true">
+                    <div class="pd-prog-fill" id="pdProgFill"></div>
+                </div>
+                <div class="pd-prog-steps">
+                    <button type="button" class="product-tab is-active" data-product="askme" role="tab" aria-selected="true">01</button>
+                    <button type="button" class="product-tab" data-product="insights" role="tab" aria-selected="false">02</button>
+                    <button type="button" class="product-tab" data-product="datamagnet" role="tab" aria-selected="false">03</button>
+                </div>
             </div>
         </div>
 
@@ -638,10 +570,9 @@
         <div class="product-stage">
 
             <!-- Active product detail (left column) -->
-            <div class="product-detail" id="productDetail">
-                <span class="pd-pill" id="pdPill">Lumenore Ask Me</span>
-                <h3 id="pdTitle">Conversational Data</h3>
-                <p id="pdDesc">Stop digging for answers. Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.</p>
+            <div class="product-detail reveal-left" id="productDetail" style="--reveal-delay:.54s">
+                <h3 class="pd-tagline" id="pdTitle">Conversational Analytics</h3>
+                <p id="pdDesc"><span data-contrast="auto" xml:lang="EN-US" lang="EN-US">AI agents with context awareness and expertise that understand not just your question but also your business goal. Ask Me connects to your business data and, in response to your inquiries, brings external market intelligence to independently look into anomalies, identify underlying causes, and deliver governed insights that provide each team with the whole picture.</span><span data-ccp-props="{}"> </span></p>
                 <div class="pd-chips" id="pdChips">
                     <span class="pd-chip">Semantic Search</span>
                     <span class="pd-chip">Contextual Intelligence</span>
@@ -652,13 +583,13 @@
                     <figcaption id="pdQuoteCite">Enterprise analytics team · faster self-serve reporting</figcaption>
                 </figure>
                 <a href="lumenore-ask-me.html" class="pd-cta btn-primary" id="pdCta">Explore Ask Me <span class="pd-cta-arrow" aria-hidden="true">&rarr;</span></a>
-            </div>
+          </div>
 
             <!-- Product visual (right column) -->
-            <div class="product-visual">
+            <div class="product-visual reveal-right" style="--reveal-delay:.64s">
                 <span class="pv-orb pv-orb-a" aria-hidden="true"></span>
                 <span class="pv-orb pv-orb-b" aria-hidden="true"></span>
-                <img src="assets/images/GIf/Askme_Gif 1.gif" alt="Lumenore Ask Me preview" id="pdImage" loading="lazy">
+                <div id="pdLottie"></div>
             </div>
 
         </div>
@@ -671,272 +602,308 @@
 <section class="section-features">
     <div class="container">
         <div class="features-intro">
-            <p class="features-eyebrow"><span class="fe-dot"></span>Features &amp; Capabilities</p>
-            <h2>Everything you need to <em class="fh-accent">10x your business impact</em></h2>
-            <p class="section-sub">A complete data + AI platform built for analysts, leaders, and self-serve teams alike.</p>
+            <p class="features-eyebrow reveal-block"><span class="fe-dot"></span>Features &amp; Capabilities</p>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Everything you need to <em class="fh-accent">10x your business impact</em></h2>
+            <p class="section-sub reveal-block" style="--reveal-delay:.36s">A complete data + AI platform built for analysts, leaders, and self-serve teams alike.</p>
         </div>
 
-        <div class="features-marquee" id="featuresMarquee">
-            <!-- Single track — all 12 feature cards, scrolling RIGHT → LEFT. -->
-            <div class="features-track" id="featuresTrack" data-marquee-dir="rtl">
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
-                    </span>
-                    <h5>Data Integration</h5>
-                    <p>Connect and bring data from varied sources using in-built ETL tool and multiple data source connectors.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                    </span>
-                    <h5>Data Quality and Validation</h5>
-                    <p>Monitor and correct inconsistencies, duplicates, and errors in datasets.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                    </span>
-                    <h5>Data Lakehouse</h5>
-                    <p>Create a single source of truth with our highly scalable and secure data lakehouse.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="11"/><rect x="10" y="3" width="4" height="18"/><rect x="17" y="7" width="4" height="14"/></svg>
-                    </span>
-                    <h5>Data Visualization</h5>
-                    <p>Create interactive dashboards and storyboards using 100+ charts and graphs.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><polyline points="14 7 21 7 21 14"/></svg>
-                    </span>
-                    <h5>Predictive Analytics</h5>
-                    <p>Use historical and real-time data to forecast future trends, risks, and opportunities.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                    </span>
-                    <h5>Embedded Analytics</h5>
-                    <p>Bring dashboards and insights directly into business applications.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                    </span>
-                    <h5>AI Agents</h5>
-                    <p>Get a force of AI Agents for assistance in root cause analysis, visualization, predictions, and more.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                    </span>
-                    <h5>Conversational Analytics</h5>
-                    <p>Ask your data any question in natural language (NLQ) and get actionable insights with context-aware AI.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-                    </span>
-                    <h5>Real-Time Data Sync</h5>
-                    <p>Connect and bring data from varied sources using in-built ETL tool and multiple data source connectors.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
-                    </span>
-                    <h5>RAG-Based Analysis</h5>
-                    <p>Analyze unstructured data like PDFs, reports, and word docs.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
-                    </span>
-                    <h5>Local LLM Integration</h5>
-                    <p>Keep sensitive data in-house while enabling natural language querying and analysis.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="fc-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9M12 14v1"/></svg>
-                    </span>
-                    <h5>Low-Code Data Pipeline Builder</h5>
-                    <p>Simplified ETL with a visual interface for building and managing data flows.</p>
-                </div>
-            </div><!-- /features-track -->
-        </div><!-- /features-marquee -->
+        <div class="fc-carousel" id="fcCarousel">
+            <div class="fc-viewport">
+                <div class="fc-track" id="fcTrack">
+
+                    <!-- 1: Data Integration -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
+                        </span>
+                        <h5>Data Integration</h5>
+                        <p>Connect and bring data from varied sources using in-built ETL tool and multiple data source connectors.</p>
+                    </div>
+
+                    <!-- 2: AI Agents -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </span>
+                        <h5>AI Agents</h5>
+                        <p>Get a force of AI Agents for assistance in root cause analysis, visualization, predictions, and more.</p>
+                    </div>
+
+                    <!-- 3: Data Visualization -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="11"/><rect x="10" y="3" width="4" height="18"/><rect x="17" y="7" width="4" height="14"/></svg>
+                        </span>
+                        <h5>Data Visualization</h5>
+                        <p>Create interactive dashboards and storyboards using 100+ charts and graphs.</p>
+                    </div>
+
+                    <!-- 4: Conversational Analytics -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        </span>
+                        <h5>Conversational Analytics</h5>
+                        <p>Ask your data any question in natural language (NLQ) and get actionable insights with context-aware AI.</p>
+                    </div>
+
+                    <!-- 5: Predictive Analytics -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><polyline points="14 7 21 7 21 14"/></svg>
+                        </span>
+                        <h5>Predictive Analytics</h5>
+                        <p>Use historical and real-time data to forecast future trends, risks, and opportunities.</p>
+                    </div>
+
+                    <!-- 6: Data Quality and Validation -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        </span>
+                        <h5>Data Quality and Validation</h5>
+                        <p>Monitor and correct inconsistencies, duplicates, and errors in datasets.</p>
+                    </div>
+
+                    <!-- 7: Data Lakehouse -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </span>
+                        <h5>Data Lakehouse</h5>
+                        <p>Create a single source of truth with our highly scalable and secure data lakehouse.</p>
+                    </div>
+
+                    <!-- 8: Embedded Analytics -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        </span>
+                        <h5>Embedded Analytics</h5>
+                        <p>Bring dashboards and insights directly into business applications.</p>
+                    </div>
+
+                    <!-- 9: Real-Time Data Sync -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                        </span>
+                        <h5>Real-Time Data Sync</h5>
+                        <p>Always-fresh data pipelines that keep every dashboard in sync with live source systems.</p>
+                    </div>
+
+                    <!-- 10: RAG-Based Analysis -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+                        </span>
+                        <h5>RAG-Based Analysis</h5>
+                        <p>Analyze unstructured data like PDFs, reports, and word docs.</p>
+                    </div>
+
+                    <!-- 11: Local LLM Integration -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+                        </span>
+                        <h5>Local LLM Integration</h5>
+                        <p>Keep sensitive data in-house while enabling natural language querying and analysis.</p>
+                    </div>
+
+                    <!-- 12: Low-Code Data Pipeline Builder -->
+                    <div class="feature-card">
+                        <span class="fc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9M12 14v1"/></svg>
+                        </span>
+                        <h5>Low-Code Pipeline Builder</h5>
+                        <p>Simplified ETL with a visual interface for building and managing data flows.</p>
+                    </div>
+
+                </div><!-- /fc-track -->
+            </div><!-- /fc-viewport -->
+
+            <div class="fc-nav">
+                <button class="fc-arrow" id="fcPrev" aria-label="Previous features" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="fc-arrow" id="fcNext" aria-label="Next features">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </div><!-- /fc-carousel -->
     </div>
 </section>
 
-<!-- ===== PERSONAS — BUILT FOR EVERY ROLE ===== -->
-<section class=”section-personas” id=”personaSection” data-active-persona=”analyst”>
-    <div class=”personas-fade” aria-hidden=”true”></div>
 
-    <div class=”container”>
-        <div class=”personas-intro”>
-            <span class=”personas-eyebrow”>
-                <span class=”pe-dot” aria-hidden=”true”></span>
-                The People Behind the Insights
+<!-- ===== PERSONAS — BUILT FOR EVERY ROLE ===== -->
+<section class="section-personas" id="personaSection" data-active-persona="business">
+    <div class="personas-fade" aria-hidden="true"></div>
+    <div class="personas-fade-bottom" aria-hidden="true"></div>
+
+    <div class="container">
+        <div class="personas-intro">
+            <span class="personas-eyebrow reveal-block">
+                <span class="pe-dot" aria-hidden="true"></span>
+                INTELLIGENCE FOR EVERY TEAM
             </span>
-            <h2>Built for every role <span class=”ph-accent”>on your data team</span></h2>
-            <p class=”section-sub”>Whether you build pipelines, answer business questions, run the company, or just need data without filing a ticket — Lumenore was made for you.</p>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Built for Every Role in the <span class="ph-accent">Data-to-Decision Journey</span></h2>
+            <p class="section-sub reveal-block" style="--reveal-delay:.36s">From business users to data teams, Lumenore helps organizations reduce complexity, accelerate decisions, and turn data into meaningful business outcomes.</p>
         </div>
 
-        <div class=”persona-explorer”>
+        <div class="persona-explorer">
 
-            <!-- LEFT column -->
-            <div class=”pex-content”>
-                <div class=”pex-selector” id=”personaTabs” role=”tablist” aria-label=”Roles”>
-                    <button type=”button” class=”px-tab is-active” data-persona=”analyst”   role=”tab” aria-selected=”true”  tabindex=”0”>Analyst</button>
-                    <button type=”button” class=”px-tab”           data-persona=”business”  role=”tab” aria-selected=”false” tabindex=”-1”>Leader</button>
-                    <button type=”button” class=”px-tab”           data-persona=”scientist” role=”tab” aria-selected=”false” tabindex=”-1”>Scientist</button>
-                    <button type=”button” class=”px-tab”           data-persona=”engineer”  role=”tab” aria-selected=”false” tabindex=”-1”>Engineer</button>
+            <!-- LEFT: persona selector (top) + active-persona content -->
+            <div class="pex-content reveal-left" style="--reveal-delay:.44s">
+                <div class="pex-selector" id="personaTabs" role="tablist" aria-label="Roles">
+                    <button type="button" class="px-tab is-active" data-persona="business"  role="tab" aria-selected="true"  tabindex="0">Leader</button>
+                    <button type="button" class="px-tab"           data-persona="scientist" role="tab" aria-selected="false" tabindex="-1">Scientist</button>
+                    <button type="button" class="px-tab"           data-persona="engineer"  role="tab" aria-selected="false" tabindex="-1">Data Engineer</button>
+                    <button type="button" class="px-tab"           data-persona="analyst"   role="tab" aria-selected="false" tabindex="-1">Analyst</button>
                 </div>
 
-                <div class=”pex-text”>
-                    <span class=”pex-role-label” id=”personaRoleLabel”>Data Analysts &amp; Business Users</span>
-                    <h3 id=”personaHeading”>
-                        <span class=”pquote”>”</span><span id=”personaHeadingText”>Turn questions into insights without waiting on anyone.</span><span class=”pquote”>”</span>
+                <div class="pex-text">
+                    <span class="pex-role-label" id="personaRoleLabel">Data Analysts</span>
+                    <h3 id="personaHeading">
+                        <span class="pquote">"</span><span id="personaHeadingText">Turn questions into insights without waiting on anyone.</span><span class="pquote">"</span>
                     </h3>
-                    <p id=”personaDesc”>Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore's intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.</p>
-                    <div class=”persona-chips” id=”personaChips”>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Natural language queries</span>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>100+ chart types</span>
-                        <span class=”chip”><svg xmlns=”http://www.w3.org/2000/svg” width=”12” height=”12” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2”><circle cx=”12” cy=”12” r=”10”/></svg>Self-serve exploration</span>
+                    <p id="personaDesc">Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore's intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.</p>
+                    <div class="persona-chips" id="personaChips">
+                        <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>Natural language queries</span>
+                        <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>100+ chart types</span>
+                        <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>Self-serve exploration</span>
                     </div>
                 </div>
             </div>
 
-            <!-- RIGHT column: scene stage -->
-            <div class=”pex-stage”>
-
-                <!-- Analyst scene (default active) -->
-                <div class=”persona-scene is-on” data-scene=”analyst” aria-hidden=”false”>
-                    <span class=”scene-glow scene-glow-a” data-parallax=”-0.14”></span>
-                    <span class=”scene-glow scene-glow-b” data-parallax=”0.08”></span>
-                    <div class=”scene-card sc-1 sc-trend” data-parallax=”-0.10”>
-                        <div class=”sc-hd”>
-                            <span class=”sc-eyebrow”>Revenue trend</span>
-                            <span class=”sc-pill”>FY 2026</span>
+            <!-- RIGHT: animated scene stage -->
+            <div class="pex-stage reveal-right" style="--reveal-delay:.56s">
+                <!-- ── Analyst scene ─────────────────────────────────── -->
+                <div class="persona-scene" data-scene="analyst" aria-hidden="true">
+                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
+                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
+                    <div class="scene-card sc-1 sc-trend" data-parallax="-0.10">
+                        <div class="sc-hd">
+                            <span class="sc-eyebrow">Revenue trend</span>
+                            <span class="sc-pill">FY 2026</span>
                         </div>
-                        <div class=”sc-stat-row”>
-                            <span class=”sc-num”>$4.2M</span>
-                            <span class=”sc-delta sc-delta-up”>
-                                <svg width=”10” height=”10” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2.5”><polyline points=”23 6 13.5 15.5 8.5 10.5 1 18”/><polyline points=”17 6 23 6 23 12”/></svg>
+                        <div class="sc-stat-row">
+                            <span class="sc-num">$4.2M</span>
+                            <span class="sc-delta sc-delta-up">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                                 +18.4%
                             </span>
                         </div>
-                        <svg class=”sc-spark” viewBox=”0 0 220 60” preserveAspectRatio=”none”>
+                        <svg class="sc-spark" viewBox="0 0 220 60" preserveAspectRatio="none">
                             <defs>
-                                <linearGradient id=”sparkFill” x1=”0” y1=”0” x2=”0” y2=”1”>
-                                    <stop offset=”0%”  stop-color=”currentColor” stop-opacity=”.22”/>
-                                    <stop offset=”100%” stop-color=”currentColor” stop-opacity=”0”/>
+                                <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%"  stop-color="currentColor" stop-opacity=".22"/>
+                                    <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
                                 </linearGradient>
                             </defs>
-                            <path d=”M0,46 Q30,38 55,40 T110,28 T170,12 L220,6 L220,60 L0,60 Z” fill=”url(#sparkFill)”/>
-                            <path class=”draw-line” d=”M0,46 Q30,38 55,40 T110,28 T170,12 L220,6” fill=”none” stroke=”currentColor” stroke-width=”2” stroke-linecap=”round”/>
+                            <path d="M0,46 Q30,38 55,40 T110,28 T170,12 L220,6 L220,60 L0,60 Z" fill="url(#sparkFill)"/>
+                            <path class="draw-line" d="M0,46 Q30,38 55,40 T110,28 T170,12 L220,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <div class=”scene-card sc-2 sc-rows-card” data-parallax=”0.06”>
-                        <span class=”sc-eyebrow”>Top quarters</span>
-                        <ul class=”sc-rows”>
-                            <li><span class=”sc-rl”>Q4 2026</span><span class=”sc-bar”><i style=”width:92%”></i></span><span class=”sc-rv”>$1.4M</span></li>
-                            <li><span class=”sc-rl”>Q3 2026</span><span class=”sc-bar”><i style=”width:72%”></i></span><span class=”sc-rv”>$1.1M</span></li>
-                            <li><span class=”sc-rl”>Q2 2026</span><span class=”sc-bar”><i style=”width:58%”></i></span><span class=”sc-rv”>$0.9M</span></li>
+                    <div class="scene-card sc-2 sc-rows-card" data-parallax="0.06">
+                        <span class="sc-eyebrow">Top quarters</span>
+                        <ul class="sc-rows">
+                            <li><span class="sc-rl">Q4 2026</span><span class="sc-bar"><i style="width:92%"></i></span><span class="sc-rv">$1.4M</span></li>
+                            <li><span class="sc-rl">Q3 2026</span><span class="sc-bar"><i style="width:72%"></i></span><span class="sc-rv">$1.1M</span></li>
+                            <li><span class="sc-rl">Q2 2026</span><span class="sc-bar"><i style="width:58%"></i></span><span class="sc-rv">$0.9M</span></li>
                         </ul>
                     </div>
-                    <div class=”scene-card sc-3 sc-insight” data-parallax=”-0.04”>
-                        <span class=”sc-pulse”></span>
-                        <p class=”sc-text”>Q4 saw a <strong>+24% YoY</strong> uplift, led by enterprise-tier expansion.</p>
+                    <div class="scene-card sc-3 sc-insight" data-parallax="-0.04">
+                        <span class="sc-pulse"></span>
+                        <p class="sc-text">Q4 saw a <strong>+24% YoY</strong> uplift, led by enterprise-tier expansion.</p>
                     </div>
                 </div>
 
-                <!-- Leader scene -->
-                <div class=”persona-scene” data-scene=”business” aria-hidden=”true”>
-                    <span class=”scene-glow scene-glow-a” data-parallax=”-0.14”></span>
-                    <span class=”scene-glow scene-glow-b” data-parallax=”0.08”></span>
-                    <div class=”scene-card sc-1 sc-kpis” data-parallax=”-0.10”>
-                        <span class=”sc-eyebrow”>Executive pulse</span>
-                        <div class=”sc-grid”>
-                            <div class=”sc-kpi”><span class=”sc-num sc-num-sm”>$4.2M</span><span class=”sc-lbl”>Revenue</span></div>
-                            <div class=”sc-kpi”><span class=”sc-num sc-num-sm”>67</span><span class=”sc-lbl”>NPS</span></div>
-                            <div class=”sc-kpi”><span class=”sc-num sc-num-sm”>92%</span><span class=”sc-lbl”>Retention</span></div>
-                            <div class=”sc-kpi”><span class=”sc-num sc-num-sm”>+18%</span><span class=”sc-lbl”>Pipeline</span></div>
+                <!-- ── Business Leader scene ─────────────────────────── -->
+                <div class="persona-scene is-on" data-scene="business" aria-hidden="false">
+                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
+                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
+                    <div class="scene-card sc-1 sc-kpis" data-parallax="-0.10">
+                        <span class="sc-eyebrow">Executive pulse</span>
+                        <div class="sc-grid">
+                            <div class="sc-kpi"><span class="sc-num sc-num-sm">$4.2M</span><span class="sc-lbl">Revenue</span></div>
+                            <div class="sc-kpi"><span class="sc-num sc-num-sm">67</span><span class="sc-lbl">NPS</span></div>
+                            <div class="sc-kpi"><span class="sc-num sc-num-sm">92%</span><span class="sc-lbl">Retention</span></div>
+                            <div class="sc-kpi"><span class="sc-num sc-num-sm">+18%</span><span class="sc-lbl">Pipeline</span></div>
                         </div>
                     </div>
-                    <div class=”scene-card sc-2 sc-goal” data-parallax=”0.06”>
-                        <div class=”sc-hd”><span class=”sc-eyebrow”>Quarterly goal</span><span class=”sc-meta-r”>78%</span></div>
-                        <div class=”sc-progress”><i style=”width:78%”></i></div>
-                        <span class=”sc-meta”>$3.27M / $4.20M</span>
+                    <div class="scene-card sc-2 sc-goal" data-parallax="0.06">
+                        <div class="sc-hd"><span class="sc-eyebrow">Quarterly goal</span><span class="sc-meta-r">78%</span></div>
+                        <div class="sc-progress"><i style="width:78%"></i></div>
+                        <span class="sc-meta">$3.27M / $4.20M</span>
                     </div>
-                    <div class=”scene-card sc-3 sc-checks-card” data-parallax=”-0.04”>
-                        <span class=”sc-eyebrow”>This week's focus</span>
-                        <ul class=”sc-checks”>
-                            <li><span class=”sc-check”></span>EMEA renewals review</li>
-                            <li><span class=”sc-check”></span>Pricing model update</li>
-                            <li><span class=”sc-check”></span>Board narrative draft</li>
+                    <div class="scene-card sc-3 sc-checks-card" data-parallax="-0.04">
+                        <span class="sc-eyebrow">This week's focus</span>
+                        <ul class="sc-checks">
+                            <li><span class="sc-check"></span>EMEA renewals review</li>
+                            <li><span class="sc-check"></span>Pricing model update</li>
+                            <li><span class="sc-check"></span>Board narrative draft</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Scientist scene -->
-                <div class=”persona-scene” data-scene=”scientist” aria-hidden=”true”>
-                    <span class=”scene-glow scene-glow-a” data-parallax=”-0.14”></span>
-                    <span class=”scene-glow scene-glow-b” data-parallax=”0.08”></span>
-                    <div class=”scene-card sc-1 sc-pipeline” data-parallax=”-0.10”>
-                        <span class=”sc-eyebrow”>Model pipeline</span>
-                        <div class=”sc-nodes”>
-                            <div class=”sc-node”>Data</div>
-                            <div class=”sc-node”>Train</div>
-                            <div class=”sc-node”>Evaluate</div>
-                            <div class=”sc-node sc-node-active”>Deploy</div>
+                <!-- ── Data Scientist scene ──────────────────────────── -->
+                <div class="persona-scene" data-scene="scientist" aria-hidden="true">
+                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
+                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
+                    <div class="scene-card sc-1 sc-pipeline" data-parallax="-0.10">
+                        <span class="sc-eyebrow">Model pipeline</span>
+                        <div class="sc-nodes">
+                            <div class="sc-node">Data</div>
+                            <div class="sc-node">Train</div>
+                            <div class="sc-node">Evaluate</div>
+                            <div class="sc-node sc-node-active">Deploy</div>
                         </div>
                     </div>
-                    <div class=”scene-card sc-2 sc-rows-card” data-parallax=”0.06”>
-                        <span class=”sc-eyebrow”>Models</span>
-                        <ul class=”sc-rows”>
-                            <li><span class=”sc-rl”>churn_v3</span><span class=”sc-badge sc-good”>0.94</span></li>
-                            <li><span class=”sc-rl”>forecast_v2</span><span class=”sc-badge sc-mid”>0.88</span></li>
-                            <li><span class=”sc-rl”>propensity_v1</span><span class=”sc-badge sc-good”>0.91</span></li>
+                    <div class="scene-card sc-2 sc-rows-card" data-parallax="0.06">
+                        <span class="sc-eyebrow">Models</span>
+                        <ul class="sc-rows">
+                            <li><span class="sc-rl">churn_v3</span><span class="sc-badge sc-good">0.94</span></li>
+                            <li><span class="sc-rl">forecast_v2</span><span class="sc-badge sc-mid">0.88</span></li>
+                            <li><span class="sc-rl">propensity_v1</span><span class="sc-badge sc-good">0.91</span></li>
                         </ul>
                     </div>
-                    <div class=”scene-card sc-3 sc-alert” data-parallax=”-0.04”>
-                        <span class=”sc-pulse sc-pulse-warn”></span>
-                        <p class=”sc-text”><strong>Drift detected</strong> in churn_v2 (2.3%). Retrain scheduled for Friday.</p>
+                    <div class="scene-card sc-3 sc-alert" data-parallax="-0.04">
+                        <span class="sc-pulse sc-pulse-warn"></span>
+                        <p class="sc-text"><strong>Drift detected</strong> in churn_v2 (2.3%). Retrain scheduled for Friday.</p>
                     </div>
                 </div>
 
-                <!-- Engineer scene -->
-                <div class=”persona-scene” data-scene=”engineer” aria-hidden=”true”>
-                    <span class=”scene-glow scene-glow-a” data-parallax=”-0.14”></span>
-                    <span class=”scene-glow scene-glow-b” data-parallax=”0.08”></span>
-                    <div class=”scene-card sc-1 sc-pipeline” data-parallax=”-0.10”>
-                        <span class=”sc-eyebrow”>ETL pipeline</span>
-                        <div class=”sc-nodes”>
-                            <div class=”sc-node”>Source</div>
-                            <div class=”sc-node”>Transform</div>
-                            <div class=”sc-node sc-node-active”>Lakehouse</div>
+                <!-- ── Engineer scene ────────────────────────────────── -->
+                <div class="persona-scene" data-scene="engineer" aria-hidden="true">
+                    <span class="scene-glow scene-glow-a" data-parallax="-0.14"></span>
+                    <span class="scene-glow scene-glow-b" data-parallax="0.08"></span>
+                    <div class="scene-card sc-1 sc-pipeline" data-parallax="-0.10">
+                        <span class="sc-eyebrow">ETL pipeline</span>
+                        <div class="sc-nodes">
+                            <div class="sc-node">Source</div>
+                            <div class="sc-node">Transform</div>
+                            <div class="sc-node sc-node-active">Lakehouse</div>
                         </div>
                     </div>
-                    <div class=”scene-card sc-2 sc-rows-card” data-parallax=”0.06”>
-                        <span class=”sc-eyebrow”>Job health</span>
-                        <ul class=”sc-rows”>
-                            <li><span class=”sc-rl”>orders_etl</span><span class=”sc-status sc-ok”>ok</span></li>
-                            <li><span class=”sc-rl”>events_stream</span><span class=”sc-status sc-ok”>ok</span></li>
-                            <li><span class=”sc-rl”>crm_sync</span><span class=”sc-status sc-warn”>slow</span></li>
-                            <li><span class=”sc-rl”>audit_dq</span><span class=”sc-status sc-ok”>ok</span></li>
+                    <div class="scene-card sc-2 sc-rows-card" data-parallax="0.06">
+                        <span class="sc-eyebrow">Job health</span>
+                        <ul class="sc-rows">
+                            <li><span class="sc-rl">orders_etl</span><span class="sc-status sc-ok">ok</span></li>
+                            <li><span class="sc-rl">events_stream</span><span class="sc-status sc-ok">ok</span></li>
+                            <li><span class="sc-rl">crm_sync</span><span class="sc-status sc-warn">slow</span></li>
+                            <li><span class="sc-rl">audit_dq</span><span class="sc-status sc-ok">ok</span></li>
                         </ul>
                     </div>
-                    <div class=”scene-card sc-3 sc-metric” data-parallax=”-0.04”>
-                        <span class=”sc-eyebrow”>Latency p95</span>
-                        <span class=”sc-metric-num”>47<small>ms</small></span>
-                        <span class=”sc-metric-foot”>Last hour · all pipelines</span>
+                    <div class="scene-card sc-3 sc-metric" data-parallax="-0.04">
+                        <span class="sc-eyebrow">Latency p95</span>
+                        <span class="sc-metric-num">47<small>ms</small></span>
+                        <span class="sc-metric-foot">Last hour · all pipelines</span>
                     </div>
                 </div>
+            </div>
 
-            </div><!-- /pex-stage -->
-        </div><!-- /persona-explorer -->
-    </div><!-- /container -->
+        </div>
+    </div>
 </section>
 
 <!-- ===== PRICING — Faithful to Figma content, fresh layout =====
@@ -953,11 +920,11 @@
 
         <!-- INTRO ─────────────────────────────────────────────── -->
         <div class="pricing-intro">
-            <span class="pricing-eyebrow">
+            <span class="pricing-eyebrow reveal-block">
                 <span class="pe-dot" aria-hidden="true"></span>
                 Plans &amp; Pricing
             </span>
-            <h2>Explore the Right Way <span class="ph-accent">to Get Started</span></h2>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Explore the Right Way <span class="ph-accent">to Get Started</span></h2>
         </div>
 
         <!-- ASYMMETRIC SPLIT GRID — left main panel + right column of 3 stacked
@@ -967,7 +934,7 @@
         <div class="pricing-grid" id="pricingGrid">
 
             <!-- LEFT — main pricing panel -->
-            <article class="pricing-main">
+            <article class="pricing-main reveal-left" style="--reveal-delay:.28s">
                 <!-- Plan switcher — bigger, more prominent pills with caption -->
                 <div class="pm-switcher" id="pricingTabs" role="tablist" aria-label="Plans">
                     <button type="button" class="pm-plan is-active" data-plan="freemium" role="tab" aria-selected="true" tabindex="0">
@@ -1003,15 +970,14 @@
                 </a>
             </article>
 
-            <!-- RIGHT — column of 3 stacked insight cards -->
-            <aside class="pricing-aside">
+            <!-- RIGHT — GIF card on top, KPI below -->
+            <aside class="pricing-aside reveal-right" style="--reveal-delay:.4s">
 
-                <!-- Card 1 — Value Explanation: GIF preview + h4 + 3 sub-bullets -->
+                <!-- GIF + checklist — top card -->
                 <article class="pa-card pa-card--value" id="paValueCard">
                     <div class="pa-media" id="paMedia">
                         <img id="paMediaImg" src="assets/images/homeV2o/pricing/Free1.gif" alt="Feature preview" loading="lazy">
                     </div>
-                    <span class="pa-label">Why this matters</span>
                     <h4 class="pa-title" id="paValueTitle">Bring your data in. Keep it up to date</h4>
                     <ul class="pa-checklist" id="paChecklist">
                         <li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Connect files and databases without complex setup.</li>
@@ -1020,8 +986,9 @@
                     </ul>
                 </article>
 
-                <!-- Card 2 — KPI Highlight -->
+                <!-- KPI — bottom card -->
                 <article class="pa-card pa-card--kpi">
+                    <span class="pa-kpi-eyebrow">Measured Impact</span>
                     <p class="pa-kpi-stat"><span id="paKpiNum">60</span><span id="paKpiSfx">%</span></p>
                     <p class="pa-kpi-cap" id="paKpiCap">Less time spent managing data updates.</p>
                 </article>
@@ -1035,12 +1002,12 @@
 <section class="section-success">
     <div class="container">
         <div class="success-intro">
-            <p class="success-eyebrow"><span class="se-dot"></span>Success Stories</p>
-            <h2>Proven Track Record: <em class="sh-accent">Customer Wins</em></h2>
-            <p class="section-sub">Real outcomes from teams that built their data engine on Lumenore — across healthcare, manufacturing, and agriculture.</p>
+            <p class="success-eyebrow reveal-block"><span class="se-dot"></span>Success Stories</p>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Proven Track Record: <em class="sh-accent">Customer Wins</em></h2>
+            <p class="section-sub reveal-block" style="--reveal-delay:.36s">Real outcomes from teams that built their data engine on Lumenore — across healthcare, manufacturing, and agriculture.</p>
         </div>
 
-        <div class="stories-carousel" id="storiesCarousel">
+        <div class="stories-carousel reveal-block" id="storiesCarousel" style="--reveal-delay:.28s">
             <button type="button" class="stories-arrow is-prev" id="storiesPrev" aria-label="Previous story">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             </button>
@@ -1138,54 +1105,116 @@
 <section class="section-testimonial">
     <div class="container">
         <div class="testimonial-intro">
-            <p class="testimonial-eyebrow"><span class="te-dot"></span>Customer Voices</p>
-            <h2>Hear What Our <em class="th-accent">Customers</em> Have To Say</h2>
-            <p class="section-sub">Direct from leaders shipping analytics with Lumenore — in their own words.</p>
+            <p class="testimonial-eyebrow reveal-block"><span class="te-dot"></span>Customer Voices</p>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Hear What Our <em class="th-accent">Customers</em> Have To Say</h2>
+            <p class="section-sub reveal-block" style="--reveal-delay:.36s">Direct from leaders shipping analytics with Lumenore — in their own words.</p>
         </div>
 
-        <div class="testimonial-card" id="testimonialCard">
-            <!-- 3 person tabs (Arvind active/left, matches Figma) -->
-            <div class="testimonial-tabs" id="testimonialTabs">
-                <button type="button" class="testimonial-tab is-active" data-slide="0">
-                    <span class="tt-name">Arvind Patkar</span>
-                    <span class="tt-role">Founder &amp; CEO, ARAMSEC Company Limited</span>
-                </button>
-                <button type="button" class="testimonial-tab" data-slide="1">
-                    <span class="tt-name">Vicente Ciampa</span>
-                    <span class="tt-role">CEO, Xonit.net</span>
-                </button>
-                <button type="button" class="testimonial-tab" data-slide="2">
-                    <span class="tt-name">Sara Mohammad Alblooshi</span>
-                    <span class="tt-role">Application Head, Department of Digital Ajman</span>
-                </button>
+        <!-- orbit testimonial stage v5 — Figma match: gradient bg + teal rings + text cards + blue bubble -->
+        <div class="tsm-stage reveal-block" id="tsmStage" style="--reveal-delay:.28s">
+
+            <!-- soft gradient orb blobs -->
+            <div class="tsm-orb-arm tsm-orb-arm-1a" aria-hidden="true"><span class="tsm-orb tsm-orb-1"></span></div>
+            <div class="tsm-orb-arm tsm-orb-arm-1b" aria-hidden="true"><span class="tsm-orb tsm-orb-2"></span></div>
+            <div class="tsm-orb-arm tsm-orb-arm-2a" aria-hidden="true"><span class="tsm-orb tsm-orb-3"></span></div>
+            <div class="tsm-orb-arm tsm-orb-arm-2b" aria-hidden="true"><span class="tsm-orb tsm-orb-4"></span></div>
+            <div class="tsm-orb-arm tsm-orb-arm-3a" aria-hidden="true"><span class="tsm-orb tsm-orb-5"></span></div>
+            <div class="tsm-orb-arm tsm-orb-arm-3b" aria-hidden="true"><span class="tsm-orb tsm-orb-6"></span></div>
+
+            <!-- orbit rings -->
+            <div class="tsm-orbit-hub" aria-hidden="true">
+                <span class="tsm-ring tsm-ring-1"></span>
+                <span class="tsm-ring tsm-ring-2"></span>
+                <span class="tsm-ring tsm-ring-3"></span>
+
+                <!-- decorative ring elements -->
+                <div class="tsm-deco tsm-deco-1">
+                    <span class="tsm-deco-stars">★★★★★</span>
+                    <span class="tsm-deco-val">5.0</span>
+                </div>
+                <div class="tsm-deco tsm-deco-2">
+                    <span class="tsm-deco-icon">❝</span>
+                </div>
+                <div class="tsm-deco tsm-deco-3">
+                    <span class="tsm-deco-stars">★★★★★</span>
+                    <span class="tsm-deco-val">Excellent</span>
+                </div>
+                <div class="tsm-deco tsm-deco-4">
+                    <span class="tsm-deco-icon">❝</span>
+                </div>
             </div>
 
-            <!-- Quote body -->
-            <div class="testimonial-body">
-                <div class="quote-mark" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
-                        <path d="M22 12c-7.2 0-13 5.8-13 13 0 7.2 5.8 13 13 13 1.4 0 2.7-.2 4-.6-1.5 6.2-6 11.4-12.2 13.6L18 60c12-3 21-13.4 21-26V25c0-7.2-5.8-13-13-13h-4zm32 0c-7.2 0-13 5.8-13 13 0 7.2 5.8 13 13 13 1.4 0 2.7-.2 4-.6-1.5 6.2-6 11.4-12.2 13.6L50 60c12-3 21-13.4 21-26V25c0-7.2-5.8-13-13-13h-4z" fill="currentColor"/>
-                    </svg>
-                </div>
-                <div class="quote-content">
-                    <p class="quote-text" id="quoteText">Their innovative data analytics and business intelligence solutions have become integral to our operational efficiency and decision-making process. With Lumenore’s customized dashboards and predictive insights, we’ve gained a competitive edge, allowing us to make informed decisions faster and more accurately.
+            <!-- floating chat elements -->
+            <div class="tsm-chat tsm-chat-1" aria-hidden="true">
+                <span class="tsm-wave-bar"></span>
+                <span class="tsm-wave-bar"></span>
+                <span class="tsm-wave-bar"></span>
+                <span class="tsm-wave-bar"></span>
+                <span class="tsm-wave-bar"></span>
+                <span class="tsm-wave-bar"></span>
+                <span class="tsm-wave-bar"></span>
+                <span class="tsm-wave-bar"></span>
+                <span class="tsm-wave-bar"></span>
+            </div>
+            <div class="tsm-chat tsm-chat-2" aria-hidden="true">
+                <span class="tsm-chat-emoji">❤️</span>
+            </div>
+            <div class="tsm-chat tsm-chat-3" aria-hidden="true">
+                <span class="tsm-chat-dot"></span>
+                <span class="tsm-chat-dot"></span>
+                <span class="tsm-chat-dot"></span>
+            </div>
 
-This partnership has enhanced our ability to serve our clients effectively. We look forward to continued success together and highly recommend Lumenore for any organization seeking a reliable partner in business intelligence and digital transformation.</p>
-
-                    <div class="quote-meta">
-                        <div class="quote-stars">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
-                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
-                        </div>
-                        <p class="quote-name" id="quoteName">Arvind Patkar</p>
-                        <p class="quote-role" id="quoteRole">Founder &amp; CEO, ARAMSEC Company Limited</p>
+            <!-- floating person info cards -->
+            <div class="tsm-node tsm-node-0 is-active" data-index="0" role="button" tabindex="0" aria-label="Select Arvind Patkar’s testimonial">
+                <div class="tsm-float-wrap">
+                    <div class="tsm-card">
+                        <span class="tsm-card-name">Arvind Patkar</span>
+                        <span class="tsm-card-meta">Founder &amp; CEO, ARAMSEC Company Ltd</span>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="tsm-node tsm-node-1" data-index="1" role="button" tabindex="0" aria-label="Select Vicente Ciampa’s testimonial">
+                <div class="tsm-float-wrap">
+                    <div class="tsm-card">
+                        <span class="tsm-card-name">Vicente Ciampa</span>
+                        <span class="tsm-card-meta">CEO, Xonit.net</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tsm-node tsm-node-2" data-index="2" role="button" tabindex="0" aria-label="Select Sara Mohammad Alblooshi’s testimonial">
+                <div class="tsm-float-wrap">
+                    <div class="tsm-card">
+                        <span class="tsm-card-name">Sara Mohammad Alblooshi</span>
+                        <span class="tsm-card-meta">Application Head, Dept. of Digital Ajman</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- central speech bubble -->
+            <div class="tsm-bubble-wrap" id="tsmBubble">
+                <div class="tsm-bubble">
+                    <div class="tsm-bubble-quote" aria-hidden="true">&#x201C;</div>
+                    <p class="tsm-bubble-text" id="tsmBubbleText">Their innovative data analytics and business intelligence solutions have become integral to our operational efficiency and decision-making process. With Lumenore’s customized dashboards and predictive insights, we’ve gained a competitive edge.</p>
+                </div>
+                <!-- active person card — anchored near the bubble tail -->
+                <div class="tsm-attr-slot" id="tsmAttrSlot">
+                    <div class="tsm-attr-initial" id="tsmAttrInitial">AP</div>
+                    <div class="tsm-attr-text">
+                        <span class="tsm-attr-name" id="tsmAttrName">Arvind Patkar</span>
+                        <span class="tsm-attr-role" id="tsmAttrRole">Founder &amp; CEO, ARAMSEC Company Ltd</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mobile nav dots -->
+            <div class="tsm-dots" role="tablist" aria-label="Testimonial navigation">
+                <button class="tsm-dot is-active" data-index="0" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
+                <button class="tsm-dot" data-index="1" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
+                <button class="tsm-dot" data-index="2" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
+            </div>
+
+        </div><!-- /.tsm-stage -->
     </div>
 </section>
 
@@ -1196,8 +1225,8 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 <section class="section-trust">
     <div class="container">
         <div class="trust-row">
-            <h2>Trusted Standards for<br>Complete Data Security</h2>
-            <div class="trust-badges">
+            <h2 class="reveal-block">Trusted Standards for<br>Complete Data Security</h2>
+            <div class="trust-badges reveal-block" style="--reveal-delay:.2s">
                 <img src="assets/images/homeV2o/Compliance_HIPAA.svg" alt="HIPAA Compliant" loading="lazy">
                 <img src="assets/images/homeV2o/Compliance_GDPR.svg" alt="GDPR Ready" loading="lazy">
                 <img src="assets/images/homeV2o/Compliance_AICPA_SOC2.svg" alt="AICPA SOC 2" loading="lazy">
@@ -1206,11 +1235,11 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 
         <div class="before-decide">
             <div class="bd-intro">
-                <h3>Before you decide</h3>
-                <p class="lead">Everything your team, IT, and procurement need to move forward with confidence.</p>
+                <h3 class="reveal-block">Before you decide</h3>
+                <p class="lead reveal-block" style="--reveal-delay:.36s">Everything your team, IT, and procurement need to move forward with confidence.</p>
             </div>
 
-            <div class="bd-faq" id="bdFaq">
+            <div class="bd-faq reveal-block" id="bdFaq" style="--reveal-delay:.4s">
                 <div class="faq-item is-open">
                     <button type="button" class="faq-q">
                         <span class="faq-num">01</span>
@@ -1274,26 +1303,9 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
     <div class="container">
-        <!-- Top banner: "Got more questions?" CTA — integrated into the
-             footer so it reads as part of the same composition, not a
-             disconnected pill above. -->
-        <div class="footer-cta">
-            <span class="footer-cta-halo" aria-hidden="true"></span>
-            <div class="footer-cta-text">
-                <span class="footer-cta-eyebrow">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
-                    Talk to a human
-                </span>
-                <h3>Got more questions?</h3>
-                <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
-            </div>
-            <a href="contact.html" class="footer-cta-button btn-primary">
-                Get in Touch
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-        </div>
 
-        <div class="footer-nav">
+        <!-- Top row: brand identity (left) + CTA panel (right) -->
+        <div class="footer-top">
             <div class="brand-col footer-col">
                 <div class="brand-logo">
                     <img src="assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
@@ -1303,23 +1315,36 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 <div class="ask-ai-box">
                     <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
                     <div class="ask-ai-icons">
-                        <a href="#" aria-label="ChatGPT"><svg width="16" height="16" viewBox="0 0 24 24" fill="#10a37f" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/></svg></a>
-                        <a href="#" aria-label="Gemini"><svg width="16" height="16" viewBox="0 0 24 24" fill="#4285f4" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 14,10 22,12 14,14 12,22 10,14 2,12 10,10"/></svg></a>
-                        <a href="#" aria-label="Perplexity"><svg width="16" height="16" viewBox="0 0 24 24" fill="#22b8cf" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 22,22 2,22"/></svg></a>
-                        <a href="#" aria-label="Claude"><svg width="16" height="16" viewBox="0 0 24 24" fill="#d97706" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/></svg></a>
-                        <a href="#" aria-label="Copilot"><svg width="16" height="16" viewBox="0 0 24 24" fill="#7c3aed" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="4"/></svg></a>
+                        <a href="#" aria-label="ChatGPT"><img src="assets/images/AI/openai.svg" alt="ChatGPT" width="24" height="24"></a>
+                        <a href="#" aria-label="Perplexity"><img src="assets/images/AI/perplexity-dark.svg" alt="Perplexity" width="24" height="24"></a>
+                        <a href="#" aria-label="Gemini"><img src="assets/images/AI/google-gemini-dark.svg" alt="Gemini" width="24" height="24"></a>
+                        <a href="#" aria-label="Claude"><img src="assets/images/AI/claude.svg" alt="Claude" width="24" height="24"></a>
+                        <a href="#" aria-label="Grok"><img src="assets/images/AI/grok.svg" alt="Grok" width="24" height="24"></a>
                     </div>
                 </div>
 
-                <p class="follow-us-label">Follow Us</p>
-                <div class="social-list">
-                    <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                    <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
-                    <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                    <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                </div>
             </div>
 
+            <div class="footer-cta">
+                <span class="footer-cta-halo" aria-hidden="true"></span>
+                <div class="footer-cta-text">
+                    <span class="footer-cta-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                        Talk to a human
+                    </span>
+                    <h3>Got more questions?</h3>
+                    <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+                </div>
+
+                <a href="contact.html" class="footer-cta-button btn-primary">
+                    Get in Touch
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Nav link columns — 5 equal cols -->
+        <div class="footer-nav">
             <div class="footer-col">
                 <h4>Platform</h4>
                 <ul>
@@ -1407,6 +1432,12 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 
         <div class="copyright">
             <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="copyright-social">
+                <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
             <div class="legal-links">
                 <a href="privacy.html">Privacy</a>
                 <a href="terms.html">Terms of Use</a>
@@ -1425,39 +1456,39 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     /* Product suite — Ask Me ↔ Lumenore Insights ↔ Lumenore Data Magnet */
     const productData = {
         askme: {
-            pill: 'Ask Me',
-            title: 'Conversational Data',
-            desc: 'Stop digging for answers. Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.',
+            pill: 'Lumenore Ask Me',
+            title: 'Conversational Analytics',
+            desc: 'AI agents with context awareness and expertise that understand not just your question but also your business goal. Ask Me connects to your business data and, in response to your inquiries, brings external market intelligence to independently look into anomalies, identify underlying causes, and deliver governed insights that provide each team with the whole picture.',
             chips: ['Semantic Search', 'Contextual Intelligence', 'Natural Language Querying'],
             quote: '“Reporting cycle: 3 weeks → 4 days.”',
             quoteCite: 'Enterprise analytics team · faster self-serve reporting',
             cta: 'Explore Ask Me',
             ctaHref: 'lumenore-ask-me.html',
-            image: 'assets/images/GIf/Askme_Gif 1.gif',
+            animation: 'lottieAskMe',
             variant: ''
         },
         insights: {
             pill: 'Lumenore Insights',
-            title: 'Self-Service Analytics',
-            desc: 'Go beyond static reporting. Democratize data with self-service, AI-powered dashboards that empower every employee to make data-driven decisions and maximize ROI instantly.',
+            title: 'Autonomous Analytics Engine',
+            desc: 'An AI powered analytics engine that autonomously builds and updates dashboards, monitors KPIs, detects anomalies, and delivers critical insights to the right teams across channels, applications, and existing workflows.',
             chips: ['AI Dashboards', 'Data Story Telling', 'Real-Time Apps'],
             quote: '“80% reduction in ad-hoc IT data requests.”',
             quoteCite: 'Ford Credit · Financial Services · 5,000+ employees',
             cta: 'Explore Insights',
             ctaHref: '#',
-            image: 'assets/images/homeV2o/Dashboard (1).gif',
+            animation: 'lottieDashboard',
             variant: 'is-insights'
         },
         datamagnet: {
             pill: 'Lumenore Data Magnet',
-            title: 'Enterprise ETL',
-            desc: 'The foundation of your data strategy. Connect 50+ enterprise sources with low-code ETL. Accelerate high-volume transfers to your Lakehouse with secure, cost-effective automation.',
+            title: 'Autonomous Data Operations for AI-Native Analytics',
+            desc: 'An intelligent data foundation designed for AI-native analytics at scale that uses self-learning data pipelines, semantic context, and regulated data operations to automatically link, prepare, and orchestrate business data.',
             chips: ['100+ Connectors', 'Auto Pipeline Automation', 'Unified Data Stream'],
             quote: '“2M events/day, Zero engineers babysitting it.”',
             quoteCite: 'SiriusXM · Media and Entertainment · real-time streaming',
             cta: 'Explore Data Magnet',
             ctaHref: '#',
-            image: 'assets/images/homeV2o/Data Magnet (1).gif',
+            animation: 'lottieDataMagnet',
             variant: 'is-datamagnet'
         }
     };
@@ -1474,15 +1505,39 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     const pdQuoteText  = document.getElementById('pdQuoteText');
     const pdQuoteCite  = document.getElementById('pdQuoteCite');
     const pdCta        = document.getElementById('pdCta');
-    const pdImage      = document.getElementById('pdImage');
+    const pdLottieEl   = document.getElementById('pdLottie');
     const pdDots       = document.querySelectorAll('.product-progress .pp-dot');
+    const pdProgFill   = document.getElementById('pdProgFill');
 
     let currentProduct = 'askme';
+
+    /* ── Lottie product animation ───────────────────────────────────── */
+    let lottieAnim = null;
+    function loadLottie(varName) {
+        const data = window[varName];
+        if (!data) { setTimeout(() => loadLottie(varName), 100); return; }
+        if (lottieAnim) { lottieAnim.destroy(); lottieAnim = null; }
+        pdLottieEl.innerHTML = '';
+        lottieAnim = lottie.loadAnimation({
+            container: pdLottieEl,
+            renderer:  'svg',
+            loop:      true,
+            autoplay:  true,
+            animationData: data,
+            rendererSettings: { preserveAspectRatio: 'xMidYMid meet' }
+        });
+    }
+    loadLottie(productData.askme.animation);
+    if (pdProgFill) pdProgFill.style.width = (1 / 3 * 100) + '%';
 
     function renderProduct(key) {
         const d = productData[key];
         if (!d) return;
         currentProduct = key;
+        if (pdProgFill) {
+            const idx = productOrder.indexOf(key);
+            pdProgFill.style.width = ((idx + 1) / productOrder.length * 100) + '%';
+        }
         pdDots.forEach(dot => dot.classList.toggle('is-active', dot.dataset.product === key));
         productTabs.forEach(t => {
             const on = t.dataset.product === key;
@@ -1490,8 +1545,10 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
         pdDetail.classList.remove('is-insights', 'is-datamagnet');
-        if (d.variant) pdDetail.classList.add(d.variant);
-        pdPill.textContent  = d.pill;
+        pdVisual.classList.remove('is-insights', 'is-datamagnet');
+        if (d.variant) { pdDetail.classList.add(d.variant); pdVisual.classList.add(d.variant); }
+        const num = String(productOrder.indexOf(key) + 1).padStart(2, '0');
+        pdPill.innerHTML = `<span class="pd-num">${num}</span><span class="pd-sep" aria-hidden="true">&middot;</span>${d.pill}`;
         pdTitle.textContent = d.title;
         pdDesc.textContent  = d.desc;
         pdChips.innerHTML   = d.chips.map(c => `<span class="pd-chip">${c}</span>`).join('');
@@ -1505,8 +1562,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         pdCta.innerHTML = d.cta + ' <span class="pd-cta-arrow" aria-hidden="true">&rarr;</span>';
         /* Each product points its CTA at the corresponding deep page */
         if (d.ctaHref) pdCta.setAttribute('href', d.ctaHref);
-        pdImage.src = d.image;
-        pdImage.alt = d.pill + ' preview';
+        loadLottie(d.animation);
     }
 
     /* Premium transition: outgoing content lifts + fades quickly, then the
@@ -1516,32 +1572,43 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         if (key === currentProduct || !productData[key]) return;
         pdDetail.classList.add('is-leaving');
         pdVisual.classList.add('is-leaving');
+        pdHead.classList.add('is-leaving');
         clearTimeout(switchT);
         switchT = setTimeout(() => {
             renderProduct(key);
             pdDetail.classList.replace('is-leaving', 'is-entering');
             pdVisual.classList.replace('is-leaving', 'is-entering');
+            pdHead.classList.replace('is-leaving', 'is-entering');
             /* two frames: let the start state paint, then release to animate in */
             requestAnimationFrame(() => requestAnimationFrame(() => {
                 pdDetail.classList.remove('is-entering');
                 pdVisual.classList.remove('is-entering');
+                pdHead.classList.remove('is-entering');
             }));
-        }, 60);
+        }, 90);
     }
 
+    const pdHead         = document.querySelector('.products-head');
     const productSection = document.querySelector('.section-products');
     const reduceMotion   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const deskQuery      = window.matchMedia('(min-width: 992px)');
 
     /* ── Desktop: scroll-pinned switching ──────────────────────────
-       The section is a tall track; while .products-sticky is pinned,
-       map scroll progress (0→1) across the pinned range to the 3 products. */
+       Cache section geometry — offsetHeight and top never change during
+       scroll, only on resize. Reading them inside the scroll handler
+       forces synchronous reflow every frame and causes jank. */
+    let cachedSectionTop = 0;
+    let cachedRange      = 0;
+    function cacheLayout() {
+        cachedSectionTop = window.scrollY + productSection.getBoundingClientRect().top;
+        cachedRange      = productSection.offsetHeight - window.innerHeight;
+    }
+    cacheLayout();
+
     let ticking = false;
     function updateByScroll() {
-        const rect  = productSection.getBoundingClientRect();
-        const range = productSection.offsetHeight - window.innerHeight;
-        if (range <= 0) return;
-        let progress = (-rect.top) / range;
+        if (cachedRange <= 0) return;
+        let progress = (window.scrollY - cachedSectionTop) / cachedRange;
         progress = Math.max(0, Math.min(0.999, progress));
         const idx = Math.floor(progress * productOrder.length);
         const key = productOrder[idx];
@@ -1555,11 +1622,9 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 
     /* Clicking a tab scrolls to that product's segment of the pinned range */
     function scrollToProduct(key) {
-        const idx     = productOrder.indexOf(key);
-        const range   = productSection.offsetHeight - window.innerHeight;
-        const seg     = range / productOrder.length;
-        const topAbs  = window.scrollY + productSection.getBoundingClientRect().top;
-        window.scrollTo({ top: topAbs + seg * idx + seg * 0.5, behavior: 'smooth' });
+        const idx = productOrder.indexOf(key);
+        const seg = cachedRange / productOrder.length;
+        window.scrollTo({ top: cachedSectionTop + seg * idx + seg * 0.5, behavior: 'smooth' });
     }
 
     /* ── Mobile: un-pinned, auto-rotate ────────────────────────── */
@@ -1596,7 +1661,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         });
     });
     deskQuery.addEventListener('change', setupMode);
-    window.addEventListener('resize', () => { if (deskQuery.matches) updateByScroll(); });
+    window.addEventListener('resize', () => { cacheLayout(); if (deskQuery.matches) updateByScroll(); });
     setupMode();
 </script>
 
@@ -1631,78 +1696,44 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     })();
 </script>
 
+
 <script>
-    /* Persona stepper — per-role content + per-persona accent palette.
-       Each role rotates the primary/secondary brand colors so the section
-       feels richer as you click through. */
     const personaData = {
         analyst: {
-            pill: 'Data Analysts & Business Users',
-            heading: 'Turn questions into insights without waiting on anyone.',
-            desc: "Equip analysts and business users with self-service analytics that are simple to use and quick to deploy. With Lumenore’s intuitive tools, exploring data, uncovering insights, and sharing results becomes effortless.",
+            pill: 'Data Analysts',
+            heading: 'Ask & Investigate',
+            desc: 'Get more than reports; get answers. With intelligence that helps you identify what matters most, you can investigate business questions, find hidden trends, and surface significant insights more quickly.',
             chips: ['Natural language queries', '100+ chart types', 'Self-serve exploration'],
-            ws: "Lumenore — The Analyst’s workspace",
-            stat: '$4.2M', delta: '+128K this week',
-            s1v: '128K', s1l: 'Active', s2v: '2.1%', s2l: 'Churn',
-            chat: '“Show me top 5 quarters by revenue”',
-            bars: [32, 52, 28, 64, 44, 72, 56, 80, 48, 68, 58, 76],
             accent: '#0e48a5', accentSecondary: '#7747b6',
-            glowA: 'rgba(40, 99, 195, .55)',
-            glowB: 'rgba(119, 71, 182, .40)',
-            glowC: 'rgba(28, 169, 201, .25)',
-            soft:  'rgba(40, 99, 195, .08)',
-            border: 'rgba(40, 99, 195, .40)'
+            glowA: 'rgba(40, 99, 195, .55)', glowB: 'rgba(119, 71, 182, .40)', glowC: 'rgba(28, 169, 201, .25)',
+            soft: 'rgba(40, 99, 195, .08)', border: 'rgba(40, 99, 195, .22)'
         },
         business: {
             pill: 'Business Leaders',
-            heading: 'Make smarter decisions, faster — across web, mobile, and embedded.',
-            desc: 'Increase revenue, reduce costs, and stay agile in real time. Empower every team with accessible insights when and where they need them.',
+            heading: 'Monitor & Decide',
+            desc: 'Stay ahead of business performance with critical insights, emerging opportunities, and potential risks surfaced automatically. Focus on making confident decisions while intelligent systems continuously monitor what matters most.',
             chips: ['Real-time KPI tracking', 'Executive dashboards', 'Alerts & narratives'],
-            ws: 'Lumenore — Executive cockpit',
-            stat: '+18.4%', delta: '+3.2 pts vs Q3',
-            s1v: '92%', s1l: 'On track', s2v: '4', s2l: 'At risk',
-            chat: '“What changed in our pipeline this week?”',
-            bars: [40, 56, 48, 72, 60, 78, 64, 84, 56, 76, 68, 80],
             accent: '#7747b6', accentSecondary: '#0e48a5',
-            glowA: 'rgba(119, 71, 182, .55)',
-            glowB: 'rgba(40, 99, 195, .40)',
-            glowC: 'rgba(18, 182, 248, .25)',
-            soft:  'rgba(119, 71, 182, .09)',
-            border: 'rgba(119, 71, 182, .42)'
+            glowA: 'rgba(119, 71, 182, .55)', glowB: 'rgba(40, 99, 195, .40)', glowC: 'rgba(18, 182, 248, .25)',
+            soft: 'rgba(119, 71, 182, .09)', border: 'rgba(119, 71, 182, .25)'
         },
         scientist: {
-            pill: 'Operator & Manager',
-            heading: 'Build, test, and deploy models without leaving the platform.',
-            desc: 'Use AutoML for no-code development or the Python code studio for custom modeling. Train, test, deploy, and manage models alongside your data.',
-            chips: ['AutoML pipelines', 'Python code studio', 'Model monitoring'],
-            ws: 'Lumenore — Model registry',
-            stat: '0.94', delta: '+0.03 vs baseline',
-            s1v: '11', s1l: 'Models', s2v: '2.3%', s2l: 'Drift',
-            chat: '“Compare last 3 model versions”',
-            bars: [24, 38, 30, 52, 36, 60, 44, 70, 38, 56, 46, 64],
+            pill: 'Data Scientist',
+            heading: 'Build & Innovate',
+            desc: 'Turn ideas into intelligent solutions faster. Work with trusted enterprise data that helps you spend less time preparing and more time building models, predictions, and AI-driven solutions.',
+            chips: ['AutoML pipelines', 'Advanced Analytics', 'Model monitoring'],
             accent: '#1ca9c9', accentSecondary: '#0e48a5',
-            glowA: 'rgba(28, 169, 201, .55)',
-            glowB: 'rgba(40, 99, 195, .40)',
-            glowC: 'rgba(119, 71, 182, .25)',
-            soft:  'rgba(28, 169, 201, .09)',
-            border: 'rgba(28, 169, 201, .42)'
+            glowA: 'rgba(28, 169, 201, .55)', glowB: 'rgba(40, 99, 195, .40)', glowC: 'rgba(119, 71, 182, .25)',
+            soft: 'rgba(28, 169, 201, .09)', border: 'rgba(28, 169, 201, .28)'
         },
         engineer: {
             pill: 'Data Engineers',
-            heading: 'Ship reliable pipelines without yak-shaving ETL.',
-            desc: 'Simplified ETL with a visual interface for building and managing data flows. Streamlined data preparation and observability for production-grade pipelines.',
+            heading: 'Connect & Orchestrate',
+            desc: 'Eliminate pipeline management and manual data preparation. Automate data operations, link enterprise systems, and make sure dependable, trustworthy data is constantly available for analytics, artificial intelligence, and business decision-making.',
             chips: ['Low-code ETL', 'Lakehouse storage', 'Schema observability'],
-            ws: 'Lumenore — Pipeline observability',
-            stat: '99.98%', delta: '+0.02% vs last week',
-            s1v: '47', s1l: 'Pipelines', s2v: '0', s2l: 'Failures',
-            chat: '“Why is the orders job slow today?”',
-            bars: [44, 60, 52, 76, 64, 82, 68, 88, 60, 80, 72, 84],
             accent: '#12b6f8', accentSecondary: '#1ca9c9',
-            glowA: 'rgba(18, 182, 248, .55)',
-            glowB: 'rgba(28, 169, 201, .40)',
-            glowC: 'rgba(40, 99, 195, .25)',
-            soft:  'rgba(18, 182, 248, .09)',
-            border: 'rgba(18, 182, 248, .42)'
+            glowA: 'rgba(18, 182, 248, .55)', glowB: 'rgba(28, 169, 201, .40)', glowC: 'rgba(40, 99, 195, .25)',
+            soft: 'rgba(18, 182, 248, .09)', border: 'rgba(18, 182, 248, .28)'
         }
     };
 
@@ -1714,9 +1745,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     const personaDesc      = document.getElementById('personaDesc');
     const personaChips     = document.getElementById('personaChips');
 
-    const pexText = document.querySelector('.pex-text');
-
-    function activatePersona(key, instant) {
+    function activatePersona(key) {
         const d = personaData[key];
         if (!d) return;
         if (personaSection) {
@@ -1740,63 +1769,26 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             s.classList.toggle('is-on', on);
             s.setAttribute('aria-hidden', on ? 'false' : 'true');
         });
-        function swapText() {
-            if (personaRoleLabel) personaRoleLabel.textContent = d.pill;
-            if (personaHeading)   personaHeading.textContent   = d.heading;
-            if (personaDesc)      personaDesc.textContent      = d.desc;
-            if (personaChips)     personaChips.innerHTML = d.chips.map(c => `
-                <span class="chip">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-                    ${c}
-                </span>
-            `).join('');
-        }
-        if (!pexText) {
-            swapText();
-        } else if (instant) {
-            pexText.style.transition = '';
-            pexText.style.opacity    = '';
-            pexText.style.transform  = '';
-            swapText();
-        } else {
-            pexText.style.transition = 'opacity .16s ease, transform .16s ease';
-            pexText.style.opacity    = '0';
-            pexText.style.transform  = 'translateY(6px)';
-            setTimeout(() => {
-                swapText();
-                pexText.style.transform  = 'translateY(-6px)';
-                void pexText.offsetHeight;
-                pexText.style.transition = 'opacity .32s ease, transform .32s ease';
-                pexText.style.opacity    = '1';
-                pexText.style.transform  = 'none';
-                setTimeout(() => {
-                    pexText.style.transition = '';
-                    pexText.style.opacity    = '';
-                    pexText.style.transform  = '';
-                }, 360);
-            }, 170);
-        }
+        if (personaRoleLabel) personaRoleLabel.textContent = d.pill;
+        if (personaHeading)   personaHeading.textContent   = d.heading;
+        if (personaDesc)      personaDesc.textContent      = d.desc;
+        if (personaChips)     personaChips.innerHTML = d.chips.map(c => `
+            <span class="chip">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                ${c}
+            </span>
+        `).join('');
     }
 
     personaTabs.forEach(tab => {
         tab.addEventListener('click', () => activatePersona(tab.dataset.persona));
         tab.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                activatePersona(tab.dataset.persona);
-            }
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activatePersona(tab.dataset.persona); }
         });
     });
 
-    activatePersona('analyst', true);
+    activatePersona('business');
 
-    /* ── Subtle parallax on scene glows + mouse parallax on cards ──
-       Two independent motion layers:
-         • Scroll parallax → drifts the soft gradient orbs vertically.
-         • Mouse parallax → sets --mx/--my CSS vars on the stage so each
-           card translates a different amount based on the cursor.
-       Cards' float + reveal animations stay untouched (they use the
-       `translate` and `animation:scReveal` properties, not `transform`). */
     (function setupPersonaParallax(){
         const section = document.getElementById('personaSection');
         if (!section) return;
@@ -1807,7 +1799,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         function update() {
             const rect = section.getBoundingClientRect();
             const wh   = window.innerHeight;
-            /* progress: ~1 entering from below, 0 centered, ~-1 leaving up */
             const denom = (wh / 2) + (rect.height / 2);
             if (denom <= 0) return;
             let progress = ((rect.top + rect.height / 2) - (wh / 2)) / denom;
@@ -1817,17 +1808,9 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 el.style.transform = `translate3d(0, ${(progress * 140 * amp).toFixed(2)}px, 0)`;
             });
         }
-
-        /* Mouse parallax — only while hovering the stage */
         if (stage) {
-            let stageRect = null;
-            let mTicking = false;
-            let pendingX = 0, pendingY = 0;
-            const apply = () => {
-                stage.style.setProperty('--mx', pendingX.toFixed(3));
-                stage.style.setProperty('--my', pendingY.toFixed(3));
-                mTicking = false;
-            };
+            let stageRect = null, mTicking = false, pendingX = 0, pendingY = 0;
+            const apply = () => { stage.style.setProperty('--mx', pendingX.toFixed(3)); stage.style.setProperty('--my', pendingY.toFixed(3)); mTicking = false; };
             stage.addEventListener('mouseenter', () => { stageRect = stage.getBoundingClientRect(); });
             stage.addEventListener('mousemove', (e) => {
                 if (!stageRect) stageRect = stage.getBoundingClientRect();
@@ -1835,17 +1818,9 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 pendingY = (e.clientY - stageRect.top)  / stageRect.height - 0.5;
                 if (!mTicking) { mTicking = true; requestAnimationFrame(apply); }
             });
-            stage.addEventListener('mouseleave', () => {
-                pendingX = 0; pendingY = 0;
-                if (!mTicking) { mTicking = true; requestAnimationFrame(apply); }
-                stageRect = null;
-            });
+            stage.addEventListener('mouseleave', () => { pendingX = 0; pendingY = 0; if (!mTicking) { mTicking = true; requestAnimationFrame(apply); } stageRect = null; });
         }
-        function onScroll() {
-            if (pTicking) return;
-            pTicking = true;
-            requestAnimationFrame(() => { update(); pTicking = false; });
-        }
+        function onScroll() { if (pTicking) return; pTicking = true; requestAnimationFrame(() => { update(); pTicking = false; }); }
         window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', onScroll);
         update();
@@ -2032,6 +2007,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                     + ' aria-selected="' + on + '" tabindex="' + (on ? '0' : '-1') + '">'
                     + '<span class="pm-card-title">' + b + '</span>'
                     + '<svg class="pm-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>'
+                    + '<span class="pm-card-progress" aria-hidden="true"></span>'
                     + '</button>';
             }).join('');
             pmCards.querySelectorAll('.pm-card').forEach(card => {
@@ -2086,6 +2062,11 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 c.classList.toggle('is-active', on);
                 c.setAttribute('aria-selected', on);
                 c.setAttribute('tabindex', on ? '0' : '-1');
+                if (on) {
+                    /* Restart the progress-bar CSS animation on the newly active card */
+                    const bar = c.querySelector('.pm-card-progress');
+                    if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; }
+                }
             });
             if (pricingAside) {
                 pricingAside.classList.add('is-swapping');
@@ -2123,6 +2104,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                     renderInsights(plan, activeCapByPlan[plan]);
                     pricingMain.classList.remove('is-swapping');
                     pricingAside.classList.remove('is-swapping');
+                    startAuto();
                 }, 200);
             } else {
                 pmTitle.textContent = d.title;
@@ -2142,8 +2124,49 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             });
         });
 
+        /* ── Auto-scroll engine ─────────────────────────────────────────── */
+        const AUTO_MS = 4000;   /* ms each card stays active before advancing */
+        let autoTimer = null;
+        let autoPaused = false;
+
+        function startAuto() {
+            stopAuto();
+            if (autoPaused) return;
+            autoTimer = setTimeout(function () {
+                const bullets = pricingData[currentPlan].bullets;
+                const next = (activeCapByPlan[currentPlan] + 1) % bullets.length;
+                setCapability(next);
+                startAuto();
+            }, AUTO_MS);
+        }
+
+        function stopAuto() {
+            if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+        }
+
+        /* Pause on hover so user can read without the tab advancing */
+        if (pmCards) {
+            pmCards.addEventListener('mouseenter', function () { autoPaused = true;  stopAuto(); });
+            pmCards.addEventListener('mouseleave', function () { autoPaused = false; startAuto(); });
+        }
+
+        /* Also pause when the section scrolls out of view — resume when back */
+        if ('IntersectionObserver' in window && pricingSection) {
+            new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) { startAuto(); }
+                else { stopAuto(); }
+            }, { threshold: 0.25 }).observe(pricingSection);
+        }
+
+        /* Manual tab click: user took control — reset and restart from clicked card */
+        pmCards && pmCards.addEventListener('click', function () {
+            autoPaused = false;
+            startAuto();
+        });
+
         renderCards('freemium');
         renderInsights('freemium', 0);
+        startAuto();
     })();
 
 
@@ -2200,57 +2223,99 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 </script>
 
 <script>
-    /* Testimonial — click a tab to swap quote text, name, role */
-    const testimonials = [
-        {
-            text: 'Their innovative data analytics and business intelligence solutions have become integral to our operational efficiency and decision-making process. With Lumenore’s customized dashboards and predictive insights, we’ve gained a competitive edge, allowing us to make informed decisions faster and more accurately.\n\nThis partnership has enhanced our ability to serve our clients effectively. We look forward to continued success together and highly recommend Lumenore for any organization seeking a reliable partner in business intelligence and digital transformation.',
-            name: 'Arvind Patkar',
-            role: 'Founder & CEO, ARAMSEC Company Limited'
-        },
-        {
-            text: 'Lumenore surpassed our expectations with its intuitive, no-code platform, democratizing data access across the organization. Our clients can now create interactive dashboards, explore real-time data, and uncover hidden trends more easily and without relying on IT.\n\nLumenore’s commitment to customer success and exceptional support have been invaluable.',
-            name: 'Vicente Ciampa',
-            role: 'CEO, Xonit.net'
-        },
-        {
-            text: 'Lumenore’s unified analytics platform replaced our manual reporting and helped us cut reporting cycles by 30%, with real-time data integration our business users actually trust.\n\nFeatures like customizable interactive reports and real-time data integration proved especially valuable, enabling us to reduce the time spent on reporting and empower business users to make informed decisions without technical bottlenecks.',
-            name: 'Sara Mohammad Alblooshi',
-            role: 'Application Head, Department of Digital Ajman'
+    /* Testimonial v5 — gradient stage + text cards + blue bubble */
+    (function initTsm(){
+        var testimonials = [
+            {
+                text: ‘Their innovative data analytics and business intelligence solutions have become integral to our operational efficiency and decision-making process. With Lumenore’s customized dashboards and predictive insights, we’ve gained a competitive edge, allowing us to make informed decisions faster and more accurately.’,
+                name: ‘Arvind Patkar’,
+                role: ‘Founder & CEO, ARAMSEC Company Ltd’,
+                initials: ‘AP’
+            },
+            {
+                text: ‘Lumenore surpassed our expectations with its intuitive, no-code platform, democratizing data access across the organization. Our clients can now create interactive dashboards, explore real-time data, and uncover hidden trends more easily and without relying on IT.’,
+                name: ‘Vicente Ciampa’,
+                role: ‘CEO, Xonit.net’,
+                initials: ‘VC’
+            },
+            {
+                text: ‘Lumenore’s unified analytics platform replaced our manual reporting and helped us cut reporting cycles by 30%, with real-time data integration our business users actually trust.’,
+                name: ‘Sara Mohammad Alblooshi’,
+                role: ‘Application Head, Dept. of Digital Ajman’,
+                initials: ‘SM’
+            }
+        ];
+
+        var nodes      = document.querySelectorAll(‘.tsm-node’);
+        var dots       = document.querySelectorAll(‘.tsm-dot’);
+        var bubbleWrap = document.getElementById(‘tsmBubble’);
+        var bubbleText = document.getElementById(‘tsmBubbleText’);
+        var attrSlot    = document.getElementById(‘tsmAttrSlot’);
+        var attrInitial = document.getElementById(‘tsmAttrInitial’);
+        var attrName    = document.getElementById(‘tsmAttrName’);
+        var attrRole    = document.getElementById(‘tsmAttrRole’);
+        if (!bubbleWrap) return;
+
+        var tIndex = 0, autoTimer;
+
+        function showTsm(i){
+            tIndex = i;
+            var t = testimonials[i];
+
+            bubbleWrap.classList.add(‘is-swapping’);
+            attrSlot.classList.add(‘is-swapping’);
+
+            setTimeout(function(){
+                bubbleText.textContent    = t.text;
+                attrInitial.textContent   = t.initials;
+                attrName.textContent      = t.name;
+                attrRole.textContent      = t.role;
+                bubbleWrap.classList.toggle(‘card-right’, i === 1);
+
+                nodes.forEach(function(n, ni){ n.classList.toggle(‘is-active’, ni === i); });
+
+                dots.forEach(function(d, di){
+                    d.classList.toggle(‘is-active’, di === i);
+                    d.setAttribute(‘aria-selected’, di === i ? ‘true’ : ‘false’);
+                });
+
+                bubbleWrap.classList.remove(‘is-swapping’);
+                attrSlot.classList.remove(‘is-swapping’);
+            }, 230);
         }
-    ];
 
-    const tTabs  = document.querySelectorAll('.testimonial-tab');
-    const qText  = document.getElementById('quoteText');
-    const qName  = document.getElementById('quoteName');
-    const qRole  = document.getElementById('quoteRole');
-    let tIndex = 0;
-    let tTimer;
+        nodes.forEach(function(node, idx){
+            node.onclick = function(){
+                if (idx === tIndex) return;
+                clearInterval(autoTimer);
+                showTsm(idx);
+                startAuto();
+            };
+            node.addEventListener(‘keydown’, function(e){
+                if (e.key === ‘Enter’ || e.key === ‘ ‘){
+                    e.preventDefault();
+                    if (idx === tIndex) return;
+                    clearInterval(autoTimer);
+                    showTsm(idx);
+                    startAuto();
+                }
+            });
+        });
 
-    const testimonialCard = document.getElementById('testimonialCard');
-    function showTestimonial(i) {
-        tIndex = i;
-        const t = testimonials[i];
-        /* Smooth fade-swap — add .is-swapping so .testimonial-body fades
-           out + lifts, swap content at the midpoint, then remove the
-           class so it fades back in with a polished cascade. */
-        if (testimonialCard) testimonialCard.classList.add('is-swapping');
-        setTimeout(() => {
-            qText.textContent = t.text;
-            qName.textContent = t.name;
-            qRole.textContent = t.role;
-            tTabs.forEach((tab, ti) => tab.classList.toggle('is-active', ti === i));
-            if (testimonialCard) testimonialCard.classList.remove('is-swapping');
-        }, testimonialCard ? 220 : 0);
-    }
-    function nextTestimonial() { showTestimonial((tIndex + 1) % testimonials.length); }
-    function startAuto() { tTimer = setInterval(nextTestimonial, 7000); }
-    function resetAuto() { clearInterval(tTimer); startAuto(); }
+        dots.forEach(function(dot){
+            dot.addEventListener(‘click’, function(){
+                clearInterval(autoTimer);
+                showTsm(parseInt(dot.dataset.index, 10));
+                startAuto();
+            });
+        });
 
-    tTabs.forEach(tab => tab.addEventListener('click', () => {
-        showTestimonial(parseInt(tab.dataset.slide, 10));
-        resetAuto();
-    }));
-    startAuto();
+        function startAuto(){
+            clearInterval(autoTimer);
+            autoTimer = setInterval(function(){ showTsm((tIndex + 1) % testimonials.length); }, 5000);
+        }
+        startAuto();
+    })();
 </script>
 
 <script>
@@ -2270,7 +2335,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 
         tracks.forEach(track => {
             const dir = track.dataset.marqueeDir === 'ltr' ? 1 : -1;   /* +1 = L→R, -1 = R→L */
-            const baseSpeed = 0.55;                                    /* px / frame @ 60fps */
+            const baseSpeed = 1.1;                                     /* px / frame @ 60fps */
             let offset = 0;
             let paused = false;
 
@@ -2331,6 +2396,63 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 </script>
 
 <script>
+    /* Features staggered carousel — prev/next slide + scroll-triggered entry animation */
+    (function initFCCarousel(){
+        const carousel  = document.getElementById('fcCarousel');
+        if (!carousel) return;
+        const track     = document.getElementById('fcTrack');
+        const viewport  = carousel.querySelector('.fc-viewport');
+        const prevBtn   = document.getElementById('fcPrev');
+        const nextBtn   = document.getElementById('fcNext');
+        if (!track || !viewport || !prevBtn || !nextBtn) return;
+
+        const CARD_W = 228;
+        const GAP    = 20;
+        const STEP   = CARD_W + GAP;
+
+        let currentIndex = 0;
+        const totalCards = track.children.length;
+
+        function visibleCount(){
+            return Math.max(1, Math.floor((viewport.clientWidth + GAP) / STEP));
+        }
+        function maxIndex(){
+            return Math.max(0, totalCards - visibleCount());
+        }
+        function updateNav(){
+            prevBtn.disabled = currentIndex <= 0;
+            nextBtn.disabled = currentIndex >= maxIndex();
+        }
+        function slideTo(index){
+            currentIndex = Math.max(0, Math.min(index, maxIndex()));
+            track.style.transform = 'translateX(' + (-currentIndex * STEP) + 'px)';
+            updateNav();
+        }
+
+        prevBtn.addEventListener('click', function(){ slideTo(currentIndex - 1); });
+        nextBtn.addEventListener('click', function(){ slideTo(currentIndex + 1); });
+        window.addEventListener('resize', function(){ slideTo(Math.min(currentIndex, maxIndex())); });
+        updateNav();
+
+        /* Scroll-triggered bottom-to-top entry animation */
+        var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (rm){
+            carousel.classList.add('is-visible', 'is-settled');
+        } else {
+            var io = new IntersectionObserver(function(entries){
+                if (entries[0].isIntersecting){
+                    carousel.classList.add('is-visible');
+                    /* Settle after longest card's transition finishes (delay .36s + duration .75s) */
+                    setTimeout(function(){ carousel.classList.add('is-settled'); }, 1160);
+                    io.disconnect();
+                }
+            }, { threshold: 0.12 });
+            io.observe(carousel);
+        }
+    })();
+</script>
+
+<script>
     /* Stories carousel — same pattern */
     (function () {
         const track = document.getElementById('storiesTrack');
@@ -2379,14 +2501,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     })();
 </script>
 
-<script>
-    /* Header scroll-to-solid transition (matches existing pattern) */
-    const header = document.querySelector('.site-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) header.classList.add('is-scrolled');
-        else header.classList.remove('is-scrolled');
-    });
-</script>
 
 <script>
     /* Hero orbs — scroll-driven parallax removed per request.
@@ -2936,7 +3050,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 start: '#', learn: '#', pricing: '#'
             },
             askme: {
-                tagline: 'Conversational Data',
+                tagline: 'Conversational Analytics',
                 title:   'Lumenore Ask Me',
                 desc:    'Query enterprise data and documents in natural language. Get instant, governed insights enhanced by Agentic RAG and seamless MCP integrations.',
                 start: 'lumenore-ask-me.html', learn: 'lumenore-ask-me.html', pricing: '#'
@@ -3114,6 +3228,24 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             mega.addEventListener('mouseenter', open);
             mega.addEventListener('mouseleave', scheduleClose);
         });
+    })();
+
+    /* ── Scroll-reveal observer ──────────────────────────────────────── */
+    (function () {
+        var blocks = document.querySelectorAll('.reveal-block, .reveal-left, .reveal-right');
+        if (!('IntersectionObserver' in window)) {
+            blocks.forEach(function (el) { el.classList.add('is-visible'); });
+            return;
+        }
+        var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+        blocks.forEach(function (el) { obs.observe(el); });
     })();
 
 </script>

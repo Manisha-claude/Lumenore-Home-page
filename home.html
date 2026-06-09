@@ -10,172 +10,11 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded&display=swap" rel="stylesheet">
     <link href="assets/css/v2o/index.css?v=3" rel="stylesheet">
-    <!-- Preload first product GIF so it's ready when page renders -->
-    <link rel="preload" href="assets/images/GIf/Askme_Gif 1.gif" as="image" fetchpriority="high">
-
-    <style>
-        #personaSection{
-            background: #fcfcfc !important;
-            color: #101828;
-            padding: 96px 0 0;
-            position: relative !important;
-            z-index: 2;
-            overflow: hidden;
-            isolation: isolate;
-        }
-        #personaSection .personas-fade{
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 280px;
-            background: linear-gradient(180deg,
-                rgba(231,238,248,1) 0%,
-                rgba(231,238,248,.65) 25%,
-                rgba(231,238,248,.22) 52%,
-                rgba(231,238,248,.05) 70%,
-                transparent 88%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        #personaSection .personas-fade-bottom{
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 320px;
-            background: linear-gradient(0deg,
-                rgba(252,252,252,1) 0%,
-                rgba(252,252,252,.90) 25%,
-                rgba(252,252,252,.50) 60%,
-                transparent 100%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        /* Thin bottom overlay — covers only the glow-orb clip edge, not the content */
-        #personaSection::after{
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 120px;
-            background: linear-gradient(to bottom,
-                transparent 0%,
-                rgba(252,252,252,.55) 40%,
-                rgba(252,252,252,.90) 72%,
-                #fcfcfc 100%);
-            pointer-events: none;
-            z-index: 10;
-        }
-        #personaSection .container{ position: relative; z-index: 1; }
-        #personaSection .personas-intro{ margin-bottom: 96px !important; }
-        #personaSection .persona-explorer{
-            display: grid !important;
-            grid-template-columns: minmax(320px, .95fr) minmax(0, 1.15fr) !important;
-            gap: 80px;
-            align-items: stretch;
-            position: relative;
-        }
-        #personaSection .pex-content{
-            height: 100%;
-        }
-        #personaSection .pex-stage{
-            position: relative !important;
-            width: 100%;
-            height: 100%;
-            min-height: 380px;
-            isolation: isolate;
-        }
-        #personaSection .persona-scene{
-            position: absolute !important;
-            inset: 0 !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-            transform: translateY(12px);
-            transition: opacity .45s ease, transform .55s cubic-bezier(.22,.61,.36,1), visibility 0s linear .55s;
-        }
-        #personaSection .persona-scene.is-on{
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: auto !important;
-            transform: none;
-            transition: opacity .45s ease, transform .55s cubic-bezier(.22,.61,.36,1), visibility 0s linear 0s;
-        }
-        #personaSection .persona-chips{
-            display: flex !important;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        #personaSection .scene-card.sc-1{ top: 0;   left: 0;   width: 70%; }
-        #personaSection .scene-card.sc-2{ top: 20%;  right: 0;  width: 44%; }
-        #personaSection .scene-card.sc-3{ top: 42%; left: 18%; width: 56%; }
-        @media (max-width: 991px){
-            #personaSection .persona-explorer{ grid-template-columns: 1fr !important; gap: 48px; }
-            #personaSection .pex-stage{ min-height: 380px; }
-        }
-        @media (max-width: 575px){
-            #personaSection .pex-stage{ min-height: 360px; }
-        }
-        .section-products .products-head{ justify-content: flex-end !important; }
-        .section-products .products-intro{ margin-bottom: 56px !important; }
-        .section-products .personas-eyebrow{
-            color: #12b6f8 !important;
-            background: rgba(18, 182, 248, .10) !important;
-            border-color: rgba(18, 182, 248, .25) !important;
-        }
-        .section-products .personas-eyebrow .pe-dot{
-            background: linear-gradient(135deg, #12b6f8 0%, #1ca9c9 100%) !important;
-            box-shadow: 0 0 0 3px rgba(18, 182, 248, .18) !important;
-        }
-
-        /* Product section — bottom-to-top slide transition */
-        .product-detail > *{
-            transition: opacity .28s ease, transform .28s cubic-bezier(.16, 1, .3, 1);
-            will-change: opacity, transform;
-        }
-        /* Restore stagger for smooth cascade on enter */
-        .product-detail > *:nth-child(1){ transition-delay: 0s; }
-        .product-detail > *:nth-child(2){ transition-delay: .03s; }
-        .product-detail > *:nth-child(3){ transition-delay: .06s; }
-        .product-detail > *:nth-child(4){ transition-delay: .09s; }
-        .product-detail > *:nth-child(5){ transition-delay: .12s; }
-        .product-detail > *:nth-child(6){ transition-delay: .15s; }
-        .product-detail.is-leaving > *{
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity .08s ease-in, transform .08s ease-in;
-            transition-delay: 0s !important;
-        }
-        .product-detail.is-entering > *{
-            opacity: 0;
-            transform: translateY(14px);
-            transition: none !important;
-        }
-        .product-visual img{
-            transition: opacity .28s ease, transform .28s cubic-bezier(.16, 1, .3, 1);
-        }
-        .product-visual.is-leaving img{
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity .08s ease-in, transform .08s ease-in;
-        }
-        .product-visual.is-entering img{
-            opacity: 0;
-            transform: translateY(14px);
-            transition: none !important;
-        }
-        /* Reduce paragraph spacing in testimonial quotes */
-        .testimonial-body .quote-text{
-            line-height: 26px !important;
-        }
-        .trusted-section h3{
-            font-family: 'Fraunces', serif;
-            font-weight: 300;
-            font-size: 32px;
-            line-height: 42px;
-            letter-spacing: -.4px;
-            color: var(--Base-White, #fcfcfc);
-            text-align: center;
-            margin: 0 auto 40px;
-            max-width: 920px;
-        }
-    </style>
+    <link href="assets/css/v2o/home.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script src="assets/images/Json/Askme-animation-1-.js" async></script>
+    <script src="assets/images/Json/Dashboard-Animation-JSON.js" async></script>
+    <script src="assets/images/Json/Data-Magnet_Animation-1.js" async></script>
 
 
 </head>
@@ -605,40 +444,37 @@
             </button>
 
             <div class="hero-search-wrap" id="heroSearchWrap">
-              <div class="hero-search-glow"></div>
-                <div class="hero-search">
-                    <div class="hero-search-inner">
-                        <p class="placeholder-text" id="heroPlaceholder">Ask a Question</p>
+                <div class="hero-browser-wrap">
+                    <!-- Ambient glow behind the browser -->
+                    <div class="hero-browser-glow" aria-hidden="true"></div>
 
-                        <div class="input-row">
-                            <button type="button" class="icon-btn" aria-label="Add data source">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-                            </button>
-                            <button type="button" class="tools-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                                Tools
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                            </button>
+                    <div class="hero-browser">
+                        <!-- Browser chrome bar -->
+                        <div class="hero-browser-bar">
+                            <div class="hb-dots" aria-hidden="true">
+                                <span class="hb-dot hb-dot--red"></span>
+                                <span class="hb-dot hb-dot--yellow"></span>
+                                <span class="hb-dot hb-dot--green"></span>
+                            </div>
+                            <div class="hb-url">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                app.lumenore.com
+                            </div>
+                            <div class="hb-spacer" aria-hidden="true"></div>
                         </div>
-                    </div>
 
-                    <div class="hero-search-footer">
-                        <span class="src-label">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-                            Connect with 100+ data sources to analyse your data
-                        </span>
-                        <span class="src-stack">
-                            <span class="src-bubble">
-                                <img src="assets/images/src-icons/excel.svg" width="16" height="16" alt="Excel" />
-                            </span>
-                            <span class="src-bubble">
-                                <img src="assets/images/src-icons/snowflake.svg" width="16" height="16" alt="Snowflake" />
-                            </span>
-                            <span class="src-bubble">
-                                <img src="assets/images/src-icons/salesforce.svg" width="14" height="14" alt="Salesforce" />
-                            </span>
-                            <span class="src-bubble">50+</span>
-                        </span>
+                        <!-- Video screen -->
+                        <div class="hero-browser-screen">
+                            <video
+                                class="hero-banner-video"
+                                src="assets/images/Hero-Gif/Banner - 2 Ask Me.mp4"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                                aria-hidden="true">
+                            </video>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -652,70 +488,40 @@
 <!-- ===== TRUSTED LOGOS ===== -->
 <section class="trusted-section">
     <div class="container">
-        <h3>Trusted by <span class="ah-accent">100+ Teams</span> Across Global Enterprises</h3>
+        <h3 class="reveal-block">Trusted by <span class="ah-accent">100+ Teams</span> Across Global Enterprises</h3>
 
-        <div class="logo-slider">
-            <div class="logo-track">
-                <div><img src="assets/images/homeV2o/Logo section/Bayer_Cross_1_.svg" loading="lazy" alt="Bayer"></div>
-                <div><img src="assets/images/homeV2o/Logo section/logo-siriusxm-vector-logo 1.svg" loading="lazy" alt="SiriusXM"></div>
-                <div><img src="assets/images/homeV2o/Logo section/national-rural-health-mission-logo-vector 1.svg" loading="lazy" alt="National Rural Health Mission"></div>
-                <div><img src="assets/images/homeV2o/Logo section/dwihn-logo 1.png" loading="lazy" alt="DWIHN"></div>
-                <div><img src="assets/images/homeV2o/Logo section/seed-advertising [Vectorized].svg" loading="lazy" alt="SEED Advertising"></div>
-                <div><img src="assets/images/homeV2o/Logo section/L1 1.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Ducont.png" loading="lazy" alt="Ducont"></div>
-                <div><img src="assets/images/homeV2o/Logo section/L3 1.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/L4 1.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Group.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/g2317.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Group 1699.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Group 48098351.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Rectangle.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/trident-group-vector-logo.svg" loading="lazy" alt="Trident Group"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Vector.svg" loading="lazy" alt="Client logo"></div>
-
-                <!-- duplicate for seamless infinite scroll -->
-                <div><img src="assets/images/homeV2o/Logo section/Bayer_Cross_1_.svg" loading="lazy" alt="Bayer"></div>
-                <div><img src="assets/images/homeV2o/Logo section/logo-siriusxm-vector-logo 1.svg" loading="lazy" alt="SiriusXM"></div>
-                <div><img src="assets/images/homeV2o/Logo section/national-rural-health-mission-logo-vector 1.svg" loading="lazy" alt="National Rural Health Mission"></div>
-                <div><img src="assets/images/homeV2o/Logo section/dwihn-logo 1.png" loading="lazy" alt="DWIHN"></div>
-                <div><img src="assets/images/homeV2o/Logo section/seed-advertising [Vectorized].svg" loading="lazy" alt="SEED Advertising"></div>
-                <div><img src="assets/images/homeV2o/Logo section/L1 1.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Ducont.png" loading="lazy" alt="Ducont"></div>
-                <div><img src="assets/images/homeV2o/Logo section/L3 1.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/L4 1.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Group.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/g2317.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Group 1699.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Group 48098351.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Rectangle.svg" loading="lazy" alt="Client logo"></div>
-                <div><img src="assets/images/homeV2o/Logo section/trident-group-vector-logo.svg" loading="lazy" alt="Trident Group"></div>
-                <div><img src="assets/images/homeV2o/Logo section/Vector.svg" loading="lazy" alt="Client logo"></div>
-            </div>
-        </div>
+        <div class="logo-flip-row reveal-block" style="--reveal-delay:.22s" id="logoFlipGrid"></div>
     </div>
 </section>
 
 <!-- ===== PRODUCT SUITE (Figma 994:29832) ===== -->
 <section class="section-products" id="productSection">
-  <!-- Sticky pin: heading + switcher + stage stay fixed while the track scrolls -->
+
+  <!-- Sticky pin: heading + tabs + stage all stay fixed while the track scrolls -->
   <div class="products-sticky">
     <div class="container">
-        <!-- Centered heading + subheading — pinned above the products (Figma 994:29829) -->
+        <!-- Section intro — sticky with the rest of the panel -->
         <div class="products-intro" id="productsIntro">
-            <span class="personas-eyebrow">
+            <span class="personas-eyebrow reveal-block">
                 <span class="pe-dot" aria-hidden="true"></span>
                 CORE MODULES
             </span>
-            <h2 class="products-title">Lumenore&rsquo;s Suite of Products for Every Data Challenge</h2>
-          <p class="products-subtitle">Most teams pay 5 vendors to pass data between each other.<br>Lumenore replaces three of them — in a single platform.</p>
+            <h2 class="products-title reveal-block" style="--reveal-delay:.18s">Lumenore&rsquo;s Suite of Products for Every Data Challenge</h2>
+            <p class="products-subtitle reveal-block" style="--reveal-delay:.36s">Most teams pay 5 vendors to pass data between each other.<br>Lumenore replaces three of them &mdash; in a single platform.</p>
         </div>
 
-        <!-- Header row: eyebrow + segmented product switcher -->
-        <div class="products-head">
-            <div class="product-tabs" id="productTabs" role="tablist" aria-label="Product suite">
-                <button type="button" class="product-tab is-active" data-product="askme" role="tab" aria-selected="true">Lumenore Ask Me</button>
-                <button type="button" class="product-tab" data-product="insights" role="tab" aria-selected="false">Lumenore Insights</button>
-                <button type="button" class="product-tab" data-product="datamagnet" role="tab" aria-selected="false">Lumenore Data Magnet</button>
+        <!-- Header row: product name (left) + progress steps (right) -->
+        <div class="products-head reveal-block" style="--reveal-delay:.44s">
+            <h2 class="pd-name" id="pdPill"><span class="pd-num">01</span><span class="pd-sep" aria-hidden="true">&middot;</span>Lumenore Ask Me</h2>
+            <div class="pd-prog" id="productTabs" role="tablist" aria-label="Product suite">
+                <div class="pd-prog-track" aria-hidden="true">
+                    <div class="pd-prog-fill" id="pdProgFill"></div>
+                </div>
+                <div class="pd-prog-steps">
+                    <button type="button" class="product-tab is-active" data-product="askme" role="tab" aria-selected="true">01</button>
+                    <button type="button" class="product-tab" data-product="insights" role="tab" aria-selected="false">02</button>
+                    <button type="button" class="product-tab" data-product="datamagnet" role="tab" aria-selected="false">03</button>
+                </div>
             </div>
         </div>
 
@@ -723,27 +529,26 @@
         <div class="product-stage">
 
             <!-- Active product detail (left column) -->
-            <div class="product-detail" id="productDetail">
-                <span class="pd-pill" id="pdPill">Lumenore Ask Me</span>
-                <h3 id="pdTitle">Conversational Analytics</h3>
-                <p id="pdDesc"><span data-contrast="auto" xml:lang="EN-US" lang="EN-US">AI agents with context awareness and expertise that understand not just your question but also your business goal. Ask Me connects to your business data and, in response to your inquiries, brings external market intelligence to independently look into anomalies, identify underlying causes, and deliver governed insights that provide each team with the whole picture.</span><span data-ccp-props="{}"> </span></p>
+            <div class="product-detail reveal-left" id="productDetail" style="--reveal-delay:.54s">
+                <h3 class="pd-tagline" id="pdTitle">Conversational Analytics</h3>
+                <p id="pdDesc"><span data-contrast="auto" xml:lang="EN-US" lang="EN-US">AI agents with context awareness and expertise that understand not just your question but also your business goal. Ask Me connects to your business data and, in response to your inquiries, brings external market intelligence to independently look into anomalies, identify underlying causes, and deliver governed insights that provide each team with the whole picture.</span><span data-ccp-props="{}"> </span></p>
                 <div class="pd-chips" id="pdChips">
                     <span class="pd-chip">Semantic Search</span>
                     <span class="pd-chip">Contextual Intelligence</span>
                     <span class="pd-chip">Natural Language Querying</span>
                 </div>
                 <figure class="pd-quote" id="pdQuote">
-                    <blockquote id="pdQuoteText">“Reporting cycle: 3 weeks → 4 days.”</blockquote>
-                    <figcaption id="pdQuoteCite">Enterprise analytics team · faster self-serve reporting</figcaption>
+                    <blockquote id="pdQuoteText">"Reporting cycle: 3 weeks &rarr; 4 days."</blockquote>
+                    <figcaption id="pdQuoteCite">Enterprise analytics team &middot; faster self-serve reporting</figcaption>
                 </figure>
                 <a href="lumenore-ask-me.html" class="pd-cta btn-primary" id="pdCta">Explore Ask Me <span class="pd-cta-arrow" aria-hidden="true">&rarr;</span></a>
           </div>
 
             <!-- Product visual (right column) -->
-            <div class="product-visual">
+            <div class="product-visual reveal-right" style="--reveal-delay:.64s">
                 <span class="pv-orb pv-orb-a" aria-hidden="true"></span>
                 <span class="pv-orb pv-orb-b" aria-hidden="true"></span>
-                <img src="assets/images/GIf/Askme_Gif 1.gif" alt="Lumenore Ask Me preview" id="pdImage" loading="eager" fetchpriority="high">
+                <div id="pdLottie"></div>
             </div>
 
         </div>
@@ -850,6 +655,15 @@
                 </div>
             </div><!-- /features-track -->
         </div><!-- /features-marquee -->
+
+        <div class="features-nav" aria-label="Features navigation">
+            <button type="button" class="fn-btn fn-prev" id="featuresPrev" aria-label="Previous features">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="fn-btn fn-next" id="featuresNext" aria-label="Next features">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
     </div>
 </section>
 
@@ -1039,11 +853,11 @@
 
         <!-- INTRO ─────────────────────────────────────────────── -->
         <div class="pricing-intro">
-            <span class="pricing-eyebrow">
+            <span class="pricing-eyebrow reveal-block">
                 <span class="pe-dot" aria-hidden="true"></span>
                 Plans &amp; Pricing
             </span>
-            <h2>Explore the Right Way <span class="ph-accent">to Get Started</span></h2>
+            <h2 class="reveal-block" style="--reveal-delay:.18s">Explore the Right Way <span class="ph-accent">to Get Started</span></h2>
         </div>
 
         <!-- ASYMMETRIC SPLIT GRID — left main panel + right column of 3 stacked
@@ -1053,7 +867,7 @@
         <div class="pricing-grid" id="pricingGrid">
 
             <!-- LEFT — main pricing panel -->
-            <article class="pricing-main">
+            <article class="pricing-main reveal-left" style="--reveal-delay:.28s">
                 <!-- Plan switcher — bigger, more prominent pills with caption -->
                 <div class="pm-switcher" id="pricingTabs" role="tablist" aria-label="Plans">
                     <button type="button" class="pm-plan is-active" data-plan="freemium" role="tab" aria-selected="true" tabindex="0">
@@ -1089,15 +903,14 @@
                 </a>
             </article>
 
-            <!-- RIGHT — column of 3 stacked insight cards -->
-            <aside class="pricing-aside">
+            <!-- RIGHT — GIF card on top, KPI below -->
+            <aside class="pricing-aside reveal-right" style="--reveal-delay:.4s">
 
-                <!-- Card 1 — Value Explanation: GIF preview + h4 + 3 sub-bullets -->
+                <!-- GIF + checklist — top card -->
                 <article class="pa-card pa-card--value" id="paValueCard">
                     <div class="pa-media" id="paMedia">
                         <img id="paMediaImg" src="assets/images/homeV2o/pricing/Free1.gif" alt="Feature preview" loading="lazy">
                     </div>
-                    <span class="pa-label">Why this matters</span>
                     <h4 class="pa-title" id="paValueTitle">Bring your data in. Keep it up to date</h4>
                     <ul class="pa-checklist" id="paChecklist">
                         <li><svg class="pa-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Connect files and databases without complex setup.</li>
@@ -1106,8 +919,9 @@
                     </ul>
                 </article>
 
-                <!-- Card 2 — KPI Highlight -->
+                <!-- KPI — bottom card -->
                 <article class="pa-card pa-card--kpi">
+                    <span class="pa-kpi-eyebrow">Measured Impact</span>
                     <p class="pa-kpi-stat"><span id="paKpiNum">60</span><span id="paKpiSfx">%</span></p>
                     <p class="pa-kpi-cap" id="paKpiCap">Less time spent managing data updates.</p>
                 </article>
@@ -1116,6 +930,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- ===== SUCCESS STORIES — carousel (Figma 994:29866) ===== -->
 <section class="section-success">
@@ -1234,15 +1049,18 @@
             <div class="testimonial-tabs" id="testimonialTabs">
                 <button type="button" class="testimonial-tab is-active" data-slide="0">
                     <span class="tt-name">Arvind Patkar</span>
-                    <span class="tt-role">Founder &amp; CEO, ARAMSEC Company Limited</span>
+                    <span class="tt-role">Founder &amp; CEO</span>
+                    <span class="tt-company">ARAMSEC Company Limited</span>
                 </button>
                 <button type="button" class="testimonial-tab" data-slide="1">
                     <span class="tt-name">Vicente Ciampa</span>
-                    <span class="tt-role">CEO, Xonit.net</span>
+                    <span class="tt-role">CEO</span>
+                    <span class="tt-company">Xonit.net</span>
                 </button>
                 <button type="button" class="testimonial-tab" data-slide="2">
                     <span class="tt-name">Sara Mohammad Alblooshi</span>
-                    <span class="tt-role">Application Head, Department of Digital Ajman</span>
+                    <span class="tt-role">Application Head</span>
+                    <span class="tt-company">Department of Digital Ajman</span>
                 </button>
             </div>
 
@@ -1267,7 +1085,8 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                             <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9"/></svg>
                         </div>
                         <p class="quote-name" id="quoteName">Arvind Patkar</p>
-                        <p class="quote-role" id="quoteRole">Founder &amp; CEO, ARAMSEC Company Limited</p>
+                        <p class="quote-role" id="quoteRole">Founder &amp; CEO</p>
+                        <p class="quote-company" id="quoteCompany">ARAMSEC Company Limited</p>
                     </div>
                 </div>
             </div>
@@ -1360,26 +1179,9 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
     <div class="container">
-        <!-- Top banner: "Got more questions?" CTA — integrated into the
-             footer so it reads as part of the same composition, not a
-             disconnected pill above. -->
-        <div class="footer-cta">
-            <span class="footer-cta-halo" aria-hidden="true"></span>
-            <div class="footer-cta-text">
-                <span class="footer-cta-eyebrow">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
-                    Talk to a human
-                </span>
-                <h3>Got more questions?</h3>
-                <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
-            </div>
-            <a href="contact.html" class="footer-cta-button btn-primary">
-                Get in Touch
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-        </div>
 
-        <div class="footer-nav">
+        <!-- Top row: brand identity (left) + CTA panel (right) -->
+        <div class="footer-top">
             <div class="brand-col footer-col">
                 <div class="brand-logo">
                     <img src="assets/images/homeV2o/Lumenore logo.svg" alt="Lumenore" class="brand-logo-img">
@@ -1389,23 +1191,36 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 <div class="ask-ai-box">
                     <p class="ask-ai-label">Ask AI for a summary about Lumenore</p>
                     <div class="ask-ai-icons">
-                        <a href="#" aria-label="ChatGPT"><svg width="16" height="16" viewBox="0 0 24 24" fill="#10a37f" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/></svg></a>
-                        <a href="#" aria-label="Gemini"><svg width="16" height="16" viewBox="0 0 24 24" fill="#4285f4" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 14,10 22,12 14,14 12,22 10,14 2,12 10,10"/></svg></a>
-                        <a href="#" aria-label="Perplexity"><svg width="16" height="16" viewBox="0 0 24 24" fill="#22b8cf" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 22,22 2,22"/></svg></a>
-                        <a href="#" aria-label="Claude"><svg width="16" height="16" viewBox="0 0 24 24" fill="#d97706" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/></svg></a>
-                        <a href="#" aria-label="Copilot"><svg width="16" height="16" viewBox="0 0 24 24" fill="#7c3aed" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="4"/></svg></a>
+                        <a href="#" aria-label="ChatGPT"><img src="assets/images/AI/openai.svg" alt="ChatGPT" width="24" height="24"></a>
+                        <a href="#" aria-label="Perplexity"><img src="assets/images/AI/perplexity-dark.svg" alt="Perplexity" width="24" height="24"></a>
+                        <a href="#" aria-label="Gemini"><img src="assets/images/AI/google-gemini-dark.svg" alt="Gemini" width="24" height="24"></a>
+                        <a href="#" aria-label="Claude"><img src="assets/images/AI/claude.svg" alt="Claude" width="24" height="24"></a>
+                        <a href="#" aria-label="Grok"><img src="assets/images/AI/grok.svg" alt="Grok" width="24" height="24"></a>
                     </div>
                 </div>
 
-                <p class="follow-us-label">Follow Us</p>
-                <div class="social-list">
-                    <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                    <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
-                    <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                    <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                </div>
             </div>
 
+            <div class="footer-cta">
+                <span class="footer-cta-halo" aria-hidden="true"></span>
+                <div class="footer-cta-text">
+                    <span class="footer-cta-eyebrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="currentColor"/></svg>
+                        Talk to a human
+                    </span>
+                    <h3>Got more questions?</h3>
+                    <p>Our team is here to answer any questions or customize the perfect plan for you.</p>
+                </div>
+
+                <a href="contact.html" class="footer-cta-button btn-primary">
+                    Get in Touch
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Nav link columns — 5 equal cols -->
+        <div class="footer-nav">
             <div class="footer-col">
                 <h4>Platform</h4>
                 <ul>
@@ -1493,6 +1308,12 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 
         <div class="copyright">
             <p>© 2025 Lumenore Inc. All rights reserved.</p>
+            <div class="copyright-social">
+                <a href="#" aria-label="X / Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
             <div class="legal-links">
                 <a href="privacy.html">Privacy</a>
                 <a href="terms.html">Terms of Use</a>
@@ -1515,11 +1336,11 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             title: 'Conversational Analytics',
             desc: 'AI agents with context awareness and expertise that understand not just your question but also your business goal. Ask Me connects to your business data and, in response to your inquiries, brings external market intelligence to independently look into anomalies, identify underlying causes, and deliver governed insights that provide each team with the whole picture.',
             chips: ['Semantic Search', 'Contextual Intelligence', 'Natural Language Querying'],
-            quote: '“Reporting cycle: 3 weeks → 4 days.”',
-            quoteCite: 'Enterprise analytics team · faster self-serve reporting',
+            quote: '\u201cReporting cycle: 3 weeks \u2192 4 days.\u201d',
+            quoteCite: 'Enterprise analytics team \u00b7 faster self-serve reporting',
             cta: 'Explore Ask Me',
             ctaHref: 'lumenore-ask-me.html',
-            image: 'assets/images/GIf/Askme_Gif 1.gif',
+            animation: 'lottieAskMe',
             variant: ''
         },
         insights: {
@@ -1527,11 +1348,11 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             title: 'Autonomous Analytics Engine',
             desc: 'An AI powered analytics engine that autonomously builds and updates dashboards, monitors KPIs, detects anomalies, and delivers critical insights to the right teams across channels, applications, and existing workflows.',
             chips: ['AI Dashboards', 'Data Story Telling', 'Real-Time Apps'],
-            quote: '“80% reduction in ad-hoc IT data requests.”',
-            quoteCite: 'Ford Credit · Financial Services · 5,000+ employees',
+            quote: '\u201c80% reduction in ad-hoc IT data requests.\u201d',
+            quoteCite: 'Ford Credit \u00b7 Financial Services \u00b7 5,000+ employees',
             cta: 'Explore Insights',
             ctaHref: '#',
-            image: 'assets/images/homeV2o/Dashboard (1).gif',
+            animation: 'lottieDashboardJSON',
             variant: 'is-insights'
         },
         datamagnet: {
@@ -1539,11 +1360,11 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             title: 'Autonomous Data Operations for AI-Native Analytics',
             desc: 'An intelligent data foundation designed for AI-native analytics at scale that uses self-learning data pipelines, semantic context, and regulated data operations to automatically link, prepare, and orchestrate business data.',
             chips: ['100+ Connectors', 'Auto Pipeline Automation', 'Unified Data Stream'],
-            quote: '“2M events/day, Zero engineers babysitting it.”',
-            quoteCite: 'SiriusXM · Media and Entertainment · real-time streaming',
+            quote: '\u201c2M events/day, Zero engineers babysitting it.\u201d',
+            quoteCite: 'SiriusXM \u00b7 Media and Entertainment \u00b7 real-time streaming',
             cta: 'Explore Data Magnet',
             ctaHref: '#',
-            image: 'assets/images/homeV2o/Data Magnet (1).gif',
+            animation: 'lottieDataMagnet',
             variant: 'is-datamagnet'
         }
     };
@@ -1560,23 +1381,39 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     const pdQuoteText  = document.getElementById('pdQuoteText');
     const pdQuoteCite  = document.getElementById('pdQuoteCite');
     const pdCta        = document.getElementById('pdCta');
-    const pdImage      = document.getElementById('pdImage');
+    const pdLottieEl   = document.getElementById('pdLottie');
     const pdDots       = document.querySelectorAll('.product-progress .pp-dot');
+    const pdProgFill   = document.getElementById('pdProgFill');
 
     let currentProduct = 'askme';
 
-    /* Preload the other product GIFs in the background so switching is instant */
-    window.addEventListener('load', () => {
-        ['assets/images/homeV2o/Dashboard (1).gif', 'assets/images/homeV2o/Data Magnet (1).gif'].forEach(src => {
-            const img = new Image();
-            img.src = src;
+    /* \u2500\u2500 Lottie product animation \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+    let lottieAnim = null;
+    function loadLottie(varName) {
+        const data = window[varName];
+        if (!data) { setTimeout(() => loadLottie(varName), 100); return; }
+        if (lottieAnim) { lottieAnim.destroy(); lottieAnim = null; }
+        pdLottieEl.innerHTML = '';
+        lottieAnim = lottie.loadAnimation({
+            container: pdLottieEl,
+            renderer:  'svg',
+            loop:      true,
+            autoplay:  true,
+            animationData: data,
+            rendererSettings: { preserveAspectRatio: 'xMidYMid meet' }
         });
-    });
+    }
+    loadLottie(productData.askme.animation);
+    if (pdProgFill) pdProgFill.style.width = (1 / 3 * 100) + '%';
 
     function renderProduct(key) {
         const d = productData[key];
         if (!d) return;
         currentProduct = key;
+        if (pdProgFill) {
+            const idx = productOrder.indexOf(key);
+            pdProgFill.style.width = ((idx + 1) / productOrder.length * 100) + '%';
+        }
         pdDots.forEach(dot => dot.classList.toggle('is-active', dot.dataset.product === key));
         productTabs.forEach(t => {
             const on = t.dataset.product === key;
@@ -1584,8 +1421,10 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
         pdDetail.classList.remove('is-insights', 'is-datamagnet');
-        if (d.variant) pdDetail.classList.add(d.variant);
-        pdPill.textContent  = d.pill;
+        pdVisual.classList.remove('is-insights', 'is-datamagnet');
+        if (d.variant) { pdDetail.classList.add(d.variant); pdVisual.classList.add(d.variant); }
+        const num = String(productOrder.indexOf(key) + 1).padStart(2, '0');
+        pdPill.innerHTML = `<span class="pd-num">${num}</span><span class="pd-sep" aria-hidden="true">&middot;</span>${d.pill}`;
         pdTitle.textContent = d.title;
         pdDesc.textContent  = d.desc;
         pdChips.innerHTML   = d.chips.map(c => `<span class="pd-chip">${c}</span>`).join('');
@@ -1597,10 +1436,8 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             pdQuote.hidden = true;
         }
         pdCta.innerHTML = d.cta + ' <span class="pd-cta-arrow" aria-hidden="true">&rarr;</span>';
-        /* Each product points its CTA at the corresponding deep page */
         if (d.ctaHref) pdCta.setAttribute('href', d.ctaHref);
-        pdImage.src = d.image;
-        pdImage.alt = d.pill + ' preview';
+        loadLottie(d.animation);
     }
 
     /* Premium transition: outgoing content lifts + fades quickly, then the
@@ -1610,27 +1447,27 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         if (key === currentProduct || !productData[key]) return;
         pdDetail.classList.add('is-leaving');
         pdVisual.classList.add('is-leaving');
+        pdHead.classList.add('is-leaving');
         clearTimeout(switchT);
         switchT = setTimeout(() => {
             renderProduct(key);
             pdDetail.classList.replace('is-leaving', 'is-entering');
             pdVisual.classList.replace('is-leaving', 'is-entering');
+            pdHead.classList.replace('is-leaving', 'is-entering');
             /* two frames: let the start state paint, then release to animate in */
             requestAnimationFrame(() => requestAnimationFrame(() => {
                 pdDetail.classList.remove('is-entering');
                 pdVisual.classList.remove('is-entering');
+                pdHead.classList.remove('is-entering');
             }));
         }, 90);
     }
 
+    const pdHead         = document.querySelector('.products-head');
     const productSection = document.querySelector('.section-products');
     const reduceMotion   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const deskQuery      = window.matchMedia('(min-width: 992px)');
 
-    /* ── Desktop: scroll-pinned switching ──────────────────────────
-       Cache section geometry — offsetHeight and top never change during
-       scroll, only on resize. Reading them inside the scroll handler
-       forces synchronous reflow every frame and causes jank. */
     let cachedSectionTop = 0;
     let cachedRange      = 0;
     function cacheLayout() {
@@ -1654,14 +1491,12 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         requestAnimationFrame(() => { updateByScroll(); ticking = false; });
     }
 
-    /* Clicking a tab scrolls to that product's segment of the pinned range */
     function scrollToProduct(key) {
         const idx = productOrder.indexOf(key);
         const seg = cachedRange / productOrder.length;
         window.scrollTo({ top: cachedSectionTop + seg * idx + seg * 0.5, behavior: 'smooth' });
     }
 
-    /* ── Mobile: un-pinned, auto-rotate ────────────────────────── */
     let rotateTimer = null;
     function startAutoRotate() {
         if (reduceMotion) return;
@@ -1673,7 +1508,6 @@ This partnership has enhanced our ability to serve our clients effectively. We l
     }
     function stopAutoRotate() { clearInterval(rotateTimer); }
 
-    /* Wire the active mode based on viewport */
     function setupMode() {
         window.removeEventListener('scroll', onScroll);
         stopAutoRotate();
@@ -1700,9 +1534,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 </script>
 
 <script>
-    /* Product GIF — mouse parallax on .product-visual.
-       Sets --mx/--my CSS vars so the img + pv-orbs drift opposite each other
-       on hover. Mirrors the setupPersonaParallax() pattern. */
+    /* Product visual — mouse parallax on .product-visual. */
     (function setupProductParallax(){
         const visual = document.querySelector('.product-visual');
         if (!visual) return;
@@ -1729,6 +1561,8 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         });
     })();
 </script>
+
+
 
 
 <script>
@@ -2041,6 +1875,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                     + ' aria-selected="' + on + '" tabindex="' + (on ? '0' : '-1') + '">'
                     + '<span class="pm-card-title">' + b + '</span>'
                     + '<svg class="pm-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>'
+                    + '<span class="pm-card-progress" aria-hidden="true"></span>'
                     + '</button>';
             }).join('');
             pmCards.querySelectorAll('.pm-card').forEach(card => {
@@ -2095,6 +1930,11 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 c.classList.toggle('is-active', on);
                 c.setAttribute('aria-selected', on);
                 c.setAttribute('tabindex', on ? '0' : '-1');
+                if (on) {
+                    /* Restart the progress-bar CSS animation on the newly active card */
+                    const bar = c.querySelector('.pm-card-progress');
+                    if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; }
+                }
             });
             if (pricingAside) {
                 pricingAside.classList.add('is-swapping');
@@ -2132,6 +1972,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                     renderInsights(plan, activeCapByPlan[plan]);
                     pricingMain.classList.remove('is-swapping');
                     pricingAside.classList.remove('is-swapping');
+                    startAuto();
                 }, 200);
             } else {
                 pmTitle.textContent = d.title;
@@ -2151,8 +1992,49 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             });
         });
 
+        /* ── Auto-scroll engine ─────────────────────────────────────────── */
+        const AUTO_MS = 4000;   /* ms each card stays active before advancing */
+        let autoTimer = null;
+        let autoPaused = false;
+
+        function startAuto() {
+            stopAuto();
+            if (autoPaused) return;
+            autoTimer = setTimeout(function () {
+                const bullets = pricingData[currentPlan].bullets;
+                const next = (activeCapByPlan[currentPlan] + 1) % bullets.length;
+                setCapability(next);
+                startAuto();
+            }, AUTO_MS);
+        }
+
+        function stopAuto() {
+            if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+        }
+
+        /* Pause on hover so user can read without the tab advancing */
+        if (pmCards) {
+            pmCards.addEventListener('mouseenter', function () { autoPaused = true;  stopAuto(); });
+            pmCards.addEventListener('mouseleave', function () { autoPaused = false; startAuto(); });
+        }
+
+        /* Also pause when the section scrolls out of view — resume when back */
+        if ('IntersectionObserver' in window && pricingSection) {
+            new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) { startAuto(); }
+                else { stopAuto(); }
+            }, { threshold: 0.25 }).observe(pricingSection);
+        }
+
+        /* Manual tab click: user took control — reset and restart from clicked card */
+        pmCards && pmCards.addEventListener('click', function () {
+            autoPaused = false;
+            startAuto();
+        });
+
         renderCards('freemium');
         renderInsights('freemium', 0);
+        startAuto();
     })();
 
 
@@ -2228,10 +2110,11 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         }
     ];
 
-    const tTabs  = document.querySelectorAll('.testimonial-tab');
-    const qText  = document.getElementById('quoteText');
-    const qName  = document.getElementById('quoteName');
-    const qRole  = document.getElementById('quoteRole');
+    const tTabs    = document.querySelectorAll('.testimonial-tab');
+    const qText    = document.getElementById('quoteText');
+    const qName    = document.getElementById('quoteName');
+    const qRole    = document.getElementById('quoteRole');
+    const qCompany = document.getElementById('quoteCompany');
     let tIndex = 0;
     let tTimer;
 
@@ -2246,20 +2129,16 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         setTimeout(() => {
             qText.textContent = t.text;
             qName.textContent = t.name;
-            qRole.textContent = t.role;
+            const roleParts = t.role.split(', ');
+            qRole.textContent    = roleParts[0];
+            if (qCompany) qCompany.textContent = roleParts.slice(1).join(', ');
             tTabs.forEach((tab, ti) => tab.classList.toggle('is-active', ti === i));
             if (testimonialCard) testimonialCard.classList.remove('is-swapping');
         }, testimonialCard ? 220 : 0);
     }
-    function nextTestimonial() { showTestimonial((tIndex + 1) % testimonials.length); }
-    function startAuto() { tTimer = setInterval(nextTestimonial, 7000); }
-    function resetAuto() { clearInterval(tTimer); startAuto(); }
-
     tTabs.forEach(tab => tab.addEventListener('click', () => {
         showTestimonial(parseInt(tab.dataset.slide, 10));
-        resetAuto();
     }));
-    startAuto();
 </script>
 
 <script>
@@ -2291,7 +2170,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
 
             function tick(){
                 if (!paused){
-                    offset += dir * baseSpeed;
+                    offset += 0;
                     const cw = cardWidth();
                     if (cw > 0){
                         if (dir < 0){
@@ -2333,6 +2212,45 @@ This partnership has enhanced our ability to serve our clients effectively. We l
                 offset = -cardWidth();   /* will animate back toward 0 then wrap */
                 track.style.transform = `translate3d(${offset}px, 0, 0)`;
             }
+
+            /* ── Prev / Next buttons ── */
+            let stepRaf = null;
+            function stepBy(delta) {
+                const cw = cardWidth();
+                if (!cw) return;
+                paused = true;
+                let start  = offset;
+                let target = offset + delta;
+                const duration = 380;
+                const t0       = performance.now();
+                if (stepRaf) cancelAnimationFrame(stepRaf);
+                function animate(now) {
+                    const p = Math.min((now - t0) / duration, 1);
+                    const e = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;   /* ease-in-out quad */
+                    offset = start + (target - start) * e;
+                    /* keep DOM in sync — shift start+target by the same amount
+                       so the easing trajectory survives the reorder */
+                    if (dir < 0) {
+                        while (-offset >= cw){ track.appendChild(track.firstElementChild); offset += cw; start += cw; target += cw; }
+                        while (offset > 0)   { track.insertBefore(track.lastElementChild, track.firstElementChild); offset -= cw; start -= cw; target -= cw; }
+                    } else {
+                        while (offset >= cw) { track.insertBefore(track.lastElementChild, track.firstElementChild); offset -= cw; start -= cw; target -= cw; }
+                        while (-offset >= cw){ track.appendChild(track.firstElementChild); offset += cw; start += cw; target += cw; }
+                    }
+                    track.style.transform = `translate3d(${offset.toFixed(2)}px, 0, 0)`;
+                    if (p < 1) {
+                        stepRaf = requestAnimationFrame(animate);
+                    } else {
+                        paused = false;
+                    }
+                }
+                stepRaf = requestAnimationFrame(animate);
+            }
+
+            const prevBtn = document.getElementById('featuresPrev');
+            const nextBtn = document.getElementById('featuresNext');
+            if (prevBtn) prevBtn.addEventListener('click', () => stepBy( cardWidth()));
+            if (nextBtn) nextBtn.addEventListener('click', () => stepBy(-cardWidth()));
 
             requestAnimationFrame(tick);
         });
@@ -3117,6 +3035,101 @@ This partnership has enhanced our ability to serve our clients effectively. We l
         });
     })();
 
+</script>
+
+<script>
+/* ── Trusted logos — staggered flip animation ── */
+(function () {
+    var grid = document.getElementById('logoFlipGrid');
+    if (!grid) return;
+
+    var logos = [
+        { src: 'assets/images/homeV2o/Logo section/Bayer_Cross_1_.svg',                            alt: 'Bayer' },
+        { src: 'assets/images/homeV2o/Logo section/logo-siriusxm-vector-logo 1.svg',                alt: 'SiriusXM' },
+        { src: 'assets/images/homeV2o/Logo section/national-rural-health-mission-logo-vector 1.svg', alt: 'National Rural Health Mission' },
+        { src: 'assets/images/homeV2o/Logo section/dwihn-logo 1.png',                               alt: 'DWIHN' },
+        { src: 'assets/images/homeV2o/Logo section/seed-advertising [Vectorized].svg',              alt: 'SEED Advertising' },
+        { src: 'assets/images/homeV2o/Logo section/L1 1.svg',                                       alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Ducont.png',                                     alt: 'Ducont' },
+        { src: 'assets/images/homeV2o/Logo section/L3 1.svg',                                       alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/L4 1.svg',                                       alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Group.svg',                                      alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/g2317.svg',                                      alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Group 1699.svg',                                 alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Group 48098351.svg',                             alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/Rectangle.svg',                                  alt: 'Client logo' },
+        { src: 'assets/images/homeV2o/Logo section/trident-group-vector-logo.svg',                  alt: 'Trident Group' },
+        { src: 'assets/images/homeV2o/Logo section/Vector.svg',                                     alt: 'Client logo' }
+    ];
+
+    function shuffle(arr) {
+        var a = arr.slice(), i = a.length, j, t;
+        while (i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+
+    var SLOTS   = 8;
+    var FLIP_MS = 900;
+    var paired  = shuffle(logos);
+
+    function makeImg(logo) {
+        var img = document.createElement('img');
+        img.src = logo.src; img.alt = logo.alt; img.loading = 'lazy';
+        return img;
+    }
+
+    var cards = [];
+
+    for (var i = 0; i < SLOTS; i++) {
+        var logoA = paired[i];
+        var logoB = paired[i + SLOTS];
+
+        var card  = document.createElement('div');  card.className  = 'lf-card';
+        var inner = document.createElement('div');  inner.className = 'lf-inner';
+        var front = document.createElement('div');  front.className = 'lf-face lf-front';
+        var back  = document.createElement('div');  back.className  = 'lf-face lf-back';
+
+        front.appendChild(makeImg(logoA));
+        back.appendChild(makeImg(logoB));
+        inner.appendChild(front); inner.appendChild(back);
+        card.appendChild(inner);
+        grid.appendChild(card);
+
+        cards.push({ card: card, flipped: false });
+    }
+
+    function scheduleFlip(cardObj, delay) {
+        setTimeout(function () {
+            cardObj.flipped = !cardObj.flipped;
+            cardObj.card.classList.toggle('is-flipped', cardObj.flipped);
+            scheduleFlip(cardObj, FLIP_MS + 4000 + Math.random() * 4000);
+        }, delay);
+    }
+
+    cards.forEach(function (c) {
+        scheduleFlip(c, Math.random() * 6000);
+    });
+})();
+</script>
+
+<script>
+    /* ── Scroll-reveal observer ── */
+    (function () {
+        var blocks = document.querySelectorAll('.reveal-block, .reveal-left, .reveal-right');
+        if (!('IntersectionObserver' in window)) {
+            blocks.forEach(function (el) { el.classList.add('is-visible'); });
+            return;
+        }
+        var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+        blocks.forEach(function (el) { obs.observe(el); });
+    })();
 </script>
 
 </body>
