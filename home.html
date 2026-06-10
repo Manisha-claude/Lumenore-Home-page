@@ -13,7 +13,7 @@
     <link href="assets/css/v2o/home.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <script src="assets/images/Json/Askme-animation-1-.js" async></script>
-    <script src="assets/images/Json/Dashboard-Animation-JSON.js" async></script>
+    <script src="assets/images/Json/Dashboard-Animation-1.js" async></script>
     <script src="assets/images/Json/Data-Magnet_Animation-1.js" async></script>
 
 
@@ -518,9 +518,18 @@
                     <div class="pd-prog-fill" id="pdProgFill"></div>
                 </div>
                 <div class="pd-prog-steps">
-                    <button type="button" class="product-tab is-active" data-product="askme" role="tab" aria-selected="true">01</button>
-                    <button type="button" class="product-tab" data-product="insights" role="tab" aria-selected="false">02</button>
-                    <button type="button" class="product-tab" data-product="datamagnet" role="tab" aria-selected="false">03</button>
+                    <button type="button" class="product-tab is-active" data-product="askme" role="tab" aria-selected="true">
+                        <span class="pt-num">01</span>
+                        <span class="pt-name">Ask Me</span>
+                    </button>
+                    <button type="button" class="product-tab" data-product="insights" role="tab" aria-selected="false">
+                        <span class="pt-num">02</span>
+                        <span class="pt-name">Insights</span>
+                    </button>
+                    <button type="button" class="product-tab" data-product="datamagnet" role="tab" aria-selected="false">
+                        <span class="pt-num">03</span>
+                        <span class="pt-name">Data Magnet</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1352,7 +1361,7 @@ This partnership has enhanced our ability to serve our clients effectively. We l
             quoteCite: 'Ford Credit \u00b7 Financial Services \u00b7 5,000+ employees',
             cta: 'Explore Insights',
             ctaHref: '#',
-            animation: 'lottieDashboardJSON',
+            animation: 'lottieDashboard',
             variant: 'is-insights'
         },
         datamagnet: {
