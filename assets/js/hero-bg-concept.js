@@ -1,6 +1,4 @@
-
-
-/* ──────────────────────────────────────────────────────────────────────(function () {
+(function () {
     'use strict';
 
     /* ── Constants ─────────────────────────────────────────────── */
@@ -434,7 +432,9 @@
     });
 
 
-})(); */
+})();
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 /* ── Product suite — tab switching + scroll activation ── */
     const productData = {
@@ -786,7 +786,9 @@
         document.addEventListener('mouseup',    () => cursor.classList.remove('is-pressed'));
         document.addEventListener('mouseleave', () => cursor.classList.remove('is-visible'));
         document.addEventListener('mouseenter', () => { if (firstMove) cursor.classList.add('is-visible'); });
-    })(); */
+    })();
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 (function () {
     var slides   = document.querySelectorAll('.fc-slide');
@@ -843,7 +845,9 @@
     });
 
     updateNav();
-}()); */
+}());
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 const personaData = {
         analyst: {
@@ -973,7 +977,9 @@ const personaData = {
         window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', onScroll);
         update();
-    })(); */
+    })();
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 /* Pricing comparison — Freemium ↔ Enterprise plan switch + bullet-driven
        right-card swap. Content + media URLs pulled verbatim from Figma frame
@@ -1167,7 +1173,9 @@ const personaData = {
             el.addEventListener('mouseleave', () => { mx = 0; my = 0; if (!pending) { pending = true; requestAnimationFrame(apply); } });
         }
         attach(document.getElementById('paValueCard'));
-    })(); */
+    })();
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 /* Stories carousel — prev/next arrow navigation */
     (function () {
@@ -1221,7 +1229,9 @@ const personaData = {
             });
         }, { threshold: 0.18 });
         io.observe(carousel);
-    })(); */
+    })();
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 /* Testimonial: Figma two-column card layout */
 (function () {
@@ -1272,7 +1282,9 @@ const personaData = {
         tsWrap.addEventListener('mouseenter', function() { clearInterval(tsAuto); });
         tsWrap.addEventListener('mouseleave', function() { startAuto(); });
     }
-})(); */
+})();
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 /* Before-you-decide FAQ accordion */
     (function () {
@@ -1286,7 +1298,9 @@ const personaData = {
                 if (!isOpen) item.classList.add('is-open');
             });
         });
-    })(); */
+    })();
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 /* ── Full-page section beam lines ── */
 (function initPageBeams() {
@@ -1423,7 +1437,9 @@ const personaData = {
     }
 
     document.querySelectorAll('.page-beam-canvas').forEach(setup);
-})(); */
+})();
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 /* ── Leader fg — internal content scroll ── */
 (function fgInternalScroll() {
@@ -1466,7 +1482,9 @@ const personaData = {
             if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
         }
     }, { rootMargin: '200px' }).observe(section);
-})(); */
+})();
+
+/* ──────────────────────────────────────────────────────────────────── */
 
 /* Orb scene — morphing 3D sphere cycles Ask → Analyze → Detect → Act */
 (function () {
